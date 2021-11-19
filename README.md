@@ -3,3 +3,7 @@
 # About
 
 Primitives for the NuciXNA wrapper over MonoGame/XNA.
+
+# Installation
+
+[![Get it from NuGet](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nuget.png)](https://nuget.org/packages/NuciXNA.Primitives)
