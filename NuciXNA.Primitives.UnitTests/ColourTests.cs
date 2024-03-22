@@ -13,10 +13,10 @@ namespace NuciXNA.UnitTests.Primitives
         {
             Colour colour = new Colour(1, 2, 3);
 
-            Assert.AreEqual(1, colour.R);
-            Assert.AreEqual(2, colour.G);
-            Assert.AreEqual(3, colour.B);
-            Assert.AreEqual(byte.MaxValue, colour.A);
+            Assert.That(colour.R, Is.EqualTo(1));
+            Assert.That(colour.G, Is.EqualTo(2));
+            Assert.That(colour.B, Is.EqualTo(3));
+            Assert.That(colour.A, Is.EqualTo(byte.MaxValue));
         }
 
         [Test]
@@ -24,10 +24,10 @@ namespace NuciXNA.UnitTests.Primitives
         {
             Colour colour = new Colour(1, 2, 3, 4);
 
-            Assert.AreEqual(1, colour.R);
-            Assert.AreEqual(2, colour.G);
-            Assert.AreEqual(3, colour.B);
-            Assert.AreEqual(4, colour.A);
+            Assert.That(colour.R, Is.EqualTo(1));
+            Assert.That(colour.G, Is.EqualTo(2));
+            Assert.That(colour.B, Is.EqualTo(3));
+            Assert.That(colour.A, Is.EqualTo(4));
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(16, 16, 16);
             Colour actual = colour.ToMonochromeAverage();
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(8, 8, 8);
             Colour actual = colour.ToMonochromeDark();
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(24, 24, 24);
             Colour actual = colour.ToMonochromeLight();
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour colour2 = new Colour(10, 18, 26);
             bool isSimilar = colour1.IsSimilarTo(colour2, 2);
 
-            Assert.AreEqual(true, isSimilar);
+            Assert.That(isSimilar);
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(16, 16, 16, 16);
             Colour actual = Colour.Multiply(colour, 2);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -87,7 +87,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(255, 255, 255, 255);
             Colour actual = Colour.Multiply(colour, 100);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -97,7 +97,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(0, 0, 0, 0);
             Colour actual = Colour.Multiply(colour, -100);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -107,7 +107,7 @@ namespace NuciXNA.UnitTests.Primitives
             string expected = "#FF0000";
             string actual = colour.ToString();
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -116,7 +116,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour colour1 = new Colour(1, 2, 3);
             Colour colour2 = new Colour(1, 2, 3);
 
-            Assert.AreEqual(colour1, colour2);
+            Assert.That(colour1, Is.EqualTo(colour2));
         }
 
         [Test]
@@ -125,7 +125,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour colour1 = new Colour(1, 2, 3);
             Colour colour2 = new Colour(1, 2, 4);
 
-            Assert.AreNotEqual(colour1, colour2);
+            Assert.That(colour1, Is.Not.EqualTo(colour2));
         }
 
         [Test]
@@ -134,7 +134,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour colour1 = new Colour(1, 2, 3, 4);
             Colour colour2 = new Colour(1, 2, 3, 4);
 
-            Assert.AreEqual(colour1, colour2);
+            Assert.That(colour1, Is.EqualTo(colour2));
         }
 
         [Test]
@@ -143,51 +143,15 @@ namespace NuciXNA.UnitTests.Primitives
             Colour colour1 = new Colour(1, 2, 3, 4);
             Colour colour2 = new Colour(1, 2, 3, 5);
 
-            Assert.AreNotEqual(colour1, colour2);
+            Assert.That(colour1, Is.Not.EqualTo(colour2));
         }
 
         [Test]
-        public void Equals_CalledWithSameRGB_ReturnsTrue()
-        {
-            Colour colour1 = new Colour(1, 2, 3);
-            Colour colour2 = new Colour(1, 2, 3);
-
-            Assert.AreEqual(colour1, colour2);
-        }
-
-        [Test]
-        public void Equals_CalledWithDifferentRGB_ReturnsFalse()
-        {
-            Colour colour1 = new Colour(1, 2, 3);
-            Colour colour2 = new Colour(1, 2, 4);
-
-            Assert.AreNotEqual(colour1, colour2);
-        }
-
-        [Test]
-        public void Equals_CalledWithSameRGBA_ReturnsTrue()
-        {
-            Colour colour1 = new Colour(1, 2, 3, 4);
-            Colour colour2 = new Colour(1, 2, 3, 4);
-
-            Assert.AreEqual(colour1, colour2);
-        }
-
-        [Test]
-        public void Equals_CalledWithDifferentRGBA_ReturnsFalse()
-        {
-            Colour colour1 = new Colour(1, 2, 3, 4);
-            Colour colour2 = new Colour(1, 2, 3, 5);
-
-            Assert.AreNotEqual(colour1, colour2);
-        }
-
-        [Test]
-        public void Equals_CalledWithValidHexString_ReturnsTrue()
+        public void Equals_CalledWithHexStringWithSameValue_ReturnsTrue()
         {
             Colour colour = new Colour(255, 0, 255);
 
-            Assert.IsTrue(colour.Equals("#FF00FF"));
+            Assert.That(colour, Is.EqualTo("#FF00FF"));
         }
 
         [Test]
@@ -195,7 +159,7 @@ namespace NuciXNA.UnitTests.Primitives
         {
             Colour colour = new Colour(255, 0, 255);
 
-            Assert.IsFalse(colour.Equals(DateTime.Now));
+            Assert.That(colour, Is.Not.EqualTo(DateTime.Now));
         }
 
         [Test]
@@ -205,7 +169,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(16, 16, 16, 16);
             Colour actual = colour * 2;
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -215,7 +179,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(255, 255, 255, 255);
             Colour actual = colour * 100;
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -225,7 +189,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(0, 0, 0, 0);
             Colour actual = colour * -1;
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -234,7 +198,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour me = Colour.Black;
             Colour other = Colour.Black;
 
-            Assert.IsTrue(me == other);
+            Assert.That(me == other);
         }
 
         [Test]
@@ -243,7 +207,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour me = Colour.Black;
             Colour other = Colour.White;
 
-            Assert.IsFalse(me == other);
+            Assert.That(me == other, Is.False);
         }
 
         [Test]
@@ -251,7 +215,7 @@ namespace NuciXNA.UnitTests.Primitives
         {
             Colour me = Colour.Black;
 
-            Assert.IsFalse(me == null);
+            Assert.That(me == null, Is.False);
         }
 
         [Test]
@@ -259,7 +223,7 @@ namespace NuciXNA.UnitTests.Primitives
         {
             Colour other = Colour.White;
 
-            Assert.IsFalse(null == other);
+            Assert.That(null == other, Is.False);
         }
     }
 }
