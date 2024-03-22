@@ -151,7 +151,7 @@ namespace NuciXNA.UnitTests.Primitives
         {
             Colour colour = new Colour(255, 0, 255);
 
-            Assert.That(colour, Is.EqualTo("#FF00FF"));
+            Assert.That(colour.Equals("#FF00FF"));
         }
 
         [Test]
