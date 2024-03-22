@@ -16,16 +16,16 @@ namespace NuciXNA.UnitTests.Primitives
             string expected = "#FCD116";
             string actual = ColourTranslator.ToHexadecimal(colour);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
-            
+
         [Test]
         public void FromHexadecimal_ValidHexLongWithHashWithAlpha_ReturnsCorrectColour()
         {
             Colour expected = new Colour(255, 0, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("#FFFF00FF");
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(255, 0, 255);
             Colour actual = ColourTranslator.FromHexadecimal("#FF00FF");
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(0, 255, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("FF00FFFF");
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(0, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("00FFFF");
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -61,7 +61,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(255, 0, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("#FF0F");
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(255, 0, 255);
             Colour actual = ColourTranslator.FromHexadecimal("#F0F");
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(0, 255, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("F0FF");
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -88,7 +88,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(0, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("0FF");
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -123,7 +123,7 @@ namespace NuciXNA.UnitTests.Primitives
 
             int actual = ColourTranslator.ToArgb(colour);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -132,7 +132,7 @@ namespace NuciXNA.UnitTests.Primitives
             int expected = -16711165;
             int actual = ColourTranslator.ToArgb(1, 2, 3);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -141,7 +141,7 @@ namespace NuciXNA.UnitTests.Primitives
             int expected = -16711165;
             int actual = ColourTranslator.ToArgb(1, 2, 3, 255);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
         [Test]
         public void FromArgb_ValidInteger_ReturnsCorrectColour()
@@ -149,7 +149,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(1, 2, 3, 4);
             Colour actual = ColourTranslator.FromArgb(67174915);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -158,7 +158,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(1, 2, 3);
             Colour actual = ColourTranslator.FromArgb(1, 2, 3);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -167,7 +167,7 @@ namespace NuciXNA.UnitTests.Primitives
             Colour expected = new Colour(1, 2, 3, 0);
             Colour actual = ColourTranslator.FromArgb(0, 1, 2, 3);
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
     }
 }
