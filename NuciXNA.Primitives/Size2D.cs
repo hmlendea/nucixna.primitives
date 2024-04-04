@@ -141,9 +141,17 @@ namespace NuciXNA.Primitives
         => new Size2D(source.Width * other.Width,
                       source.Height * other.Height);
 
+        public static Size2D operator *(Size2D source, Scale2D scale)
+        => new((int)(source.Width * scale.Horizontal),
+                      (int)(source.Height * scale.Vertical));
+
         public static Size2D operator /(Size2D source, Size2D other)
         => new Size2D(source.Width / other.Width,
                       source.Height / other.Height);
+
+        public static Size2D operator /(Size2D source, Scale2D scale)
+        => new((int)(source.Width / scale.Horizontal),
+                      (int)(source.Height / scale.Vertical));
 
         public static Size2D operator *(Size2D source, int other)
         => new Size2D(source.Width * other,
