@@ -24,21 +24,21 @@ namespace NuciXNA.Primitives
         /// Gets the area.
         /// </summary>
         /// <value>The area.</value>
-        public double Area => Width * Height;
+        public readonly double Area => Width * Height;
 
-        public double Perimeter => Width * 2 + Height * 2;
+        public readonly double Perimeter => Width * 2 + Height * 2;
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="Size2D"/> is zero.
         /// </summary>
         /// <value><c>true</c> if is empty; otherwise, <c>false</c>.</value>
-        public bool IsEmpty => Width == 0 && Height == 0;
+        public readonly bool IsEmpty => Width == 0 && Height == 0;
 
         /// <summary>
         /// Gets the size of zero.
         /// </summary>
         /// <value>The size of zero.</value>
-        public static Size2D Empty => new Size2D(0, 0);
+        public static Size2D Empty => new(0, 0);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Size2D"/> structure.
@@ -84,7 +84,7 @@ namespace NuciXNA.Primitives
                    Equals(Height, other.Height);
         }
 
-        public bool Equals(int width, int height)
+        public readonly bool Equals(int width, int height)
         {
             return Width == width && Height == height;
         }
@@ -123,7 +123,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Size2D"/> to add.</param>
         /// <returns>The <see cref="Size2D"/> that is the sum of the values of <c>source</c> and <c>other</c>.</returns>
         public static Size2D operator +(Size2D source, Size2D other)
-        => new Size2D(source.Width + other.Width,
+        => new(source.Width + other.Width,
                       source.Height + other.Height);
 
         /// <summary>
@@ -134,11 +134,11 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Size2D"/> to subtract.</param>
         /// <returns>The <see cref="Size2D"/> that is the subtraction of the values of <c>other</c> from <c>source</c>.</returns>
         public static Size2D operator -(Size2D source, Size2D other)
-        => new Size2D(source.Width - other.Width,
+        => new(source.Width - other.Width,
                       source.Height - other.Height);
 
         public static Size2D operator *(Size2D source, Size2D other)
-        => new Size2D(source.Width * other.Width,
+        => new(source.Width * other.Width,
                       source.Height * other.Height);
 
         public static Size2D operator *(Size2D source, Scale2D scale)
@@ -146,7 +146,7 @@ namespace NuciXNA.Primitives
                       (int)(source.Height * scale.Vertical));
 
         public static Size2D operator /(Size2D source, Size2D other)
-        => new Size2D(source.Width / other.Width,
+        => new(source.Width / other.Width,
                       source.Height / other.Height);
 
         public static Size2D operator /(Size2D source, Scale2D scale)
@@ -154,11 +154,11 @@ namespace NuciXNA.Primitives
                       (int)(source.Height / scale.Vertical));
 
         public static Size2D operator *(Size2D source, int other)
-        => new Size2D(source.Width * other,
+        => new(source.Width * other,
                       source.Height * other);
 
         public static Size2D operator /(Size2D source, int other)
-        => new Size2D(source.Width / other,
+        => new(source.Width / other,
                       source.Height / other);
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a
         /// hash table.</returns>
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         {
             unchecked
             {
