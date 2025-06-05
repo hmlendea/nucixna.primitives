@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Linq;
 
 namespace NuciXNA.Primitives.Mapping
 {
@@ -33,16 +32,16 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="hexa">Hexadecimal code.</param>
         public static Colour FromHexadecimal(string hexa)
         {
-            Colour colour = new Colour();
+            Colour colour = new();
 
             if (hexa[0] == '#')
             {
-                hexa = hexa.Remove(0, 1);
+                hexa = hexa[1..];
             }
 
             // TODO: Proper exception when digits are outside hex range
 
-            if (hexa.Length == 3)
+            if (hexa.Length.Equals(3))
             {
                 colour.A = 255;
                 colour.R = Convert.ToByte($"{hexa[0]}{hexa[0]}", 16);
@@ -56,14 +55,14 @@ namespace NuciXNA.Primitives.Mapping
                 colour.G = Convert.ToByte($"{hexa[2]}{hexa[2]}", 16);
                 colour.B = Convert.ToByte($"{hexa[3]}{hexa[3]}", 16);
             }
-            else if (hexa.Length == 6)
+            else if (hexa.Length.Equals(6))
             {
                 colour.A = 255;
                 colour.R = Convert.ToByte($"{hexa[0]}{hexa[1]}", 16);
                 colour.G = Convert.ToByte($"{hexa[2]}{hexa[3]}", 16);
                 colour.B = Convert.ToByte($"{hexa[4]}{hexa[5]}", 16);
             }
-            else if (hexa.Length == 8)
+            else if (hexa.Length.Equals(8))
             {
                 colour.A = Convert.ToByte($"{hexa[0]}{hexa[1]}", 16);
                 colour.R = Convert.ToByte($"{hexa[2]}{hexa[3]}", 16);
@@ -111,15 +110,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="g">The green component.</param>
         /// <param name="b">The blue component.</param>
         /// <param name="a">The alpha component.</param>
-        public static int ToArgb(byte r, byte g, byte b, byte a)
-        {
-            int argb = (a << 24) |
-                       (r << 16) |
-                       (g << 8) |
-                       b;
-
-            return argb;
-        }
+        public static int ToArgb(byte r, byte g, byte b, byte a) => (a << 24) | (r << 16) | (g << 8) | b;
 
         /// <summary>
         /// Converts the ARGB components to a 32 bit integer.
@@ -136,10 +127,7 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <returns>The colour.</returns>
         /// <param name="argb">ARGB integer.</param>
-        public static Colour FromArgb(int argb)
-        {
-            return Color.FromArgb(argb).ToColour();
-        }
+        public static Colour FromArgb(int argb) => Color.FromArgb(argb).ToColour();
 
         /// <summary>
         /// Creates a colour from RGB values.
@@ -148,7 +136,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(byte r, byte g, byte b) => new Colour(r, g, b);
+        public static Colour FromArgb(byte r, byte g, byte b) => new(r, g, b);
 
         /// <summary>
         /// Creates a colour from RGB values.
@@ -157,7 +145,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(int r, int g, int b) => new Colour(r, g, b);
+        public static Colour FromArgb(int r, int g, int b) => new(r, g, b);
 
         /// <summary>
         /// Creates a colour from ARGB values.
@@ -167,7 +155,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(byte a, byte r, byte g, byte b) => new Colour(r, g, b, a);
+        public static Colour FromArgb(byte a, byte r, byte g, byte b) => new(r, g, b, a);
 
         /// <summary>
         /// Creates a colour from ARGB values.
@@ -177,6 +165,6 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(int a, int r, int g, int b) => new Colour(r, g, b, a);
+        public static Colour FromArgb(int a, int r, int g, int b) => new(r, g, b, a);
     }
 }

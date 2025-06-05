@@ -24,13 +24,13 @@ namespace NuciXNA.Primitives
         /// Gets a value indicating whether the coordinates of this <see cref="Point2D"/> are zero.
         /// </summary>
         /// <value><c>true</c> if the coorinates are zero; otherwise, <c>false</c>.</value>
-        public bool IsEmpty => X == 0 && Y == 0;
+        public readonly bool IsEmpty => X.Equals(0) && Y.Equals(0);
 
         /// <summary>
         /// Gets a <see cref="Point2D"/> with the coordinates of zero.
         /// </summary>
         /// <value>The orthogonal centre point.</value>
-        public static Point2D Empty => new Point2D(0, 0);
+        public static Point2D Empty => new(0, 0);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Point2D"/> structure.
@@ -59,21 +59,8 @@ namespace NuciXNA.Primitives
         /// <param name="other">The <see cref="Point2D"/> to compare with the current <see cref="Point2D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="Point2D"/> is equal to the current <see cref="Point2D"/>;
         /// otherwise, <c>false</c>.</returns>
-        public bool Equals(Point2D other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            return Equals(X, other.X) &&
-                   Equals(Y, other.Y);
-        }
+        public readonly bool Equals(Point2D other)
+            => Equals(X, other.X) && Equals(Y, other.Y);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="Point2D"/>.
@@ -81,16 +68,11 @@ namespace NuciXNA.Primitives
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="Point2D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
         /// <see cref="Point2D"/>; otherwise, <c>false</c>.</returns>
-        public override bool Equals(object obj)
+        public override readonly bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj))
+            if (obj is null)
             {
                 return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
             }
 
             if (obj.GetType() != GetType())
@@ -101,10 +83,7 @@ namespace NuciXNA.Primitives
             return Equals((Point2D)obj);
         }
 
-        public bool Equals(int x, int y)
-        {
-            return X == x && Y == y;
-        }
+        public readonly bool Equals(int x, int y) => X.Equals(x) && Y.Equals(y);
 
         /// <summary>
         /// Adds the coordinates of a <see cref="Point2D"/> to those of another <see cref="Point2D"/>,
@@ -114,7 +93,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Point2D"/> to add.</param>
         /// <returns>The <see cref="Point2D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static Point2D operator +(Point2D source, Point2D other)
-        => new Point2D(source.X + other.X, source.Y + other.Y);
+            => new(source.X + other.X, source.Y + other.Y);
 
         /// <summary>
         /// Subtracts the coordinates of a <see cref="Point2D"/> from those of another <see cref="Point2D"/>,
@@ -124,7 +103,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Point2D"/> to subtract.</param>
         /// <returns>The <see cref="Point2D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static Point2D operator -(Point2D source, Point2D other)
-        => new Point2D(source.X - other.X, source.Y - other.Y);
+            => new(source.X - other.X, source.Y - other.Y);
 
         /// <summary>
         /// Multiples the values of a <see cref="Point2D"/> from those of another <see cref="Point2D"/>,
@@ -134,7 +113,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Point2D"/> to multiply.</param>
         /// <returns>The <see cref="Point2D"/> whose values are the produce of the values of <c>source</c> and <c>other</c>.</returns>
         public static Point2D operator *(Point2D source, Point2D other)
-        => new Point2D(source.X * other.X, source.Y * other.Y);
+            => new(source.X * other.X, source.Y * other.Y);
 
         /// <summary>
         /// Divides the values of a <see cref="Point2D"/> from those of another <see cref="Point2D"/>,
@@ -144,13 +123,13 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Point2D"/> to divide.</param>
         /// <returns>The <see cref="Point2D"/> whose values are the division of the values of <c>source</c> and <c>other</c>.</returns>
         public static Point2D operator /(Point2D source, Point2D other)
-        => new Point2D(source.X / other.X, source.Y / other.Y);
-        
+            => new(source.X / other.X, source.Y / other.Y);
+
         public static Point2D operator *(Point2D source, int other)
-        => new Point2D(source.X * other, source.Y * other);
+            => new(source.X * other, source.Y * other);
 
         public static Point2D operator /(Point2D source, int other)
-        => new Point2D(source.X / other, source.Y / other);
+            => new(source.X / other, source.Y / other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Point2D"/> is equal to another specified <see cref="Point2D"/>.
@@ -159,7 +138,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Point2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
         public static bool operator ==(Point2D source, Point2D other)
-        => source.Equals(other);
+            => source.Equals(other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Point2D"/> is not equal to
@@ -169,14 +148,14 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Point2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are not equal; otherwise, <c>false</c>.</returns>
         public static bool operator !=(Point2D source, Point2D other)
-        => !(source == other);
+            => !(source == other);
 
         /// <summary>
         /// Serves as a hash function for a <see cref="Point2D"/> object.
         /// </summary>
         /// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a
         /// hash table.</returns>
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         {
             unchecked
             {
@@ -185,19 +164,10 @@ namespace NuciXNA.Primitives
             }
         }
 
-        public static implicit operator Point(Point2D source)
-        {
-            return new Point(source.X, source.Y);
-        }
+        public static implicit operator Point(Point2D source) => new(source.X, source.Y);
 
-        public static implicit operator Point2D(Point source)
-        {
-            return new Point2D(source.X, source.Y);
-        }
+        public static implicit operator Point2D(Point source) => new(source.X, source.Y);
 
-        public static implicit operator PointF2D(Point2D source)
-        {
-            return new PointF2D(source.X, source.Y);
-        }
+        public static implicit operator PointF2D(Point2D source) => new(source.X, source.Y);
     }
 }
