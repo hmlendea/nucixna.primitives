@@ -5,50 +5,43 @@ namespace NuciXNA.Primitives
     /// <summary>
     /// 2D orthogonal coordinates structure.
     /// </summary>
-    public struct PointF3D : IEquatable<PointF3D>
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="PointF3D"/> structure.
+    /// </remarks>
+    /// <param name="x">The X-axis coordinate.</param>
+    /// <param name="y">The Y-axis coordinate.</param>
+    /// <param name="z">The Z-axis coordinate.</param>
+    public struct PointF3D(float x, float y, float z) : IEquatable<PointF3D>
     {
         /// <summary>
         /// Gets or sets the X-axis coordinate.
         /// </summary>
         /// <value>The X-axis coordinate.</value>
-        public float X { get; set; }
+        public float X { get; set; } = x;
 
         /// <summary>
         /// Gets or sets the Y-axis coordinate.
         /// </summary>
         /// <value>The Y-axis coordinate.</value>
-        public float Y { get; set; }
+        public float Y { get; set; } = y;
 
         /// <summary>
         /// Gets or sets the Z-axis coordinate.
         /// </summary>
         /// <value>The Z-axis coordinate.</value>
-        public float Z { get; set; }
+        public float Z { get; set; } = z;
 
         /// <summary>
         /// Gets a value indicating whether the coordinates of this <see cref="PointF3D"/> are zero.
         /// </summary>
         /// <value><c>true</c> if the coorinates are zero; otherwise, <c>false</c>.</value>
-        public bool IsEmpty => X == 0 && Y == 0;
+        public readonly bool IsEmpty => X == 0 && Y == 0;
 
         /// <summary>
         /// Gets a <see cref="PointF3D"/> with the coordinates of zero.
         /// </summary>
         /// <value>The orthogonal centre point.</value>
-        public static PointF3D Empty => new PointF3D(0, 0, 0);
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PointF3D"/> structure.
-        /// </summary>
-        /// <param name="x">The X-axis coordinate.</param>
-        /// <param name="y">The Y-axis coordinate.</param>
-        /// <param name="z">The Z-axis coordinate.</param>
-        public PointF3D(float x, float y, float z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
+        public static PointF3D Empty => new(0, 0, 0);
 
         public PointF3D(Point3D point3d) : this(point3d.X, point3d.Y, point3d.Z) { }
         public PointF3D(PointF2D point2d, int z) : this(point2d.X, point2d.Y, z) { }
@@ -62,27 +55,11 @@ namespace NuciXNA.Primitives
         /// <param name="other">The <see cref="PointF3D"/> to compare with the current <see cref="PointF3D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="PointF3D"/> is equal to the current <see cref="PointF3D"/>;
         /// otherwise, <c>false</c>.</returns>
-        public bool Equals(PointF3D other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
+        public readonly bool Equals(PointF3D other)
+            => Equals(X, other.X) && Equals(Y, other.Y) && Equals(Z, other.Z);
 
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            return Equals(X, other.X) &&
-                   Equals(Y, other.Y) &&
-                   Equals(Z, other.Z);
-        }
-
-        public bool Equals(float x, float y, float z)
-        {
-            return X == x && Y == y && Z == z;
-        }
+        public readonly bool Equals(float x, float y, float z)
+            => X.Equals(x) && Y.Equals(y) && Z.Equals(z);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="PointF3D"/>.
@@ -90,9 +67,9 @@ namespace NuciXNA.Primitives
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="PointF3D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
         /// <see cref="PointF3D"/>; otherwise, <c>false</c>.</returns>
-        public override bool Equals(object obj)
+        public override readonly bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj))
+            if (obj is null)
             {
                 return false;
             }
@@ -118,7 +95,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to add.</param>
         /// <returns>The <see cref="PointF3D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator +(PointF3D source, PointF3D other)
-        => new PointF3D(source.X + other.X,
+        => new(source.X + other.X,
                        source.Y + other.Y,
                        source.Z + other.Z);
 
@@ -130,7 +107,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to subtract.</param>
         /// <returns>The <see cref="PointF3D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator -(PointF3D source, PointF3D other)
-        => new PointF3D(source.X - other.X,
+        => new(source.X - other.X,
                        source.Y - other.Y,
                        source.Z - other.Z);
 
@@ -142,7 +119,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to multiply.</param>
         /// <returns>The <see cref="PointF3D"/> whose values are the produce of the values of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator *(PointF3D source, PointF3D other)
-        => new PointF3D(source.X * other.X,
+        => new(source.X * other.X,
                         source.Y * other.Y,
                         source.Z * other.Z);
 
@@ -154,15 +131,15 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to divide.</param>
         /// <returns>The <see cref="PointF3D"/> whose values are the division of the values of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator /(PointF3D source, PointF3D other)
-        => new PointF3D(source.X / other.X,
+        => new(source.X / other.X,
                         source.Y / other.Y,
                         source.Z / other.Z);
 
         public static PointF3D operator *(PointF3D source, float other)
-        => new PointF3D(source.X * other, source.Y * other, source.Y * other);
+        => new(source.X * other, source.Y * other, source.Y * other);
 
         public static PointF3D operator /(PointF3D source, float other)
-        => new PointF3D(source.X / other, source.Y / other, source.Y * other);
+        => new(source.X / other, source.Y / other, source.Y * other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="PointF3D"/> is equal to another specified <see cref="PointF3D"/>.
@@ -188,7 +165,7 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a
         /// hash table.</returns>
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         {
             unchecked
             {

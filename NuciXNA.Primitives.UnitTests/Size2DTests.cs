@@ -1,10 +1,6 @@
-using System;
-
 using NUnit.Framework;
 
-using NuciXNA.Primitives;
-
-namespace NuciXNA.UnitTests.Primitives
+namespace NuciXNA.Primitives.UnitTests
 {
     public class Size2DTests
     {

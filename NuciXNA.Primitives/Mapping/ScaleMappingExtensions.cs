@@ -11,8 +11,7 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <param name="source">Source <see cref="XnaVector2"/>.</param>
         /// <returns>The <see cref="Scale2D"/>.</returns>
-        public static Scale2D ToScale2D(this XnaVector2 source)
-        => new Scale2D(source.X, source.Y);
+        public static Scale2D ToScale2D(this XnaVector2 source) => new(source.X, source.Y);
 
         // >>> TO XNA
 
@@ -21,7 +20,6 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <param name="source">Source <see cref="Scale2D"/>.</param>
         /// <returns>The <see cref="XnaVector2"/>.</returns>
-        public static XnaVector2 ToXnaVector2(this Scale2D source)
-        => new XnaVector2(source.Horizontal, source.Vertical);
+        public static XnaVector2 ToXnaVector2(this Scale2D source) => new(source.Horizontal, source.Vertical);
     }
 }

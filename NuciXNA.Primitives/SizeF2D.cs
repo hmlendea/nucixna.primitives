@@ -24,21 +24,21 @@ namespace NuciXNA.Primitives
         /// Gets the area.
         /// </summary>
         /// <value>The area.</value>
-        public double Area => Width * Height;
+        public readonly double Area => Width * Height;
 
-        public double Perimeter => Width * 2 + Height * 2;
+        public readonly double Perimeter => Width * 2 + Height * 2;
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="SizeF2D"/> is zero.
         /// </summary>
         /// <value><c>true</c> if is empty; otherwise, <c>false</c>.</value>
-        public bool IsEmpty => Width == 0 && Height == 0;
+        public readonly bool IsEmpty => Width.Equals(0) && Height.Equals(0);
 
         /// <summary>
         /// Gets the size of zero.
         /// </summary>
         /// <value>The size of zero.</value>
-        public static SizeF2D Empty => new SizeF2D(0, 0);
+        public static SizeF2D Empty => new(0, 0);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SizeF2D"/> structure.
@@ -70,26 +70,13 @@ namespace NuciXNA.Primitives
         /// <param name="other">The <see cref="SizeF2D"/> to compare with the current <see cref="SizeF2D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="SizeF2D"/> is equal to the current <see cref="SizeF2D"/>;
         /// otherwise, <c>false</c>.</returns>
-        public bool Equals(SizeF2D other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
+        public readonly bool Equals(SizeF2D other) =>
+            Equals(Width, other.Width) &&
+            Equals(Height, other.Height);
 
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            return Equals(Width, other.Width) &&
-                   Equals(Height, other.Height);
-        }
-
-        public bool Equals(float width, float height)
-        {
-            return Width == width && Height == height;
-        }
+        public readonly bool Equals(float width, float height) =>
+            Width.Equals(width) &&
+            Height.Equals(height);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="SizeF2D"/>.
@@ -97,16 +84,11 @@ namespace NuciXNA.Primitives
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="SizeF2D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current <see cref="SizeF2D"/>;
         /// otherwise, <c>false</c>.</returns>
-        public override bool Equals(object obj)
+        public override readonly bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj))
+            if (obj is null)
             {
                 return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
             }
 
             if (obj.GetType() != GetType())
@@ -124,9 +106,9 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="SizeF2D"/> to add.</param>
         /// <param name="other">The second <see cref="SizeF2D"/> to add.</param>
         /// <returns>The <see cref="SizeF2D"/> that is the sum of the values of <c>source</c> and <c>other</c>.</returns>
-        public static SizeF2D operator +(SizeF2D source, SizeF2D other)
-        => new SizeF2D(source.Width + other.Width,
-                      source.Height + other.Height);
+        public static SizeF2D operator +(SizeF2D source, SizeF2D other) => new(
+            source.Width + other.Width,
+            source.Height + other.Height);
 
         /// <summary>
         /// Subtracts the values of a <see cref="SizeF2D"/> from those of another <see cref="SizeF2D"/>,
@@ -135,25 +117,25 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="SizeF2D"/> to subtract.</param>
         /// <param name="other">The second <see cref="SizeF2D"/> to subtract.</param>
         /// <returns>The <see cref="SizeF2D"/> that is the subtraction of the values of <c>other</c> from <c>source</c>.</returns>
-        public static SizeF2D operator -(SizeF2D source, SizeF2D other)
-        => new SizeF2D(source.Width - other.Width,
-                      source.Height - other.Height);
+        public static SizeF2D operator -(SizeF2D source, SizeF2D other) => new(
+            source.Width - other.Width,
+            source.Height - other.Height);
 
-        public static SizeF2D operator *(SizeF2D source, SizeF2D other)
-        => new SizeF2D(source.Width * other.Width,
-                      source.Height * other.Height);
+        public static SizeF2D operator *(SizeF2D source, SizeF2D other) => new(
+            source.Width * other.Width,
+            source.Height * other.Height);
 
-        public static SizeF2D operator /(SizeF2D source, SizeF2D other)
-        => new SizeF2D(source.Width / other.Width,
-                      source.Height / other.Height);
+        public static SizeF2D operator /(SizeF2D source, SizeF2D other) => new(
+            source.Width / other.Width,
+            source.Height / other.Height);
 
-        public static SizeF2D operator *(SizeF2D source, float other)
-        => new SizeF2D(source.Width * other,
-                      source.Height * other);
+        public static SizeF2D operator *(SizeF2D source, float other) => new(
+            source.Width * other,
+            source.Height * other);
 
-        public static SizeF2D operator /(SizeF2D source, float other)
-        => new SizeF2D(source.Width / other,
-                      source.Height / other);
+        public static SizeF2D operator /(SizeF2D source, float other) => new(
+            source.Width / other,
+            source.Height / other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="SizeF2D"/> is equal to
@@ -162,8 +144,7 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="SizeF2D"/> to compare.</param>
         /// <param name="other">The second <see cref="SizeF2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
-        public static bool operator ==(SizeF2D source, SizeF2D other)
-        => source.Equals(other);
+        public static bool operator ==(SizeF2D source, SizeF2D other) => source.Equals(other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="SizeF2D"/> is not equal to
@@ -172,15 +153,14 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="SizeF2D"/> to compare.</param>
         /// <param name="other">The second <see cref="SizeF2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are not equal; otherwise, <c>false</c>.</returns>
-        public static bool operator !=(SizeF2D source, SizeF2D other)
-        => !(source == other);
+        public static bool operator !=(SizeF2D source, SizeF2D other) => !(source == other);
 
         /// <summary>
         /// Serves as a hash function for a <see cref="SizeF2D"/> object.
         /// </summary>
         /// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a
         /// hash table.</returns>
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         {
             unchecked
             {
@@ -189,14 +169,8 @@ namespace NuciXNA.Primitives
             }
         }
 
-        public static implicit operator SizeF(SizeF2D source)
-        {
-            return new SizeF(source.Width, source.Height);
-        }
+        public static implicit operator SizeF(SizeF2D source) => new(source.Width, source.Height);
 
-        public static implicit operator SizeF2D(SizeF source)
-        {
-            return new SizeF2D(source.Width, source.Height);
-        }
+        public static implicit operator SizeF2D(SizeF source) => new(source.Width, source.Height);
     }
 }

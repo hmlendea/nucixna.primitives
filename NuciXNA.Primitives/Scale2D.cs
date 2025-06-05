@@ -23,25 +23,25 @@ namespace NuciXNA.Primitives
         /// Gets a value indicating whether the values of this <see cref="Scale2D"/> are zero.
         /// </summary>
         /// <value><c>true</c> if is empty; otherwise, <c>false</c>.</value>
-        public bool IsEmpty => Horizontal == 0 && Vertical == 0;
+        public readonly bool IsEmpty => Horizontal == 0 && Vertical == 0;
 
         /// <summary>
         /// Gets a scale of zero.
         /// </summary>
         /// <value>The scale of zero.</value>
-        public static Scale2D Empty => new Scale2D(0, 0);
+        public static Scale2D Empty => new(0, 0);
 
         /// <summary>
         /// Gets a scale of zero.
         /// </summary>
         /// <value>The scale of zero.</value>
-        public static Scale2D Zero => new Scale2D(0, 0);
+        public static Scale2D Zero => new(0, 0);
 
         /// <summary>
         /// Gets a scale of one.
         /// </summary>
         /// <value>The scale of one.</value>
-        public static Scale2D One => new Scale2D(1, 1);
+        public static Scale2D One => new(1, 1);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Scale2D"/> structure.
@@ -53,7 +53,7 @@ namespace NuciXNA.Primitives
             Horizontal = horizontal;
             Vertical = vertical;
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Scale2D"/> structure.
         /// </summary>
@@ -82,26 +82,13 @@ namespace NuciXNA.Primitives
         /// <param name="other">The <see cref="Scale2D"/> to compare with the current <see cref="Scale2D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="Scale2D"/> is equal to the current
         /// <see cref="Scale2D"/>; otherwise, <c>false</c>.</returns>
-        public bool Equals(Scale2D other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
+        public readonly bool Equals(Scale2D other) =>
+            Equals(Horizontal, other.Horizontal) &&
+            Equals(Vertical, other.Vertical);
 
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            return Equals(Horizontal, other.Horizontal) &&
-                   Equals(Vertical, other.Vertical);
-        }
-
-        public bool Equals(float horizontal, float vertical)
-        {
-            return Horizontal == horizontal && Vertical == vertical;
-        }
+        public readonly bool Equals(float horizontal, float vertical) =>
+            Horizontal.Equals(horizontal) &&
+            Vertical.Equals(vertical);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="Scale2D"/>.
@@ -109,16 +96,11 @@ namespace NuciXNA.Primitives
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="Scale2D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
         /// <see cref="Scale2D"/>; otherwise, <c>false</c>.</returns>
-        public override bool Equals(object obj)
+        public override readonly bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj))
+            if (obj is null)
             {
                 return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
             }
 
             if (obj.GetType() != GetType())
@@ -136,8 +118,9 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Scale2D"/>.</param>
         /// <param name="other">The second <see cref="Scale2D"/>.</param>
         /// <returns>The <see cref="Scale2D"/> that is the sum of the values of <c>source</c> and <c>other</c>.</returns>
-        public static Scale2D operator +(Scale2D source, Scale2D other)
-        => new Scale2D(source.Horizontal + other.Horizontal, source.Vertical + other.Vertical);
+        public static Scale2D operator +(Scale2D source, Scale2D other) => new(
+            source.Horizontal + other.Horizontal,
+            source.Vertical + other.Vertical);
 
         /// <summary>
         /// Subtracts the values of a <see cref="Scale2D"/> from those of another <see cref="Scale2D"/>,
@@ -146,8 +129,9 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Scale2D"/> to subtract.</param>
         /// <param name="other">The second <see cref="Scale2D"/> to subtract.</param>
         /// <returns>The <see cref="Scale2D"/> that is the subtraction of the values of <c>other</c> from <c>source</c>.</returns>
-        public static Scale2D operator -(Scale2D source, Scale2D other)
-        => new Scale2D(source.Horizontal - other.Horizontal, source.Vertical - other.Vertical);
+        public static Scale2D operator -(Scale2D source, Scale2D other) => new(
+            source.Horizontal - other.Horizontal,
+            source.Vertical - other.Vertical);
 
         /// <summary>
         /// Multiplies the values of a <see cref="Scale2D"/> to those of another <see cref="Scale2D"/>,
@@ -156,8 +140,9 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Scale2D"/>.</param>
         /// <param name="other">The second <see cref="Scale2D"/>.</param>
         /// <returns>The <see cref="Scale2D"/> that is the produce of the values of <c>source</c> and <c>other</c>.</returns>
-        public static Scale2D operator *(Scale2D source, Scale2D other)
-        => new Scale2D(source.Horizontal * other.Horizontal, source.Vertical * other.Vertical);
+        public static Scale2D operator *(Scale2D source, Scale2D other) => new(
+            source.Horizontal * other.Horizontal,
+            source.Vertical * other.Vertical);
 
         /// <summary>
         /// Divides the values of a <see cref="Scale2D"/> to those of another <see cref="Scale2D"/>,
@@ -166,8 +151,9 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Scale2D"/>.</param>
         /// <param name="other">The second <see cref="Scale2D"/>.</param>
         /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> and <c>other</c>.</returns>
-        public static Scale2D operator /(Scale2D source, Scale2D other)
-        => new Scale2D(source.Horizontal / other.Horizontal, source.Vertical / other.Vertical);
+        public static Scale2D operator /(Scale2D source, Scale2D other) => new(
+            source.Horizontal / other.Horizontal,
+            source.Vertical / other.Vertical);
 
         /// <summary>
         /// Multiplies the values of a <see cref="Scale2D"/> to those of an <see cref="int"/>,
@@ -176,8 +162,9 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Scale2D"/>.</param>
         /// <param name="value">The <see cref="int"/> to multiply with.</param>
         /// <returns>The <see cref="Scale2D"/> that is the produce of the values of <c>source</c> and <c>value</c>.</returns>
-        public static Scale2D operator *(Scale2D source, int value)
-        => new Scale2D(source.Horizontal * value, source.Vertical * value);
+        public static Scale2D operator *(Scale2D source, int value) => new(
+            source.Horizontal * value,
+            source.Vertical * value);
 
         /// <summary>
         /// Divides the values of a <see cref="Scale2D"/> to those of an <see cref="int"/>,
@@ -186,14 +173,17 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Scale2D"/>.</param>
         /// <param name="value">The <see cref="int"/> to divide with.</param>
         /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> and <c>value</c>.</returns>
-        public static Scale2D operator /(Scale2D source, int value)
-        => new Scale2D(source.Horizontal / value, source.Vertical / value);
+        public static Scale2D operator /(Scale2D source, int value) => new(
+            source.Horizontal / value,
+            source.Vertical / value);
 
-        public static Scale2D operator *(Scale2D source, float value)
-        => new Scale2D(source.Horizontal * value, source.Vertical * value);
+        public static Scale2D operator *(Scale2D source, float value) => new(
+            source.Horizontal * value,
+            source.Vertical * value);
 
-        public static Scale2D operator /(Scale2D source, float value)
-        => new Scale2D(source.Horizontal / value, source.Vertical * value);
+        public static Scale2D operator /(Scale2D source, float value) => new(
+            source.Horizontal / value,
+            source.Vertical * value);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Scale2D"/> is equal to
@@ -202,8 +192,7 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Scale2D"/> to compare.</param>
         /// <param name="other">The second <see cref="Scale2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
-        public static bool operator ==(Scale2D source, Scale2D other)
-        => source.Equals(other);
+        public static bool operator ==(Scale2D source, Scale2D other) => source.Equals(other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Scale2D"/> is not equal to
@@ -212,15 +201,14 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Scale2D"/> to compare.</param>
         /// <param name="other">The second <see cref="Scale2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are not equal; otherwise, <c>false</c>.</returns>
-        public static bool operator !=(Scale2D source, Scale2D other)
-        => !(source == other);
+        public static bool operator !=(Scale2D source, Scale2D other) => !(source == other);
 
         /// <summary>
         /// Serves as a hash function for a <see cref="Scale2D"/> object.
         /// </summary>
         /// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a
         /// hash table.</returns>
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         {
             unchecked
             {

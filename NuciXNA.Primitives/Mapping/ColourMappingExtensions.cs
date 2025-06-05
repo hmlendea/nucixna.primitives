@@ -48,7 +48,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <returns>The <see cref="XnaColor"/>.</returns>
         /// <param name="source">Source <see cref="Colour"/>.</param>
         public static XnaColor ToXnaColor(this Colour source)
-        => new XnaColor(source.R, source.G, source.B, source.A);
+        => new(source.R, source.G, source.B, source.A);
 
         /// <summary>
         /// Converts a <see cref="SystemColor"/> into to a <see cref="SystemColor"/>.
@@ -56,7 +56,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <returns>The <see cref="SystemColor"/>.</returns>
         /// <param name="source">Source <see cref="SystemColor"/>.</param>
         public static XnaColor ToXnaColor(this SystemColor source)
-        => new XnaColor(source.R, source.G, source.B, source.A);
+        => new(source.R, source.G, source.B, source.A);
 
         /// <summary>
         /// Converts an array of <see cref="Colour"/> into to an array of <see cref="SystemColor"/>.
