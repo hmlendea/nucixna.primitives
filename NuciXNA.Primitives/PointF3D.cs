@@ -74,11 +74,6 @@ namespace NuciXNA.Primitives
                 return false;
             }
 
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
             if (obj.GetType() != GetType())
             {
                 return false;
@@ -95,7 +90,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to add.</param>
         /// <returns>The <see cref="PointF3D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator +(PointF3D source, PointF3D other)
-        => new(source.X + other.X,
+            => new(source.X + other.X,
                        source.Y + other.Y,
                        source.Z + other.Z);
 
@@ -107,7 +102,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to subtract.</param>
         /// <returns>The <see cref="PointF3D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator -(PointF3D source, PointF3D other)
-        => new(source.X - other.X,
+            => new(source.X - other.X,
                        source.Y - other.Y,
                        source.Z - other.Z);
 
@@ -119,7 +114,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to multiply.</param>
         /// <returns>The <see cref="PointF3D"/> whose values are the produce of the values of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator *(PointF3D source, PointF3D other)
-        => new(source.X * other.X,
+            => new(source.X * other.X,
                         source.Y * other.Y,
                         source.Z * other.Z);
 
@@ -131,15 +126,15 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to divide.</param>
         /// <returns>The <see cref="PointF3D"/> whose values are the division of the values of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator /(PointF3D source, PointF3D other)
-        => new(source.X / other.X,
+            => new(source.X / other.X,
                         source.Y / other.Y,
                         source.Z / other.Z);
 
         public static PointF3D operator *(PointF3D source, float other)
-        => new(source.X * other, source.Y * other, source.Y * other);
+            => new(source.X * other, source.Y * other, source.Y * other);
 
         public static PointF3D operator /(PointF3D source, float other)
-        => new(source.X / other, source.Y / other, source.Y * other);
+            => new(source.X / other, source.Y / other, source.Y * other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="PointF3D"/> is equal to another specified <see cref="PointF3D"/>.
@@ -148,7 +143,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
         public static bool operator ==(PointF3D source, PointF3D other)
-        => source.Equals(other);
+            => source.Equals(other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="PointF3D"/> is not equal to
@@ -158,7 +153,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are not equal; otherwise, <c>false</c>.</returns>
         public static bool operator !=(PointF3D source, PointF3D other)
-        => !(source == other);
+            => !(source == other);
 
         /// <summary>
         /// Serves as a hash function for a <see cref="PointF3D"/> object.
