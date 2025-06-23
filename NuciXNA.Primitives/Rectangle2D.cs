@@ -18,6 +18,42 @@ namespace NuciXNA.Primitives
     public struct Rectangle2D(int x, int y, int width, int height) : IEquatable<Rectangle2D>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
+        /// </summary>
+        /// <param name="point">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
+        /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
+        public Rectangle2D(Point2D point, Size2D size) : this(point.X, point.Y, size.Width, size.Height) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
+        /// </summary>
+        /// <param name="point">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
+        /// <param name="width">Width.</param>
+        /// <param name="height">Height.</param>
+        public Rectangle2D(Point2D point, int width, int height) : this(point.X, point.Y, width, height) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
+        /// </summary>
+        /// <param name="x">The X-axis coordinate.</param>
+        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
+        public Rectangle2D(int x, int y, Size2D size) : this(x, y, size.Width, size.Height) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
+        /// </summary>
+        /// <param name="start">The start point of the rectangle.</param>
+        /// <param name="end">The end point of the rectangle.</param>
+        public Rectangle2D(Point2D start, Point2D end) : this(start.X, start.Y, end.X - start.X, end.Y - start.Y) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
+        /// </summary>
+        /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
+        public Rectangle2D(Size2D size) : this(Point2D.Empty, size) { }
+
+        /// <summary>
         /// Gets or sets the location.
         /// </summary>
         /// <value>The location.</value>
@@ -101,14 +137,29 @@ namespace NuciXNA.Primitives
         /// <value>The top Y-axis coordinate.</value>
         public readonly int Top => Y;
 
+        /// <summary>
+        /// Gets the centre point of the rectangle.
+        /// </summary>
         public readonly Point2D Centre => new(X + Width / 2, Y + Height / 2);
 
+        /// <summary>
+        /// Gets the top-left corner of the rectangle.
+        /// </summary>
         public readonly Point2D TopLeft => Location;
 
+        /// <summary>
+        /// Gets the top-right corner of the rectangle.
+        /// </summary>
         public readonly Point2D TopRight => new(Right, Top);
 
+        /// <summary>
+        /// Gets the bottom-left corner of the rectangle.
+        /// </summary>
         public readonly Point2D BottomLeft => new(Left, Bottom);
 
+        /// <summary>
+        /// Gets the bottom-right corner of the rectangle.
+        /// </summary>
         public readonly Point2D BottomRight => new(Right, Bottom);
 
         /// <summary>
@@ -116,12 +167,6 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <value>The empty rectangle.</value>
         public static Rectangle2D Empty => new(Point2D.Empty, Size2D.Empty);
-
-        public Rectangle2D(Point2D point, Size2D size) : this(point.X, point.Y, size.Width, size.Height) { }
-        public Rectangle2D(Point2D point, int width, int height) : this (point.X, point.Y, width, height) { }
-        public Rectangle2D(int x, int y, Size2D size) : this (x, y, size.Width, size.Height) { }
-        public Rectangle2D(Point2D start, Point2D end) : this(start.X, start.Y, end.X - start.X, end.Y - start.Y) { }
-        public Rectangle2D(Size2D size) : this(Point2D.Empty, size) { }
 
         /// <summary>
         /// Checks whether the specified <see cref="Rectangle2D"/> contains a set of coordinates.
@@ -163,21 +208,49 @@ namespace NuciXNA.Primitives
             Equals(Width, other.Width) &&
             Equals(Height, other.Height);
 
+        /// <summary>
+        /// Determines whether the specified coordinates are equal to the current <see cref="Rectangle2D"/>.
+        /// </summary>
+        /// <param name="x">The X-axis coordinate.</param>
+        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="width">Width.</param>
+        /// <param name="height">Height.</param>
+        /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="Rectangle2D"/>;
         public readonly bool Equals(int x, int y, int width, int height)
             => X.Equals(x) && Y.Equals(y) && Width.Equals(width) && Height.Equals(height);
 
+        /// <summary>
+        /// Determines whether the specified <see cref="Point2D"/> and <see cref="Size2D"/> are equal to the current <see cref="Rectangle2D"/>.
+        /// </summary>
+        /// <param name="location">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
+        /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
+        /// <returns><c>true</c> if the specified <see cref="Point2D"/> and <see cref="Size2D"/> are equal to the current <see cref="Rectangle2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Point2D location, Size2D size) =>
             X.Equals(location.X) &&
             Y.Equals(location.Y) &&
             Width.Equals(size.Width) &&
             Height.Equals(size.Height);
 
+        /// <summary>
+        /// Determines whether the specified <see cref="Point2D"/> and width and height are equal to the current <see cref="Rectangle2D"/>.
+        /// </summary>
+        /// <param name="location">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
+        /// <param name="width">Width.</param>
+        /// <param name="height">Height.</param>
+        /// <returns><c>true</c> if the specified <see cref="Point2D"/> and width and height are equal to the current <see cref="Rectangle2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Point2D location, int width, int height) =>
             X.Equals(location.X) &&
             Y.Equals(location.Y) &&
             Width.Equals(width) &&
             Height.Equals(height);
 
+        /// <summary>
+        /// Determines whether the specified coordinates and <see cref="Size2D"/> are equal to the current <see cref="Rectangle2D"/>.
+        /// </summary>
+        /// <param name="x">The X-axis coordinate.</param>
+        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
+        /// <returns></returns>
         public readonly bool Equals(int x, int y, Size2D size) =>
             X.Equals(x) &&
             Y.Equals(y) &&
@@ -239,15 +312,31 @@ namespace NuciXNA.Primitives
             }
         }
 
+        /// <summary>
+        /// Converts a <see cref="Rectangle2D"/> to a <see cref="Rectangle"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Rectangle2D"/> to convert to a <see cref="Rectangle"/>.</param>
         public static implicit operator Rectangle(Rectangle2D source)
             => new(source.X, source.Y, source.Width, source.Height);
 
+        /// <summary>
+        /// Converts a <see cref="Rectangle"/> to a <see cref="Rectangle2D"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Rectangle"/> to convert to a <see cref="Rectangle2D"/>.</param>
         public static implicit operator Rectangle2D(Rectangle source)
             => new(source.X, source.Y, source.Width, source.Height);
 
+        /// <summary>
+        /// Converts a <see cref="Rectangle2D"/> to a <see cref="XnaRectangle"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Rectangle2D"/> to convert to a <see cref="XnaRectangle"/>.</param>
         public static implicit operator XnaRectangle(Rectangle2D source)
             => new(source.X, source.Y, source.Width, source.Height);
 
+        /// <summary>
+        /// Converts a <see cref="XnaRectangle"/> to a <see cref="Rectangle2D"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="XnaRectangle"/> to convert to a <see cref="Rectangle2D"/>.</param>
         public static implicit operator Rectangle2D(XnaRectangle source)
             => new(source.X, source.Y, source.Width, source.Height);
     }

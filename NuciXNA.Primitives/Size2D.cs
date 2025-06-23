@@ -14,6 +14,18 @@ namespace NuciXNA.Primitives
     public struct Size2D(int width, int height) : IEquatable<Size2D>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Size2D"/> structure.
+        /// </summary>
+        /// <param name="point">Point.</param>
+        public Size2D(Point2D point) : this(point.X, point.Y) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Size2D"/> structure.
+        /// </summary>
+        /// <param name="size">Size.</param>
+        public Size2D(int size) : this(size, size) { }
+
+        /// <summary>
         /// Gets or sets the width.
         /// </summary>
         /// <value>The width.</value>
@@ -31,6 +43,9 @@ namespace NuciXNA.Primitives
         /// <value>The area.</value>
         public readonly double Area => Width * Height;
 
+        /// <summary>
+        /// Gets the perimeter.
+        /// </summary>
         public readonly double Perimeter => Width * 2 + Height * 2;
 
         /// <summary>
@@ -46,14 +61,6 @@ namespace NuciXNA.Primitives
         public static Size2D Empty => new(0, 0);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Size2D"/> structure.
-        /// </summary>
-        /// <param name="point">Point.</param>
-        public Size2D(Point2D point) : this(point.X, point.Y) { }
-
-        public Size2D(int size) : this(size, size) { }
-
-        /// <summary>
         /// Determines whether the specified <see cref="Size2D"/> is equal to the current <see cref="Size2D"/>.
         /// </summary>
         /// <param name="other">The <see cref="Size2D"/> to compare with the current <see cref="Size2D"/>.</param>
@@ -63,6 +70,12 @@ namespace NuciXNA.Primitives
             Equals(Width, other.Width) &&
             Equals(Height, other.Height);
 
+        /// <summary>
+        /// Determines whether the specified coordinates are equal to the current <see cref="Size2D"/>.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="Size2D"/>;
         public readonly bool Equals(int width, int height) =>
             Width.Equals(width) &&
             Height.Equals(height);
@@ -110,26 +123,62 @@ namespace NuciXNA.Primitives
             source.Width - other.Width,
             source.Height - other.Height);
 
+        /// <summary>
+        /// Multiplies the values of a <see cref="Size2D"/> by those of another <see cref="Size2D"/>,
+        /// </summary>
+        /// <param name="source">The first <see cref="Size2D"/> to multiply.</param>
+        /// <param name="other">The second <see cref="Size2D"/> to multiply.</param>
+        /// <returns>The <see cref="Size2D"/> whose values are the product of the values of <c>source</c> and <c>other</c>.</returns>
         public static Size2D operator *(Size2D source, Size2D other) => new(
             source.Width * other.Width,
             source.Height * other.Height);
 
+        /// <summary>
+        /// Divides the values of a <see cref="Size2D"/> by those of another <see cref="Size2D"/>,
+        /// </summary>
+        /// <param name="source">The first <see cref="Size2D"/> to divide.</param>
+        /// <param name="scale">The second <see cref="Size2D"/> to divide.</param>
+        /// <returns>The <see cref="Size2D"/> whose values are the quotient of the values of <c>source</c> divided by <c>other</c>.</returns>
         public static Size2D operator *(Size2D source, Scale2D scale) => new(
             (int)(source.Width * scale.Horizontal),
             (int)(source.Height * scale.Vertical));
 
+        /// <summary>
+        /// Divides the values of a <see cref="Size2D"/> by those of another <see cref="Size2D"/>,
+        /// </summary>
+        /// <param name="source">The first <see cref="Size2D"/> to divide.</param>
+        /// <param name="other">The second <see cref="Size2D"/> to divide.</param>
+        /// <returns>The <see cref="Size2D"/> whose values are the quotient of the values of <c>source</c> divided by <c>other</c>.</returns>
         public static Size2D operator /(Size2D source, Size2D other) => new(
             source.Width / other.Width,
             source.Height / other.Height);
 
+        /// <summary>
+        /// Divides the values of a <see cref="Size2D"/> by a <see cref="Scale2D"/>,
+        /// </summary>
+        /// <param name="source">The <see cref="Size2D"/> to divide.</param>
+        /// <param name="scale">The <see cref="Scale2D"/> to divide by.</param>
+        /// <returns>The <see cref="Size2D"/> whose values are the quotient of the values of <c>source</c> divided by <c>scale</c>.</returns>
         public static Size2D operator /(Size2D source, Scale2D scale) => new(
             (int)(source.Width / scale.Horizontal),
             (int)(source.Height / scale.Vertical));
 
+        /// <summary>
+        /// Multiplies the values of a <see cref="Size2D"/> by an integer value,
+        /// </summary>
+        /// <param name="source">The <see cref="Size2D"/> to multiply.</param>
+        /// <param name="other">The integer value to multiply with.</param>
+        /// <returns>The <see cref="Size2D"/> whose values are the product of the values of <c>source</c> and <c>other</c>.</returns>
         public static Size2D operator *(Size2D source, int other) => new(
             source.Width * other,
             source.Height * other);
 
+        /// <summary>
+        /// Divides the values of a <see cref="Size2D"/> by an integer value,
+        /// </summary>
+        /// <param name="source">The <see cref="Size2D"/> to divide.</param>
+        /// <param name="other">The integer value to divide with.</param>
+        /// <returns>The <see cref="Size2D"/> whose values are the division of the values of <c>source</c> by <c>other</c>.</returns>
         public static Size2D operator /(Size2D source, int other) => new(
             source.Width / other,
             source.Height / other);
@@ -166,10 +215,22 @@ namespace NuciXNA.Primitives
             }
         }
 
+        /// <summary>
+        /// Converts a <see cref="Size2D"/> to a <see cref="Size"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Size2D"/> to convert.</param>
         public static implicit operator Size(Size2D source) => new(source.Width, source.Height);
 
+        /// <summary>
+        /// Converts a <see cref="Size"/> to a <see cref="Size2D"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Size"/> to convert.</param>
         public static implicit operator Size2D(Size source) => new(source.Width, source.Height);
 
+        /// <summary>
+        /// Converts a <see cref="Size2D"/> to a <see cref="SizeF2D"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Size2D"/> to convert.</param>
         public static implicit operator SizeF2D(Size2D source) => new(source.Width, source.Height);
     }
 }

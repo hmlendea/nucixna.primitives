@@ -7,19 +7,30 @@ namespace NuciXNA.Primitives
     /// <summary>
     /// 2D vector structure.
     /// </summary>
-    public struct Vector2D : IEquatable<Vector2D>
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="Vector2D"/> structure.
+    /// </remarks>
+    /// <param name="x">The X-axis value.</param>
+    /// <param name="y">The Y-axis value.</param>
+    public struct Vector2D(float x, float y) : IEquatable<Vector2D>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vector2D"/> structure.
+        /// </summary>
+        /// <param name="size">Size.</param>
+        public Vector2D(Point2D point) : this(point.X, point.Y) { }
+
         /// <summary>
         /// Gets or sets the X-axis value.
         /// </summary>
         /// <value>The X-axis value.</value>
-        public float X { get; set; }
+        public float X { get; set; } = x;
 
         /// <summary>
         /// Gets or sets the Y-axis value.
         /// </summary>
         /// <value>The Y-axis value.</value>
-        public float Y { get; set; }
+        public float Y { get; set; } = y;
 
         /// <summary>
         /// Gets a value indicating whether the values of this <see cref="Vector2D"/> are zero.
@@ -27,29 +38,15 @@ namespace NuciXNA.Primitives
         /// <value><c>true</c> if the coorinates are zero; otherwise, <c>false</c>.</value>
         public readonly bool IsEmpty => X == 0 && Y == 0;
 
+        /// <summary>
+        /// Gets a <see cref="Vector2D"/> with the values of zero.
+        /// </summary>
         public static Vector2D Zero => new(0, 0);
+
+        /// <summary>
+        /// Gets a <see cref="Vector2D"/> with the values of one.
+        /// </summary>
         public static Vector2D One => new(1, 1);
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Vector2D"/> structure.
-        /// </summary>
-        /// <param name="x">The X-axis value.</param>
-        /// <param name="y">The Y-axis value.</param>
-        public Vector2D(float x, float y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Vector2D"/> structure.
-        /// </summary>
-        /// <param name="size">Size.</param>
-        public Vector2D(Point2D point)
-        {
-            X = point.X;
-            Y = point.Y;
-        }
 
         /// <summary>
         /// Determines whether the specified <see cref="Vector2D"/> is equal to the current <see cref="Vector2D"/>.
@@ -61,6 +58,12 @@ namespace NuciXNA.Primitives
             Equals(X, other.X) &&
             Equals(Y, other.Y);
 
+        /// <summary>
+        /// Determines whether the specified <see cref="float"/> values are equal to the current <see cref="Vector2D"/>.
+        /// </summary>
+        /// <param name="x">The X-axis value.</param>
+        /// <param name="y">The Y-axis value.</param>
+        /// <returns><c>true</c> if the specified <see cref="float"/> values are equal to the current <see cref="Vector2D"/>;
         public readonly bool Equals(float x, float y) =>
             X.Equals(x) &&
             Y.Equals(y);
@@ -161,8 +164,18 @@ namespace NuciXNA.Primitives
             }
         }
 
+        /// <summary>
+        /// Returns a <see cref="string"/> that represents the current <see cref="Vector2D"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Vector2D"/> to convert.</param>
+        /// <returns>A <see cref="string"/> that represents the current <see cref="Vector2D"/>.</returns>
         public static implicit operator Vector2(Vector2D source) => new(source.X, source.Y);
 
+        /// <summary>
+        /// Converts a <see cref="Vector2"/> to a <see cref="Vector2D"/> implicitly.
+        /// </summary>
+        /// <param name="source">The <see cref="Vector2"/> to convert.</param>
+        /// <returns>A <see cref="Vector2D"/> that represents the specified <see cref="Vector2"/>.</returns>
         public static implicit operator Vector2D(Vector2 source) => new(source.X, source.Y);
     }
 }

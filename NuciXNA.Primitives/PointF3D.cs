@@ -14,6 +14,40 @@ namespace NuciXNA.Primitives
     public struct PointF3D(float x, float y, float z) : IEquatable<PointF3D>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="PointF3D"/> structure.
+        /// </summary>
+        /// <param name="point3d">The <see cref="Point3D"/> to copy the X, Y, and Z coordinates from.</param>
+        public PointF3D(Point3D point3d) : this(point3d.X, point3d.Y, point3d.Z) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PointF3D"/> structure.
+        /// </summary>
+        /// <param name="point2d">The <see cref="PointF2D"/> to copy the X and Y coordinates from.</param>
+        /// <param name="z">The Z-axis coordinate.</param>
+        public PointF3D(PointF2D point2d, int z) : this(point2d.X, point2d.Y, z) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PointF3D"/> structure.
+        /// </summary>
+        /// <param name="point2d">The <see cref="PointF2D"/> to copy the X and Y coordinates from.</param>
+        /// <param name="z">The Z-axis coordinate.</param>
+        public PointF3D(PointF2D point2d, float z) : this(point2d.X, point2d.Y, z) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PointF3D"/> structure.
+        /// </summary>
+        /// <param name="point2d">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
+        /// <param name="z">The Z-axis coordinate.</param>
+        public PointF3D(Point2D point2d, int z) : this(point2d.X, point2d.Y, z) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PointF3D"/> structure.
+        /// </summary>
+        /// <param name="point2d">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
+        /// <param name="z">The Z-axis coordinate.</param>
+        public PointF3D(Point2D point2d, float z) : this(point2d.X, point2d.Y, z) { }
+
+        /// <summary>
         /// Gets or sets the X-axis coordinate.
         /// </summary>
         /// <value>The X-axis coordinate.</value>
@@ -43,12 +77,6 @@ namespace NuciXNA.Primitives
         /// <value>The orthogonal centre point.</value>
         public static PointF3D Empty => new(0, 0, 0);
 
-        public PointF3D(Point3D point3d) : this(point3d.X, point3d.Y, point3d.Z) { }
-        public PointF3D(PointF2D point2d, int z) : this(point2d.X, point2d.Y, z) { }
-        public PointF3D(PointF2D point2d, float z) : this(point2d.X, point2d.Y, z) { }
-        public PointF3D(Point2D point2d, int z) : this(point2d.X, point2d.Y, z) { }
-        public PointF3D(Point2D point2d, float z)  : this(point2d.X, point2d.Y, z) { }
-
         /// <summary>
         /// Determines whether the specified <see cref="PointF3D"/> is equal to the current <see cref="PointF3D"/>.
         /// </summary>
@@ -58,6 +86,13 @@ namespace NuciXNA.Primitives
         public readonly bool Equals(PointF3D other)
             => Equals(X, other.X) && Equals(Y, other.Y) && Equals(Z, other.Z);
 
+        /// <summary>
+        /// Determines whether the specified coordinates are equal to the current <see cref="PointF3D"/>.
+        /// </summary>
+        /// <param name="x">The X-axis coordinate.</param>
+        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="z">The Z-axis coordinate.</param>
+        /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="PointF3D"/>;
         public readonly bool Equals(float x, float y, float z)
             => X.Equals(x) && Y.Equals(y) && Z.Equals(z);
 
@@ -130,9 +165,21 @@ namespace NuciXNA.Primitives
                         source.Y / other.Y,
                         source.Z / other.Z);
 
+        /// <summary>
+        /// Multiplies the coordinates of a <see cref="PointF3D"/> by a scalar value,
+        /// </summary>
+        /// <param name="source">The <see cref="PointF3D"/> to multiply.</param>
+        /// <param name="other">The scalar value to multiply with.</param>
+        /// <returns>The <see cref="PointF3D"/> whose coordinates are the product of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator *(PointF3D source, float other)
             => new(source.X * other, source.Y * other, source.Y * other);
 
+        /// <summary>
+        /// Divides the coordinates of a <see cref="PointF3D"/> by a scalar value,
+        /// </summary>
+        /// <param name="source">The <see cref="PointF3D"/> to divide.</param>
+        /// <param name="other">The scalar value to divide with.</param>
+        /// <returns>The <see cref="PointF3D"/> whose coordinates are the division of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator /(PointF3D source, float other)
             => new(source.X / other, source.Y / other, source.Y * other);
 

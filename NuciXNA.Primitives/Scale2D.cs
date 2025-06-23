@@ -5,19 +5,42 @@ namespace NuciXNA.Primitives
     /// <summary>
     /// 2D scale strucure.
     /// </summary>
-    public struct Scale2D : IEquatable<Scale2D>
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="Scale2D"/> structure.
+    /// </remarks>
+    /// <param name="horizontal">The horizontal scale.</param>
+    /// <param name="vertical">The vertical scale.</param>
+    public struct Scale2D(float horizontal, float vertical) : IEquatable<Scale2D>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scale2D"/> structure with equal horizontal and vertical scale.
+        /// </summary>
+        /// <param name="scale">The scale to apply to both horizontal and vertical dimensions.</param>
+        public Scale2D(float scale) : this(scale, scale) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scale2D"/> structure.
+        /// </summary>
+        /// <param name="point">Point.</param>
+        public Scale2D(Point2D point) : this(point.X, point.Y) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scale2D"/> structure.
+        /// </summary>
+        /// <param name="size">Size.</param>
+        public Scale2D(Size2D size) : this(size.Width, size.Height) { }
+
         /// <summary>
         /// Gets or sets the horizontal scale.
         /// </summary>
         /// <value>The horizontal scale.</value>
-        public float Horizontal { get; set; }
+        public float Horizontal { get; set; } = horizontal;
 
         /// <summary>
         /// Gets or sets the vertical scale.
         /// </summary>
         /// <value>The vertical scale.</value>
-        public float Vertical { get; set; }
+        public float Vertical { get; set; } = vertical;
 
         /// <summary>
         /// Gets a value indicating whether the values of this <see cref="Scale2D"/> are zero.
@@ -44,39 +67,6 @@ namespace NuciXNA.Primitives
         public static Scale2D One => new(1, 1);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Scale2D"/> structure.
-        /// </summary>
-        /// <param name="horizontal">Horizontal scale.</param>
-        /// <param name="vertical">Vertical scale.</param>
-        public Scale2D(float horizontal, float vertical)
-        {
-            Horizontal = horizontal;
-            Vertical = vertical;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Scale2D"/> structure.
-        /// </summary>
-        /// <param name="point">Point.</param>
-        public Scale2D(Point2D point)
-        {
-            Horizontal = point.X;
-            Vertical = point.Y;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Scale2D"/> structure.
-        /// </summary>
-        /// <param name="size">Size.</param>
-        public Scale2D(Size2D size)
-        {
-            Horizontal = size.Width;
-            Vertical = size.Height;
-        }
-
-        public Scale2D(float scale) : this(scale, scale) { }
-
-        /// <summary>
         /// Determines whether the specified <see cref="Scale2D"/> is equal to the current <see cref="Scale2D"/>.
         /// </summary>
         /// <param name="other">The <see cref="Scale2D"/> to compare with the current <see cref="Scale2D"/>.</param>
@@ -86,6 +76,12 @@ namespace NuciXNA.Primitives
             Equals(Horizontal, other.Horizontal) &&
             Equals(Vertical, other.Vertical);
 
+        /// <summary>
+        /// Determines whether the specified horizontal and vertical scale values are equal to the current <see cref="Scale2D"/>.
+        /// </summary>
+        /// <param name="horizontal">The horizontal scale value.</param>
+        /// <param name="vertical">The vertical scale value.</param>
+        /// <returns><c>true</c> if the specified horizontal and vertical scale values are equal to the current
         public readonly bool Equals(float horizontal, float vertical) =>
             Horizontal.Equals(horizontal) &&
             Vertical.Equals(vertical);
@@ -177,10 +173,22 @@ namespace NuciXNA.Primitives
             source.Horizontal / value,
             source.Vertical / value);
 
+        /// <summary>
+        /// Multiplies the values of a <see cref="Scale2D"/> by a scalar value,
+        /// </summary>
+        /// <param name="source">The <see cref="Scale2D"/> to multiply.</param>
+        /// <param name="value">The scalar value to multiply with.</param>
+        /// <returns>The <see cref="Scale2D"/> that is the product of the values of <c>source</c> and <c>value</c>.</returns>
         public static Scale2D operator *(Scale2D source, float value) => new(
             source.Horizontal * value,
             source.Vertical * value);
 
+        /// <summary>
+        /// Divides the values of a <see cref="Scale2D"/> by a scalar value,
+        /// </summary>
+        /// <param name="source">The <see cref="Scale2D"/> to divide.</param>
+        /// <param name="value">The scalar value to divide with.</param>
+        /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> and <c>value</c>.</returns>
         public static Scale2D operator /(Scale2D source, float value) => new(
             source.Horizontal / value,
             source.Vertical * value);
