@@ -14,6 +14,13 @@ namespace NuciXNA.Primitives
     public struct Point3D(int x, int y, int z) : IEquatable<Point3D>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Point3D"/> structure.
+        /// </summary>
+        /// <param name="point">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
+        /// <param name="z">The Z-axis coordinate.</param>
+        public Point3D(Point2D point, int z) : this(point.X, point.Y, z) { }
+
+        /// <summary>
         /// Gets or sets the X-axis coordinate.
         /// </summary>
         /// <value>The X-axis coordinate.</value>
@@ -43,8 +50,6 @@ namespace NuciXNA.Primitives
         /// <value>The orthogonal centre point.</value>
         public static Point3D Empty => new(0, 0, 0);
 
-        public Point3D(Point2D point, int z) : this(point.X, point.Y, z) { }
-
         /// <summary>
         /// Determines whether the specified <see cref="Point3D"/> is equal to the current <see cref="Point3D"/>.
         /// </summary>
@@ -54,8 +59,16 @@ namespace NuciXNA.Primitives
         public readonly bool Equals(Point3D other)
             => Equals(X, other.X) && Equals(Y, other.Y) && Equals(Z, other.Z);
 
+        /// <summary>
+        /// Determines whether the specified coordinates are equal to the current <see cref="Point3D"/>.
+        /// </summary>
+        /// <param name="x">The X-axis coordinate.</param>
+        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="z">The Z-axis coordinate.</param>
+        /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="Point3D"/>;
+        /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(int x, int y, int z)
-            => X.Equals(x) && Y.Equals(Y) && Z.Equals(Z);
+            => X.Equals(x) && Y.Equals(y) && Z.Equals(z);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="Point3D"/>.
@@ -126,11 +139,24 @@ namespace NuciXNA.Primitives
             source.Y / other.Y,
             source.Z / other.Z);
 
+        /// <summary>
+        /// Multiplies the values of a <see cref="Point3D"/> by an integer,
+        /// yielding a new <see cref="Point3D"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Point3D"/> to multiply.</param>
+        /// <param name="other">The integer to multiply the <see cref="Point3D"/> by.</param>
+        /// <returns>The <see cref="Point3D"/> whose values are the product of the values of <c>source</c> and <c>other</c>.</returns>
         public static Point3D operator *(Point3D source, int other) => new(
             source.X * other,
             source.Y * other,
             source.Y * other);
 
+        /// <summary>
+        /// Divides the values of a <see cref="Point3D"/> by an integer,
+        /// </summary>
+        /// <param name="source">The <see cref="Point3D"/> to divide.</param>
+        /// <param name="other">The integer to divide the <see cref="Point3D"/> by.</param>
+        /// <returns>The <see cref="Point3D"/> whose values are the division of the values of <c>source</c> by <c>other</c>.</returns>
         public static Point3D operator /(Point3D source, int other) => new(
             source.X / other,
             source.Y / other,

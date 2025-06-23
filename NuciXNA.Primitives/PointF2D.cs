@@ -14,6 +14,24 @@ namespace NuciXNA.Primitives
     public struct PointF2D(float x, float y) : IEquatable<PointF2D>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="PointF2D"/> structure.
+        /// </summary>
+        /// <param name="point">The <see cref="PointF"/> to copy the X and Y coordinates from.</param>
+        public PointF2D(Point2D point) : this(point.X, point.Y) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PointF2D"/> structure.
+        /// </summary>
+        /// <param name="size">Size.</param>
+        public PointF2D(SizeF2D size) : this(size.Width, size.Height) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PointF2D"/> structure.
+        /// </summary>
+        /// <param name="size">Size.</param>
+        public PointF2D(Size2D size) : this(size.Width, size.Height) { }
+
+        /// <summary>
         /// Gets or sets the X-axis coordinate.
         /// </summary>
         /// <value>The X-axis coordinate.</value>
@@ -36,10 +54,6 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <value>The orthogonal centre point.</value>
         public static PointF2D Empty => new(0, 0);
-
-        public PointF2D(Point2D point) : this(point.X, point.Y) { }
-        public PointF2D(SizeF2D size) : this(size.Width, size.Height) { }
-        public PointF2D(Size2D size) : this(size.Width, size.Height) { }
 
         /// <summary>
         /// Determines whether the specified <see cref="PointF2D"/> is equal to the current <see cref="PointF2D"/>.
@@ -71,6 +85,13 @@ namespace NuciXNA.Primitives
             return Equals((PointF2D)obj);
         }
 
+        /// <summary>
+        /// Determines whether the specified coordinates are equal to the current <see cref="PointF2D"/>.
+        /// </summary>
+        /// <param name="x">The X-axis coordinate.</param>
+        /// <param name="y">The Y-axis coordinate.</param>
+        /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="PointF2D"/>;
+        /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(float x, float y)
             => X.Equals(x) && Y.Equals(y);
 
@@ -118,10 +139,22 @@ namespace NuciXNA.Primitives
             source.X / other.X,
             source.Y / other.Y);
 
+        /// <summary>
+        /// Multiplies the values of a <see cref="PointF2D"/> by a scalar value,
+        /// </summary>
+        /// <param name="source">The <see cref="PointF2D"/> to multiply.</param>
+        /// <param name="other">The scalar value to multiply with.</param>
+        /// <returns>The <see cref="PointF2D"/> whose values are the product of the values of <c>source</c> and <c>other</c>.</returns>
         public static PointF2D operator *(PointF2D source, float other) => new(
             source.X * other,
             source.Y * other);
 
+        /// <summary>
+        /// Divides the values of a <see cref="PointF2D"/> by a scalar value,
+        /// </summary>
+        /// <param name="source">The <see cref="PointF2D"/> to divide.</param>
+        /// <param name="other">The scalar value to divide with.</param>
+        /// <returns>The <see cref="PointF2D"/> whose values are the division of the values of <c>source</c> and <c>other</c>.</returns>
         public static PointF2D operator /(PointF2D source, float other) => new(
             source.X / other,
             source.Y / other);
@@ -157,8 +190,16 @@ namespace NuciXNA.Primitives
             }
         }
 
+        /// <summary>
+        /// Converts a <see cref="PointF2D"/> to a <see cref="PointF"/>,
+        /// </summary>
+        /// <param name="source">The <see cref="PointF2D"/> to convert.</param>
         public static implicit operator PointF(PointF2D source) => new(source.X, source.Y);
 
+        /// <summary>
+        /// Converts a <see cref="PointF"/> to a <see cref="PointF2D"/>,
+        /// </summary>
+        /// <param name="source">The <see cref="PointF"/> to convert.</param>
         public static implicit operator PointF2D(PointF source) => new(source.X, source.Y);
     }
 }

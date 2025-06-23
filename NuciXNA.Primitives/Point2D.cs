@@ -6,19 +6,30 @@ namespace NuciXNA.Primitives
     /// <summary>
     /// 2D orthogonal coordinates structure.
     /// </summary>
-    public struct Point2D : IEquatable<Point2D>
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="Point2D"/> structure.
+    /// </remarks>
+    /// <param name="x">The X-axis coordinate.</param>
+    /// <param name="y">The Y-axis coordinate.</param>
+    public struct Point2D(int x, int y) : IEquatable<Point2D>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Point2D"/> structure.
+        /// </summary>
+        /// <param name="size">Size.</param>
+        public Point2D(Size2D size) : this(size.Width, size.Height) { }
+
         /// <summary>
         /// Gets or sets the X-axis coordinate.
         /// </summary>
         /// <value>The X-axis coordinate.</value>
-        public int X { get; set; }
+        public int X { get; set; } = x;
 
         /// <summary>
         /// Gets or sets the Y-axis coordinate.
         /// </summary>
         /// <value>The Y-axis coordinate.</value>
-        public int Y { get; set; }
+        public int Y { get; set; } = y;
 
         /// <summary>
         /// Gets a value indicating whether the coordinates of this <see cref="Point2D"/> are zero.
@@ -31,27 +42,6 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <value>The orthogonal centre point.</value>
         public static Point2D Empty => new(0, 0);
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Point2D"/> structure.
-        /// </summary>
-        /// <param name="x">The X-axis coordinate.</param>
-        /// <param name="y">The Y-axis coordinate.</param>
-        public Point2D(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Point2D"/> structure.
-        /// </summary>
-        /// <param name="size">Size.</param>
-        public Point2D(Size2D size)
-        {
-            X = size.Width;
-            Y = size.Height;
-        }
 
         /// <summary>
         /// Determines whether the specified <see cref="Point2D"/> is equal to the current <see cref="Point2D"/>.
@@ -83,6 +73,12 @@ namespace NuciXNA.Primitives
             return Equals((Point2D)obj);
         }
 
+        /// <summary>
+        /// Determines whether the specified coordinates are equal to the current <see cref="Point2D"/>.
+        /// </summary>
+        /// <param name="x">The X-axis coordinate.</param>
+        /// <param name="y">The Y-axis coordinate.</param>
+        /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="Point2D"/>;
         public readonly bool Equals(int x, int y) => X.Equals(x) && Y.Equals(y);
 
         /// <summary>
@@ -125,9 +121,22 @@ namespace NuciXNA.Primitives
         public static Point2D operator /(Point2D source, Point2D other)
             => new(source.X / other.X, source.Y / other.Y);
 
+        /// <summary>
+        /// Multiplies the coordinates of a <see cref="Point2D"/> by an integer value,
+        /// yielding a new <see cref="Point2D"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Point2D"/> to multiply.</param>
+        /// <param name="other">The integer value to multiply with.</param>
+        /// <returns>The <see cref="Point2D"/> whose coordinates are the product of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static Point2D operator *(Point2D source, int other)
             => new(source.X * other, source.Y * other);
 
+        /// <summary>
+        /// Divides the coordinates of a <see cref="Point2D"/> by an integer value,
+        /// </summary>
+        /// <param name="source">The <see cref="Point2D"/> to divide.</param>
+        /// <param name="other">The integer value to divide with.</param>
+        /// <returns>The <see cref="Point2D"/> whose coordinates are the division of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static Point2D operator /(Point2D source, int other)
             => new(source.X / other, source.Y / other);
 
@@ -164,10 +173,22 @@ namespace NuciXNA.Primitives
             }
         }
 
+        /// <summary>
+        /// Returns a <see cref="string"/> that represents the current <see cref="Point2D"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="Point2D"/> to convert to a <see cref="string"/>.</param>
         public static implicit operator Point(Point2D source) => new(source.X, source.Y);
 
+        /// <summary>
+        /// Converts a <see cref="Point"/> to a <see cref="Point2D"/>,
+        /// </summary>
+        /// <param name="source">The <see cref="Point"/> to convert to a <see cref="Point2D"/>.</param>
         public static implicit operator Point2D(Point source) => new(source.X, source.Y);
 
+        /// <summary>
+        /// Converts a <see cref="Point2D"/> to a <see cref="PointF2D"/>,
+        /// </summary>
+        /// <param name="source">The <see cref="Point2D"/> to convert to a <see cref="PointF2D"/>.</param>
         public static implicit operator PointF2D(Point2D source) => new(source.X, source.Y);
     }
 }

@@ -39,7 +39,14 @@ namespace NuciXNA.Primitives
         /// <value><c>true</c> if the values are zero; otherwise, <c>false</c>.</value>
         public readonly bool IsEmpty => X == 0 && Y == 0;
 
+        /// <summary>
+        /// Gets a <see cref="Vector3D"/> with the coordinates of zero.
+        /// </summary>
         public static Vector3D Zero => new(0, 0, 0);
+
+        /// <summary>
+        /// Gets a <see cref="Vector3D"/> with the coordinates of one.
+        /// </summary>
         public static Vector3D One => new(1, 1, 1);
 
         /// <summary>
@@ -53,6 +60,13 @@ namespace NuciXNA.Primitives
             Equals(Y, other.Y) &&
             Equals(Z, other.Z);
 
+        /// <summary>
+        /// Determines whether the specified <see cref="float"/> values are equal to the current <see cref="Vector3D"/>.
+        /// </summary>
+        /// <param name="x">The X-axis coordinate.</param>
+        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="z">The Z-axis coordinate.</param>
+        /// <returns><c>true</c> if the specified <see cref="float"/> values are equal to the current <see cref="Vector3D"/>;
         public readonly bool Equals(float x, float y, float z) =>
             X.Equals(x) &&
             Y.Equals(y) &&
@@ -159,8 +173,16 @@ namespace NuciXNA.Primitives
             }
         }
 
+        /// <summary>
+        /// Converts a <see cref="Vector3D"/> to a <see cref="Vector3"/> implicitly.
+        /// </summary>
+        /// <param name="source">The <see cref="Vector3D"/> to convert.</param>
         public static implicit operator Vector3(Vector3D source) => new(source.X, source.Y, source.Z);
 
+        /// <summary>
+        /// Converts a <see cref="Vector3"/> to a <see cref="Vector3D"/> implicitly.
+        /// </summary>
+        /// <param name="source">The <see cref="Vector3"/> to convert.</param>
         public static implicit operator Vector3D(Vector3 source) => new(source.X, source.Y, source.Z);
     }
 }

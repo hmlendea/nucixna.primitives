@@ -8,90 +8,61 @@ namespace NuciXNA.Primitives
     /// <summary>
     /// Colour.
     /// </summary>
-    public sealed class Colour : IEquatable<Colour>
+    public sealed class Colour(byte r, byte g, byte b, byte a) : IEquatable<Colour>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Colour"/> class.
+        /// </summary>
+        public Colour() : this(0, 0, 0, 255) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Colour"/> class.
+        /// </summary>
+        /// <param name="r">The red component.</param>
+        /// <param name="g">The green component.</param>
+        /// <param name="b">The blue component.</param>
+        public Colour(byte r, byte g, byte b) : this(r, g, b, (byte)255) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Colour"/> class.
+        /// </summary>
+        /// <param name="r">The red component.</param>
+        /// <param name="g">The green component.</param>
+        /// <param name="b">The blue component.</param>
+        public Colour(int r, int g, int b) : this(r, g, b, 255) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Colour"/> class.
+        /// </summary>
+        /// <param name="r">The red component.</param>
+        /// <param name="g">The green component.</param>
+        /// <param name="b">The blue component.</param>
+        /// <param name="a">The alpha component.</param>
+        public Colour(int r, int g, int b, int a) : this((byte)r, (byte)g, (byte)b, (byte)a) { }
+
         /// <summary>
         /// Gets the alpha value.
         /// </summary>
         /// <value>The alpha value</value>
-        public byte A { get; set; }
+        public byte A { get; set; } = a;
 
         /// <summary>
         /// Gets or sets the red value.
         /// </summary>
         /// <value>The red value.</value>
-        public byte R { get; set; }
+        public byte R { get; set; } = r;
 
         /// <summary>
         /// Gets or sets the green value.
         /// </summary>
         /// <value>The green value.</value>
-        public byte G { get; set; }
+        public byte G { get; set; } = g;
 
         /// <summary>
         /// Gets or sets the blue value.
         /// </summary>
         /// <value>The blue value.</value>
-        public byte B { get; set; }
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Colour"/> class.
-        /// </summary>
-        public Colour()
-        {
-            A = 255;
-            R = 0;
-            G = 0;
-            B = 0;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Colour"/> class.
-        /// </summary>
-        /// <param name="r">The red component.</param>
-        /// <param name="g">The green component.</param>
-        /// <param name="b">The blue component.</param>
-        public Colour(byte r, byte g, byte b) : this()
-        {
-            R = r;
-            G = g;
-            B = b;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Colour"/> class.
-        /// </summary>
-        /// <param name="r">The red component.</param>
-        /// <param name="g">The green component.</param>
-        /// <param name="b">The blue component.</param>
-        public Colour(int r, int g, int b) : this()
-        {
-            R = (byte)r;
-            G = (byte)g;
-            B = (byte)b;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Colour"/> class.
-        /// </summary>
-        /// <param name="r">The red component.</param>
-        /// <param name="g">The green component.</param>
-        /// <param name="b">The blue component.</param>
-        /// <param name="a">The alpha component.</param>
-        public Colour(byte r, byte g, byte b, byte a) : this(r, g, b) => A = a;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Colour"/> class.
-        /// </summary>
-        /// <param name="r">The red component.</param>
-        /// <param name="g">The green component.</param>
-        /// <param name="b">The blue component.</param>
-        /// <param name="a">The alpha component.</param>
-        public Colour(int r, int g, int b, int a) : this(r, g, b) => A = (byte)a;
-
-        #endregion
+        public byte B { get; set; } = b;
 
         #region Predefined colours
         public static Colour Transparent => new(0, 0, 0, 0);
@@ -149,8 +120,14 @@ namespace NuciXNA.Primitives
         /// </summary>
         public static Colour ChromeYellow => new(252, 209, 22, 255);
 
+        /// <summary>
+        /// Persian red.
+        /// </summary>
         public static Colour PersianRed => new(200, 29, 17, 255);
 
+        /// <summary>
+        /// Vermilion.
+        /// </summary>
         public static Colour Vermilion => new(227, 66, 52, 255);
 
         /// <summary>
@@ -210,8 +187,6 @@ namespace NuciXNA.Primitives
 
         #endregion
         #endregion
-
-        #region Mappings
 
         /// <summary>
         /// Creates a colour from an ARGB integer.
@@ -277,6 +252,10 @@ namespace NuciXNA.Primitives
         /// <returns>A string representing the hexadecimal code of the colour.</returns>
         public string ToHexadecimal() => ColourTranslator.ToHexadecimal(this);
 
+        /// <summary>
+        /// Converts the colour to a monochrome colour based on the average of the RGB components.
+        /// </summary>
+        /// <returns>A monochrome colour.</returns>
         public Colour ToMonochromeAverage()
         {
             int average = (R + G + B) / 3;
@@ -284,6 +263,10 @@ namespace NuciXNA.Primitives
             return new Colour(average, average, average, A);
         }
 
+        /// <summary>
+        /// Converts the colour to a monochrome colour based on the lightest RGB component.
+        /// </summary>
+        /// <returns>A monochrome colour.</returns>
         public Colour ToMonochromeLight()
         {
             int lightest = new int[] { R, G, B }.Max();
@@ -291,14 +274,16 @@ namespace NuciXNA.Primitives
             return new Colour(lightest, lightest, lightest, A);
         }
 
+        /// <summary>
+        /// Converts the colour to a monochrome colour based on the darkest RGB component.
+        /// </summary>
+        /// <returns>A monochrome colour.</returns>
         public Colour ToMonochromeDark()
         {
             int darkest = new int[] { R, G, B }.Min();
 
             return new Colour(darkest, darkest, darkest, A);
         }
-
-        #endregion
 
         /// <summary>
         /// Checks wether the current colour is similar to another.
@@ -323,9 +308,11 @@ namespace NuciXNA.Primitives
             (byte)Math.Max(0, Math.Min(255, colour.B * factor)),
             (byte)Math.Max(0, Math.Min(255, colour.A * factor)));
 
+        /// <summary>
+        /// Returns a <see cref="string"/> that represents the hexadecimal code of the current <see cref="Colour"/>.
+        /// </summary>
+        /// <returns>A <see cref="string"/> that represents the hexadecimal code of the current <see cref="Colour"/>.</returns>
         public override string ToString() => ToHexadecimal();
-
-        #region IEquatable and Equals
 
         /// <summary>
         /// Determines whether the specified <see cref="Colour"/> is equal to the current <see cref="Colour"/>.
@@ -352,11 +339,31 @@ namespace NuciXNA.Primitives
                 B == other.B;
         }
 
+        /// <summary>
+        /// Determines whether the specified coordinates are equal to the current <see cref="Colour"/>.
+        /// </summary>
+        /// <param name="a">The alpha value.</param>
+        /// <param name="r">The red value.</param>
+        /// <param name="g">The green value.</param>
+        /// <param name="b">The blue value.</param>
+        /// <returns></returns>
         public bool Equals(int a, int r, int g, int b)
             => A.Equals(a) && R.Equals(r) && G.Equals(g) && B.Equals(b);
 
+        /// <summary>
+        /// Determines whether the specified RGB coordinates are equal to the current <see cref="Colour"/>.
+        /// </summary>
+        /// <param name="r">The red value.</param>
+        /// <param name="g">The green value.</param>
+        /// <param name="b">The blue value.</param>
+        /// <returns><c>true</c> if the specified RGB coordinates are equal to the current <see cref="Colour"/>; otherwise, <c>false</c>.</returns>
         public bool Equals(int r, int g, int b) => Equals(255, r, g, b);
 
+        /// <summary>
+        /// Determines whether the specified hexadecimal code is equal to the current <see cref="Colour"/>.
+        /// </summary>
+        /// <param name="hexa">The hexadecimal code to compare with the current <see cref="Colour"/>.</param>
+        /// <returns><c>true</c> if the specified hexadecimal code is equal to the current
         public bool Equals(string hexa) => Equals(FromHexadecimal(hexa));
 
         /// <summary>
@@ -402,10 +409,6 @@ namespace NuciXNA.Primitives
             }
         }
 
-        #endregion
-
-        #region Operators
-
         /// <summary>
         /// Multiplies a specified colour by a factor.
         /// </summary>
@@ -415,31 +418,53 @@ namespace NuciXNA.Primitives
         public static Colour operator *(Colour colour, float factor)
             => Multiply(colour, factor);
 
-        public static bool operator ==(Colour me, Colour other)
+        /// <summary>
+        /// Determines whether two specified instances of <see cref="Colour"/> are equal.
+        /// </summary>
+        /// <param name="self">The first <see cref="Colour"/> to compare.</param>
+        /// <param name="other">The second <see cref="Colour"/> to compare.</param>
+        /// <returns></returns>
+        public static bool operator ==(Colour self, Colour other)
         {
-            if (me is null)
+            if (self is null)
             {
                 return other is null;
             }
 
-            return me.Equals(other);
+            return self.Equals(other);
         }
 
-        public static bool operator !=(Colour me, Colour other)
-            => !(me == other);
+        /// <summary>
+        /// Determines whether two specified instances of <see cref="Colour"/> are not equal.
+        /// </summary>
+        /// <param name="self">The first <see cref="Colour"/> to compare.</param>
+        /// <param name="other">The second <see cref="Colour"/> to compare.</param>
+        /// <returns><c>true</c> if <c>self</c> and <c>other</c> are not equal; otherwise, <c>false</c>.</returns>
+        public static bool operator !=(Colour self, Colour other)
+            => !(self == other);
 
-        public static explicit operator int(Colour me)
-            => me.ToArgb();
+        /// <summary>
+        /// Converts a <see cref="Colour"/> to an ARGB integer.
+        /// </summary>
+        /// <param name="self">Colour to convert.</param>
+        public static explicit operator int(Colour self)
+            => self.ToArgb();
 
-        public static explicit operator string(Colour me)
-            => me.ToString();
+        public static explicit operator string(Colour self)
+            => self.ToString();
 
+        /// <summary>
+        /// Converts an ARGB integer to a <see cref="Colour"/>.
+        /// </summary>
+        /// <param name="argb"></param>
         public static explicit operator Colour(int argb)
             => FromArgb(argb);
 
+        /// <summary>
+        /// Converts a hexadecimal string to a <see cref="Colour"/>.
+        /// </summary>
+        /// <param name="hexadecimal"></param>
         public static explicit operator Colour(string hexadecimal)
             => FromHexadecimal(hexadecimal);
-
-        #endregion
     }
 }
