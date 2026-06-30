@@ -88,7 +88,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: Equals(T other) incorrectly resolves to Equals(float horizontal, float vertical) overload")]
         public void GivenTwoScalesWithSameValues_WhenCheckingEquality_ThenReturnsTrue()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
@@ -204,7 +203,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: float / operator uses source.Vertical * value instead of source.Vertical / value")]
         public void GivenScaleAndFloatScalar_WhenDividing_ThenReturnsCorrectQuotient()
         {
             Scale2D scale = new(6.0f, 9.0f);
@@ -216,7 +214,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: Equals(T other) incorrectly resolves to Equals(float horizontal, float vertical) overload")]
         public void GivenTwoEqualScales_WhenUsingEqualityOperator_ThenReturnsTrue()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
@@ -244,7 +241,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: Equals(T other) incorrectly resolves to Equals(float horizontal, float vertical) overload")]
         public void GivenTwoEqualScales_WhenUsingInequalityOperator_ThenReturnsFalse()
         {
             Scale2D scale1 = new(2.0f, 3.0f);

@@ -192,7 +192,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: scalar * operator uses source.Y instead of source.Z for the Z component")]
         public void GivenPointAndScalar_WhenMultiplying_ThenAllComponentsAreScaled()
         {
             PointF3D point = new(2.0f, 3.0f, 4.0f);
@@ -205,7 +204,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: scalar / operator uses source.Y instead of source.Z for the Z component")]
         public void GivenPointAndScalar_WhenDividing_ThenAllComponentsAreDivided()
         {
             PointF3D point = new(6.0f, 9.0f, 12.0f);

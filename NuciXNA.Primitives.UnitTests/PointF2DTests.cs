@@ -72,7 +72,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: Equals(T other) incorrectly resolves to Equals(float x, float y) overload")]
         public void GivenTwoPointsWithSameCoordinates_WhenCheckingEquality_ThenReturnsTrue()
         {
             PointF2D point1 = new(1.5f, 2.5f);
@@ -185,7 +184,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: Equals(T other) incorrectly resolves to Equals(float x, float y) overload")]
         public void GivenTwoEqualPoints_WhenUsingEqualityOperator_ThenReturnsTrue()
         {
             PointF2D point1 = new(1.5f, 2.5f);
@@ -213,7 +211,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: Equals(T other) incorrectly resolves to Equals(float x, float y) overload")]
         public void GivenTwoEqualPoints_WhenUsingInequalityOperator_ThenReturnsFalse()
         {
             PointF2D point1 = new(1.5f, 2.5f);
