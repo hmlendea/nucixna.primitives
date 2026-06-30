@@ -182,5 +182,130 @@ namespace NuciXNA.Primitives.UnitTests
         [Test]
         public void EqualsOperator_CurrentIsNull_ReturnsFalse()
             => Assert.That(Colour.White == null, Is.False);
+
+        [Test]
+        public void GivenDefaultConstructor_WhenConstructing_ThenAlphaIsMaxAndRGBIsZero()
+        {
+            Colour colour = new();
+
+            Assert.That(colour.R, Is.EqualTo(0));
+            Assert.That(colour.G, Is.EqualTo(0));
+            Assert.That(colour.B, Is.EqualTo(0));
+            Assert.That(colour.A, Is.EqualTo(byte.MaxValue));
+        }
+
+        [Test]
+        public void GivenColourSlightlyOutsideTolerance_WhenCallingIsSimilarTo_ThenReturnsFalse()
+        {
+            Colour colour1 = new(8, 16, 24);
+            Colour colour2 = new(10, 18, 27);
+
+            bool isSimilar = colour1.IsSimilarTo(colour2, 2);
+
+            Assert.That(isSimilar, Is.False);
+        }
+
+        [Test]
+        public void GivenColourAtExactToleranceBoundary_WhenCallingIsSimilarTo_ThenReturnsTrue()
+        {
+            Colour colour1 = new(10, 10, 10);
+            Colour colour2 = new(12, 12, 12);
+
+            bool isSimilar = colour1.IsSimilarTo(colour2, 2);
+
+            Assert.That(isSimilar, Is.True);
+        }
+
+        [Test]
+        public void GivenColourWithAlpha_WhenCallingToHexadecimal_ThenIncludesAlphaPrefix()
+        {
+            Colour colour = new(255, 0, 0, 128);
+            string expected = "#80FF0000";
+
+            string actual = colour.ToHexadecimal();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GivenFullyOpaqueColour_WhenCallingToHexadecimal_ThenOmitsAlpha()
+        {
+            Colour colour = new(0, 255, 0);
+            string expected = "#00FF00";
+
+            string actual = colour.ToHexadecimal();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GivenHexString_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
+        {
+            Colour expected = new(255, 0, 0);
+            Colour actual = Colour.FromHexadecimal("#FF0000");
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GivenArgbInteger_WhenCallingFromArgb_ThenReturnsCorrectColour()
+        {
+            Colour expected = new(1, 2, 3, 4);
+            Colour actual = Colour.FromArgb(67174915);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GivenColour_WhenCallingToArgb_ThenReturnsCorrectInteger()
+        {
+            Colour colour = new(1, 2, 3);
+            int expected = -16711165;
+
+            int actual = colour.ToArgb();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GivenColourWithEqualRGBComponents_WhenCallingToMonochromeAverage_ThenReturnsUnchangedColour()
+        {
+            Colour colour = new(10, 10, 10);
+            Colour expected = new(10, 10, 10);
+
+            Colour actual = colour.ToMonochromeAverage();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GivenColour_WhenCallingToMonochromeAverage_ThenAlphaIsPreserved()
+        {
+            Colour colour = new(8, 16, 24, 200);
+
+            Colour actual = colour.ToMonochromeAverage();
+
+            Assert.That(actual.A, Is.EqualTo(200));
+        }
+
+        [Test]
+        public void GivenColour_WhenCallingToMonochromeDark_ThenAlphaIsPreserved()
+        {
+            Colour colour = new(8, 16, 24, 200);
+
+            Colour actual = colour.ToMonochromeDark();
+
+            Assert.That(actual.A, Is.EqualTo(200));
+        }
+
+        [Test]
+        public void GivenColour_WhenCallingToMonochromeLight_ThenAlphaIsPreserved()
+        {
+            Colour colour = new(8, 16, 24, 200);
+
+            Colour actual = colour.ToMonochromeLight();
+
+            Assert.That(actual.A, Is.EqualTo(200));
+        }
     }
 }
