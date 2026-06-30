@@ -172,7 +172,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The scalar value to multiply with.</param>
         /// <returns>The <see cref="PointF3D"/> whose coordinates are the product of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator *(PointF3D source, float other)
-            => new(source.X * other, source.Y * other, source.Y * other);
+            => new(source.X * other, source.Y * other, source.Z * other);
 
         /// <summary>
         /// Divides the coordinates of a <see cref="PointF3D"/> by a scalar value,
@@ -181,7 +181,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The scalar value to divide with.</param>
         /// <returns>The <see cref="PointF3D"/> whose coordinates are the division of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator /(PointF3D source, float other)
-            => new(source.X / other, source.Y / other, source.Y * other);
+            => new(source.X / other, source.Y / other, source.Z / other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="PointF3D"/> is equal to another specified <see cref="PointF3D"/>.

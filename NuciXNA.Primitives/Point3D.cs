@@ -149,7 +149,7 @@ namespace NuciXNA.Primitives
         public static Point3D operator *(Point3D source, int other) => new(
             source.X * other,
             source.Y * other,
-            source.Y * other);
+            source.Z * other);
 
         /// <summary>
         /// Divides the values of a <see cref="Point3D"/> by an integer,
@@ -160,7 +160,7 @@ namespace NuciXNA.Primitives
         public static Point3D operator /(Point3D source, int other) => new(
             source.X / other,
             source.Y / other,
-            source.Y * other);
+            source.Z / other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Point3D"/> is equal to another specified <see cref="Point3D"/>.

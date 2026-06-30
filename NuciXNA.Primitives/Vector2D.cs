@@ -55,8 +55,8 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="Vector2D"/> is equal to the current <see cref="Vector2D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Vector2D other) =>
-            Equals(X, other.X) &&
-            Equals(Y, other.Y);
+            X.Equals(other.X) &&
+            Y.Equals(other.Y);
 
         /// <summary>
         /// Determines whether the specified <see cref="float"/> values are equal to the current <see cref="Vector2D"/>.

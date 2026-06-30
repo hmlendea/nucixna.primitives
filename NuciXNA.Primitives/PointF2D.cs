@@ -62,7 +62,7 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="PointF2D"/> is equal to the current <see cref="PointF2D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(PointF2D other)
-            => Equals(X, other.X) && Equals(Y, other.Y);
+            => X.Equals(other.X) && Y.Equals(other.Y);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="PointF2D"/>.

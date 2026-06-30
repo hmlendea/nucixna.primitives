@@ -73,8 +73,8 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="Scale2D"/> is equal to the current
         /// <see cref="Scale2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Scale2D other) =>
-            Equals(Horizontal, other.Horizontal) &&
-            Equals(Vertical, other.Vertical);
+            Horizontal.Equals(other.Horizontal) &&
+            Vertical.Equals(other.Vertical);
 
         /// <summary>
         /// Determines whether the specified horizontal and vertical scale values are equal to the current <see cref="Scale2D"/>.
@@ -191,7 +191,7 @@ namespace NuciXNA.Primitives
         /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> and <c>value</c>.</returns>
         public static Scale2D operator /(Scale2D source, float value) => new(
             source.Horizontal / value,
-            source.Vertical * value);
+            source.Vertical / value);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Scale2D"/> is equal to
