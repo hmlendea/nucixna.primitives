@@ -67,8 +67,8 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="Size2D"/> is equal to the current <see cref="Size2D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Size2D other) =>
-            Equals(Width, other.Width) &&
-            Equals(Height, other.Height);
+            Width.Equals(other.Width) &&
+            Height.Equals(other.Height);
 
         /// <summary>
         /// Determines whether the specified coordinates are equal to the current <see cref="Size2D"/>.

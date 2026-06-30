@@ -62,7 +62,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: Equals(T other) incorrectly resolves to Equals(float x, float y) overload")]
         public void GivenTwoVectorsWithSameValues_WhenCheckingEquality_ThenReturnsTrue()
         {
             Vector2D v1 = new(1.5f, 2.5f);
@@ -145,7 +144,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: Equals(T other) incorrectly resolves to Equals(float x, float y) overload")]
         public void GivenTwoEqualVectors_WhenUsingEqualityOperator_ThenReturnsTrue()
         {
             Vector2D v1 = new(1.5f, 2.5f);
@@ -173,7 +171,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        [Ignore("Implementation bug: Equals(T other) incorrectly resolves to Equals(float x, float y) overload")]
         public void GivenTwoEqualVectors_WhenUsingInequalityOperator_ThenReturnsFalse()
         {
             Vector2D v1 = new(1.5f, 2.5f);
