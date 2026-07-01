@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 
 namespace NuciXNA.Primitives.Mapping
 {
@@ -37,6 +36,11 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="hexa">Hexadecimal code.</param>
         public static Colour FromHexadecimal(string hexa)
         {
+            if (hexa is null)
+            {
+                throw new ArgumentNullException(nameof(hexa));
+            }
+
             Colour colour = new();
 
             if (hexa[0] == '#')
@@ -46,7 +50,7 @@ namespace NuciXNA.Primitives.Mapping
 
             // TODO: Proper exception when digits are outside hex range
 
-            if (hexa.Length.Equals(3))
+            if (hexa.Length == 3)
             {
                 colour.A = 255;
                 colour.R = Convert.ToByte($"{hexa[0]}{hexa[0]}", 16);
@@ -60,14 +64,14 @@ namespace NuciXNA.Primitives.Mapping
                 colour.G = Convert.ToByte($"{hexa[2]}{hexa[2]}", 16);
                 colour.B = Convert.ToByte($"{hexa[3]}{hexa[3]}", 16);
             }
-            else if (hexa.Length.Equals(6))
+            else if (hexa.Length == 6)
             {
                 colour.A = 255;
                 colour.R = Convert.ToByte($"{hexa[0]}{hexa[1]}", 16);
                 colour.G = Convert.ToByte($"{hexa[2]}{hexa[3]}", 16);
                 colour.B = Convert.ToByte($"{hexa[4]}{hexa[5]}", 16);
             }
-            else if (hexa.Length.Equals(8))
+            else if (hexa.Length == 8)
             {
                 colour.A = Convert.ToByte($"{hexa[0]}{hexa[1]}", 16);
                 colour.R = Convert.ToByte($"{hexa[2]}{hexa[3]}", 16);
@@ -132,7 +136,11 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <returns>The colour.</returns>
         /// <param name="argb">ARGB integer.</param>
-        public static Colour FromArgb(int argb) => Color.FromArgb(argb).ToColour();
+        public static Colour FromArgb(int argb) => new(
+            (byte)((argb >> 16) & 0xFF),
+            (byte)((argb >> 8)  & 0xFF),
+            (byte)( argb        & 0xFF),
+            (byte)((argb >> 24) & 0xFF));
 
         /// <summary>
         /// Creates a colour from RGB values.

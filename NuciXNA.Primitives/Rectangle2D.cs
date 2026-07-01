@@ -208,10 +208,10 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="Rectangle2D"/> is equal to the current
         /// <see cref="Rectangle2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Rectangle2D other) =>
-            Equals(X, other.X) &&
-            Equals(Y, other.Y) &&
-            Equals(Width, other.Width) &&
-            Equals(Height, other.Height);
+            X.Equals(other.X) &&
+            Y.Equals(other.Y) &&
+            Width.Equals(other.Width) &&
+            Height.Equals(other.Height);
 
         /// <summary>
         /// Determines whether the specified coordinates are equal to the current <see cref="Rectangle2D"/>.

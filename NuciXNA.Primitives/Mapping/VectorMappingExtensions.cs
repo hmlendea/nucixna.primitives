@@ -8,6 +8,7 @@ namespace NuciXNA.Primitives.Mapping
     /// </summary>
     public static class VectorMappingExtensions
     {
+        /// <summary>
         /// Converts a <see cref="Vector2"/> to a <see cref="Vector2D"/>.
         /// </summary>
         /// <param name="source">Source <see cref="Vector2"/>.</param>

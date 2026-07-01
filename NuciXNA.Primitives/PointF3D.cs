@@ -69,7 +69,7 @@ namespace NuciXNA.Primitives
         /// Gets a value indicating whether the coordinates of this <see cref="PointF3D"/> are zero.
         /// </summary>
         /// <value><c>true</c> if the coorinates are zero; otherwise, <c>false</c>.</value>
-        public readonly bool IsEmpty => X == 0 && Y == 0;
+        public readonly bool IsEmpty => X == 0 && Y == 0 && Z == 0;
 
         /// <summary>
         /// Gets a <see cref="PointF3D"/> with the coordinates of zero.
@@ -84,7 +84,7 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="PointF3D"/> is equal to the current <see cref="PointF3D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(PointF3D other)
-            => Equals(X, other.X) && Equals(Y, other.Y) && Equals(Z, other.Z);
+            => X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
 
         /// <summary>
         /// Determines whether the specified coordinates are equal to the current <see cref="PointF3D"/>.
@@ -177,7 +177,9 @@ namespace NuciXNA.Primitives
             => new(source.X * other, source.Y * other, source.Z * other);
 
         /// <summary>
-        /// Divides the coordinates of a <see cref="PointF3D"/> by a scalar value,        /// yielding a new <see cref="PointF3D"/>.        /// </summary>
+        /// Divides the coordinates of a <see cref="PointF3D"/> by a scalar value,
+        /// yielding a new <see cref="PointF3D"/>.
+        /// </summary>
         /// <param name="source">The <see cref="PointF3D"/> to divide.</param>
         /// <param name="other">The scalar value to divide with.</param>
         /// <returns>The <see cref="PointF3D"/> whose coordinates are the division of the coordinates of <c>source</c> and <c>other</c>.</returns>
