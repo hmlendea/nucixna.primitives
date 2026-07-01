@@ -76,7 +76,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             PointF3D point = new(0f, 0f, 0f);
 
-            Assert.That(point.IsEmpty, Is.True);
+            Assert.That(point.IsEmpty);
         }
 
         [Test]
@@ -119,7 +119,7 @@ namespace NuciXNA.Primitives.UnitTests
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(point1.Equals(point2), Is.True);
+            Assert.That(point1.Equals(point2));
         }
 
         [Test]
@@ -136,7 +136,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(point.Equals(1.5f, 2.5f, 3.5f), Is.True);
+            Assert.That(point.Equals(1.5f, 2.5f, 3.5f));
         }
 
         [Test]
@@ -152,7 +152,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(point.Equals((object)new PointF3D(1.5f, 2.5f, 3.5f)), Is.True);
+            Assert.That(point.Equals((object)new PointF3D(1.5f, 2.5f, 3.5f)));
         }
 
         [Test]
@@ -263,7 +263,7 @@ namespace NuciXNA.Primitives.UnitTests
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(point1 == point2, Is.True);
+            Assert.That(point1 == point2);
         }
 
         [Test]
@@ -281,7 +281,7 @@ namespace NuciXNA.Primitives.UnitTests
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.6f);
 
-            Assert.That(point1 != point2, Is.True);
+            Assert.That(point1 != point2);
         }
 
         [Test]

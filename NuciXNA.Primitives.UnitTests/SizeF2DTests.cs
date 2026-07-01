@@ -49,7 +49,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             SizeF2D size = new(0f, 0f);
 
-            Assert.That(size.IsEmpty, Is.True);
+            Assert.That(size.IsEmpty);
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace NuciXNA.Primitives.UnitTests
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.5f);
 
-            Assert.That(size1.Equals(size2), Is.True);
+            Assert.That(size1.Equals(size2));
         }
 
         [Test]
@@ -108,7 +108,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             SizeF2D size = new(3.5f, 7.5f);
 
-            Assert.That(size.Equals(3.5f, 7.5f), Is.True);
+            Assert.That(size.Equals(3.5f, 7.5f));
         }
 
         [Test]
@@ -124,7 +124,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             SizeF2D size = new(3.5f, 7.5f);
 
-            Assert.That(size.Equals((object)new SizeF2D(3.5f, 7.5f)), Is.True);
+            Assert.That(size.Equals((object)new SizeF2D(3.5f, 7.5f)));
         }
 
         [Test]
@@ -229,7 +229,7 @@ namespace NuciXNA.Primitives.UnitTests
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.5f);
 
-            Assert.That(size1 == size2, Is.True);
+            Assert.That(size1 == size2);
         }
 
         [Test]
@@ -247,7 +247,7 @@ namespace NuciXNA.Primitives.UnitTests
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.6f);
 
-            Assert.That(size1 != size2, Is.True);
+            Assert.That(size1 != size2);
         }
 
         [Test]

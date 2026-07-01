@@ -23,7 +23,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Vector3D vector = new(0f, 0f, 0f);
 
-            Assert.That(vector.IsEmpty, Is.True);
+            Assert.That(vector.IsEmpty);
         }
 
         [Test]
@@ -76,7 +76,7 @@ namespace NuciXNA.Primitives.UnitTests
             Vector3D v1 = new(1.5f, 2.5f, 3.5f);
             Vector3D v2 = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(v1.Equals(v2), Is.True);
+            Assert.That(v1.Equals(v2));
         }
 
         [Test]
@@ -93,7 +93,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Vector3D vector = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(vector.Equals(1.5f, 2.5f, 3.5f), Is.True);
+            Assert.That(vector.Equals(1.5f, 2.5f, 3.5f));
         }
 
         [Test]
@@ -109,7 +109,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Vector3D vector = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(vector.Equals((object)new Vector3D(1.5f, 2.5f, 3.5f)), Is.True);
+            Assert.That(vector.Equals((object)new Vector3D(1.5f, 2.5f, 3.5f)));
         }
 
         [Test]
@@ -196,7 +196,7 @@ namespace NuciXNA.Primitives.UnitTests
             Vector3D v1 = new(1.5f, 2.5f, 3.5f);
             Vector3D v2 = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(v1 == v2, Is.True);
+            Assert.That(v1 == v2);
         }
 
         [Test]
@@ -214,7 +214,7 @@ namespace NuciXNA.Primitives.UnitTests
             Vector3D v1 = new(1.5f, 2.5f, 3.5f);
             Vector3D v2 = new(1.5f, 2.5f, 3.6f);
 
-            Assert.That(v1 != v2, Is.True);
+            Assert.That(v1 != v2);
         }
 
         [Test]

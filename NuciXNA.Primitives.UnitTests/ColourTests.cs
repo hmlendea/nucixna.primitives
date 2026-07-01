@@ -233,7 +233,7 @@ namespace NuciXNA.Primitives.UnitTests
 
             bool isSimilar = colour1.IsSimilarTo(colour2, 2);
 
-            Assert.That(isSimilar, Is.True);
+            Assert.That(isSimilar);
         }
 
         [Test]
@@ -300,7 +300,7 @@ namespace NuciXNA.Primitives.UnitTests
 
         [Test]
         public void GivenMatchingRgbValues_WhenCallingEqualsWithRgb_ThenReturnsTrue()
-            => Assert.That(new Colour(1, 2, 3).Equals(1, 2, 3), Is.True);
+            => Assert.That(new Colour(1, 2, 3).Equals(1, 2, 3));
 
         [Test]
         public void GivenNonMatchingRgbValues_WhenCallingEqualsWithRgb_ThenReturnsFalse()
@@ -308,7 +308,7 @@ namespace NuciXNA.Primitives.UnitTests
 
         [Test]
         public void GivenMatchingArgbValues_WhenCallingEqualsWithArgb_ThenReturnsTrue()
-            => Assert.That(new Colour(1, 2, 3, 4).Equals(4, 1, 2, 3), Is.True);
+            => Assert.That(new Colour(1, 2, 3, 4).Equals(4, 1, 2, 3));
 
         [Test]
         public void GivenNonMatchingArgbValues_WhenCallingEqualsWithArgb_ThenReturnsFalse()
@@ -396,7 +396,7 @@ namespace NuciXNA.Primitives.UnitTests
 
         [Test]
         public void GivenTwoDifferentColours_WhenUsingInequalityOperator_ThenReturnsTrue()
-            => Assert.That(Colour.Black != Colour.White, Is.True);
+            => Assert.That(Colour.Black != Colour.White);
 
         [Test]
         public void GivenTwoIdenticalColours_WhenUsingInequalityOperator_ThenReturnsFalse()

@@ -49,7 +49,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Scale2D scale = new(0f, 0f);
 
-            Assert.That(scale.IsEmpty, Is.True);
+            Assert.That(scale.IsEmpty);
         }
 
         [Test]
@@ -93,7 +93,7 @@ namespace NuciXNA.Primitives.UnitTests
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 3.0f);
 
-            Assert.That(scale1.Equals(scale2), Is.True);
+            Assert.That(scale1.Equals(scale2));
         }
 
         [Test]
@@ -110,7 +110,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Scale2D scale = new(2.0f, 3.0f);
 
-            Assert.That(scale.Equals(2.0f, 3.0f), Is.True);
+            Assert.That(scale.Equals(2.0f, 3.0f));
         }
 
         [Test]
@@ -126,7 +126,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Scale2D scale = new(2.0f, 3.0f);
 
-            Assert.That(scale.Equals((object)new Scale2D(2.0f, 3.0f)), Is.True);
+            Assert.That(scale.Equals((object)new Scale2D(2.0f, 3.0f)));
         }
 
         [Test]
@@ -253,7 +253,7 @@ namespace NuciXNA.Primitives.UnitTests
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 3.0f);
 
-            Assert.That(scale1 == scale2, Is.True);
+            Assert.That(scale1 == scale2);
         }
 
         [Test]
@@ -271,7 +271,7 @@ namespace NuciXNA.Primitives.UnitTests
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 4.0f);
 
-            Assert.That(scale1 != scale2, Is.True);
+            Assert.That(scale1 != scale2);
         }
 
         [Test]
