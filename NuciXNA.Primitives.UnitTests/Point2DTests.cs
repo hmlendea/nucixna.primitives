@@ -31,7 +31,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Point2D point = new(0, 0);
 
-            Assert.That(point.IsEmpty, Is.True);
+            Assert.That(point.IsEmpty);
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace NuciXNA.Primitives.UnitTests
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 7);
 
-            Assert.That(point1.Equals(point2), Is.True);
+            Assert.That(point1.Equals(point2));
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Point2D point = new(3, 7);
 
-            Assert.That(point.Equals(3, 7), Is.True);
+            Assert.That(point.Equals(3, 7));
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace NuciXNA.Primitives.UnitTests
             Point2D point1 = new(3, 7);
             object point2 = new Point2D(3, 7);
 
-            Assert.That(point1.Equals(point2), Is.True);
+            Assert.That(point1.Equals(point2));
         }
 
         [Test]
@@ -100,6 +100,24 @@ namespace NuciXNA.Primitives.UnitTests
             Point2D point = new(3, 7);
 
             Assert.That(point.Equals(DateTime.Now), Is.False);
+        }
+
+        [Test]
+        public void GivenTwoPointsWithSameCoordinates_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            Point2D point1 = new(3, 7);
+            Point2D point2 = new(3, 7);
+
+            Assert.That(point1.GetHashCode(), Is.EqualTo(point2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoPointsWithDifferentCoordinates_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            Point2D point1 = new(3, 7);
+            Point2D point2 = new(3, 8);
+
+            Assert.That(point1.GetHashCode(), Is.Not.EqualTo(point2.GetHashCode()));
         }
 
         [Test]
@@ -178,7 +196,7 @@ namespace NuciXNA.Primitives.UnitTests
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 7);
 
-            Assert.That(point1 == point2, Is.True);
+            Assert.That(point1 == point2);
         }
 
         [Test]
@@ -196,7 +214,7 @@ namespace NuciXNA.Primitives.UnitTests
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 8);
 
-            Assert.That(point1 != point2, Is.True);
+            Assert.That(point1 != point2);
         }
 
         [Test]

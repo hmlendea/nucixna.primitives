@@ -32,7 +32,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Vector2D vector = new(0f, 0f);
 
-            Assert.That(vector.IsEmpty, Is.True);
+            Assert.That(vector.IsEmpty);
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace NuciXNA.Primitives.UnitTests
             Vector2D v1 = new(1.5f, 2.5f);
             Vector2D v2 = new(1.5f, 2.5f);
 
-            Assert.That(v1.Equals(v2), Is.True);
+            Assert.That(v1.Equals(v2));
         }
 
         [Test]
@@ -84,7 +84,23 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Vector2D vector = new(1.5f, 2.5f);
 
-            Assert.That(vector.Equals(1.5f, 2.5f), Is.True);
+            Assert.That(vector.Equals(1.5f, 2.5f));
+        }
+
+        [Test]
+        public void GivenNonMatchingValues_WhenCheckingEqualityWithXY_ThenReturnsFalse()
+        {
+            Vector2D vector = new(1.5f, 2.5f);
+
+            Assert.That(vector.Equals(1.5f, 9.9f), Is.False);
+        }
+
+        [Test]
+        public void GivenSameVectorBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        {
+            Vector2D vector = new(1.5f, 2.5f);
+
+            Assert.That(vector.Equals((object)new Vector2D(1.5f, 2.5f)));
         }
 
         [Test]
@@ -93,6 +109,24 @@ namespace NuciXNA.Primitives.UnitTests
             Vector2D vector = new(1.5f, 2.5f);
 
             Assert.That(vector.Equals(DateTime.Now), Is.False);
+        }
+
+        [Test]
+        public void GivenTwoVectorsWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            Vector2D vector1 = new(1.5f, 2.5f);
+            Vector2D vector2 = new(1.5f, 2.5f);
+
+            Assert.That(vector1.GetHashCode(), Is.EqualTo(vector2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoVectorsWithDifferentValues_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            Vector2D vector1 = new(1.5f, 2.5f);
+            Vector2D vector2 = new(1.5f, 3.5f);
+
+            Assert.That(vector1.GetHashCode(), Is.Not.EqualTo(vector2.GetHashCode()));
         }
 
         [Test]
@@ -149,7 +183,7 @@ namespace NuciXNA.Primitives.UnitTests
             Vector2D v1 = new(1.5f, 2.5f);
             Vector2D v2 = new(1.5f, 2.5f);
 
-            Assert.That(v1 == v2, Is.True);
+            Assert.That(v1 == v2);
         }
 
         [Test]
@@ -167,7 +201,7 @@ namespace NuciXNA.Primitives.UnitTests
             Vector2D v1 = new(1.5f, 2.5f);
             Vector2D v2 = new(1.5f, 2.6f);
 
-            Assert.That(v1 != v2, Is.True);
+            Assert.That(v1 != v2);
         }
 
         [Test]

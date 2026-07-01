@@ -23,13 +23,29 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Vector3D vector = new(0f, 0f, 0f);
 
-            Assert.That(vector.IsEmpty, Is.True);
+            Assert.That(vector.IsEmpty);
         }
 
         [Test]
         public void GivenNonZeroXValue_WhenCheckingIsEmpty_ThenReturnsFalse()
         {
             Vector3D vector = new(1.0f, 0f, 0f);
+
+            Assert.That(vector.IsEmpty, Is.False);
+        }
+
+        [Test]
+        public void GivenNonZeroYValue_WhenCheckingIsEmpty_ThenReturnsFalse()
+        {
+            Vector3D vector = new(0f, 1.0f, 0f);
+
+            Assert.That(vector.IsEmpty, Is.False);
+        }
+
+        [Test]
+        public void GivenNonZeroZValue_WhenCheckingIsEmpty_ThenReturnsFalse()
+        {
+            Vector3D vector = new(0f, 0f, 1.0f);
 
             Assert.That(vector.IsEmpty, Is.False);
         }
@@ -60,7 +76,7 @@ namespace NuciXNA.Primitives.UnitTests
             Vector3D v1 = new(1.5f, 2.5f, 3.5f);
             Vector3D v2 = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(v1.Equals(v2), Is.True);
+            Assert.That(v1.Equals(v2));
         }
 
         [Test]
@@ -77,7 +93,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Vector3D vector = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(vector.Equals(1.5f, 2.5f, 3.5f), Is.True);
+            Assert.That(vector.Equals(1.5f, 2.5f, 3.5f));
         }
 
         [Test]
@@ -89,11 +105,37 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenSameVectorBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        {
+            Vector3D vector = new(1.5f, 2.5f, 3.5f);
+
+            Assert.That(vector.Equals((object)new Vector3D(1.5f, 2.5f, 3.5f)));
+        }
+
+        [Test]
         public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             Vector3D vector = new(1.5f, 2.5f, 3.5f);
 
             Assert.That(vector.Equals(DateTime.Now), Is.False);
+        }
+
+        [Test]
+        public void GivenTwoVectorsWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            Vector3D vector1 = new(1.5f, 2.5f, 3.5f);
+            Vector3D vector2 = new(1.5f, 2.5f, 3.5f);
+
+            Assert.That(vector1.GetHashCode(), Is.EqualTo(vector2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoVectorsWithDifferentValues_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            Vector3D vector1 = new(1.5f, 2.5f, 3.5f);
+            Vector3D vector2 = new(1.5f, 2.5f, 4.5f);
+
+            Assert.That(vector1.GetHashCode(), Is.Not.EqualTo(vector2.GetHashCode()));
         }
 
         [Test]
@@ -154,7 +196,7 @@ namespace NuciXNA.Primitives.UnitTests
             Vector3D v1 = new(1.5f, 2.5f, 3.5f);
             Vector3D v2 = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(v1 == v2, Is.True);
+            Assert.That(v1 == v2);
         }
 
         [Test]
@@ -172,7 +214,7 @@ namespace NuciXNA.Primitives.UnitTests
             Vector3D v1 = new(1.5f, 2.5f, 3.5f);
             Vector3D v2 = new(1.5f, 2.5f, 3.6f);
 
-            Assert.That(v1 != v2, Is.True);
+            Assert.That(v1 != v2);
         }
 
         [Test]

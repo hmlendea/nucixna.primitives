@@ -377,7 +377,7 @@ namespace NuciXNA.Primitives
         /// <param name="b">The blue value.</param>
         /// <returns><c>true</c> if the specified ARGB values are equal to the current <see cref="Colour"/>; otherwise, <c>false</c>.</returns>
         public bool Equals(int a, int r, int g, int b)
-            => A.Equals(a) && R.Equals(r) && G.Equals(g) && B.Equals(b);
+            => A == a && R == r && G == g && B == b;
 
         /// <summary>
         /// Determines whether the specified RGB coordinates are equal to the current <see cref="Colour"/>.

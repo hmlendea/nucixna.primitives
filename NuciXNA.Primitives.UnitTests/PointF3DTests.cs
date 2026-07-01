@@ -76,13 +76,29 @@ namespace NuciXNA.Primitives.UnitTests
         {
             PointF3D point = new(0f, 0f, 0f);
 
-            Assert.That(point.IsEmpty, Is.True);
+            Assert.That(point.IsEmpty);
         }
 
         [Test]
         public void GivenNonZeroXCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
         {
             PointF3D point = new(1.0f, 0f, 0f);
+
+            Assert.That(point.IsEmpty, Is.False);
+        }
+
+        [Test]
+        public void GivenNonZeroYCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
+        {
+            PointF3D point = new(0f, 1.0f, 0f);
+
+            Assert.That(point.IsEmpty, Is.False);
+        }
+
+        [Test]
+        public void GivenNonZeroZCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
+        {
+            PointF3D point = new(0f, 0f, 1.0f);
 
             Assert.That(point.IsEmpty, Is.False);
         }
@@ -103,7 +119,7 @@ namespace NuciXNA.Primitives.UnitTests
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(point1.Equals(point2), Is.True);
+            Assert.That(point1.Equals(point2));
         }
 
         [Test]
@@ -120,7 +136,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(point.Equals(1.5f, 2.5f, 3.5f), Is.True);
+            Assert.That(point.Equals(1.5f, 2.5f, 3.5f));
         }
 
         [Test]
@@ -132,11 +148,37 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenSamePointBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        {
+            PointF3D point = new(1.5f, 2.5f, 3.5f);
+
+            Assert.That(point.Equals((object)new PointF3D(1.5f, 2.5f, 3.5f)));
+        }
+
+        [Test]
         public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
             Assert.That(point.Equals(DateTime.Now), Is.False);
+        }
+
+        [Test]
+        public void GivenTwoPointsWithSameCoordinates_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            PointF3D point1 = new(1.5f, 2.5f, 3.5f);
+            PointF3D point2 = new(1.5f, 2.5f, 3.5f);
+
+            Assert.That(point1.GetHashCode(), Is.EqualTo(point2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoPointsWithDifferentCoordinates_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            PointF3D point1 = new(1.5f, 2.5f, 3.5f);
+            PointF3D point2 = new(1.5f, 2.5f, 4.5f);
+
+            Assert.That(point1.GetHashCode(), Is.Not.EqualTo(point2.GetHashCode()));
         }
 
         [Test]
@@ -221,7 +263,7 @@ namespace NuciXNA.Primitives.UnitTests
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(point1 == point2, Is.True);
+            Assert.That(point1 == point2);
         }
 
         [Test]
@@ -239,7 +281,7 @@ namespace NuciXNA.Primitives.UnitTests
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.6f);
 
-            Assert.That(point1 != point2, Is.True);
+            Assert.That(point1 != point2);
         }
 
         [Test]
