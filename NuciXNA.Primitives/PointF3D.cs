@@ -93,6 +93,7 @@ namespace NuciXNA.Primitives
         /// <param name="y">The Y-axis coordinate.</param>
         /// <param name="z">The Z-axis coordinate.</param>
         /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="PointF3D"/>;
+        /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(float x, float y, float z)
             => X.Equals(x) && Y.Equals(y) && Z.Equals(z);
 
@@ -135,7 +136,7 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <param name="source">The first <see cref="PointF3D"/> to subtract.</param>
         /// <param name="other">The second <see cref="PointF3D"/> to subtract.</param>
-        /// <returns>The <see cref="PointF3D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
+        /// <returns>The <see cref="PointF3D"/> whose coordinates are the difference of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF3D operator -(PointF3D source, PointF3D other)
             => new(source.X - other.X,
                        source.Y - other.Y,
@@ -167,6 +168,7 @@ namespace NuciXNA.Primitives
 
         /// <summary>
         /// Multiplies the coordinates of a <see cref="PointF3D"/> by a scalar value,
+        /// yielding a new <see cref="PointF3D"/>.
         /// </summary>
         /// <param name="source">The <see cref="PointF3D"/> to multiply.</param>
         /// <param name="other">The scalar value to multiply with.</param>
@@ -175,8 +177,7 @@ namespace NuciXNA.Primitives
             => new(source.X * other, source.Y * other, source.Z * other);
 
         /// <summary>
-        /// Divides the coordinates of a <see cref="PointF3D"/> by a scalar value,
-        /// </summary>
+        /// Divides the coordinates of a <see cref="PointF3D"/> by a scalar value,        /// yielding a new <see cref="PointF3D"/>.        /// </summary>
         /// <param name="source">The <see cref="PointF3D"/> to divide.</param>
         /// <param name="other">The scalar value to divide with.</param>
         /// <returns>The <see cref="PointF3D"/> whose coordinates are the division of the coordinates of <c>source</c> and <c>other</c>.</returns>

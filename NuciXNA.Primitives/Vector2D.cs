@@ -17,7 +17,7 @@ namespace NuciXNA.Primitives
         /// <summary>
         /// Initializes a new instance of the <see cref="Vector2D"/> structure.
         /// </summary>
-        /// <param name="size">Size.</param>
+        /// <param name="point">The <see cref="Point2D"/> to copy the X and Y values from.</param>
         public Vector2D(Point2D point) : this(point.X, point.Y) { }
 
         /// <summary>
@@ -64,6 +64,7 @@ namespace NuciXNA.Primitives
         /// <param name="x">The X-axis value.</param>
         /// <param name="y">The Y-axis value.</param>
         /// <returns><c>true</c> if the specified <see cref="float"/> values are equal to the current <see cref="Vector2D"/>;
+        /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(float x, float y) =>
             X.Equals(x) &&
             Y.Equals(y);
@@ -112,23 +113,23 @@ namespace NuciXNA.Primitives
             source.Y - other.Y);
 
         /// <summary>
-        /// Multiples the values of a <see cref="Vector2D"/> from those of another <see cref="Vector2D"/>,
+        /// Multiplies the values of a <see cref="Vector2D"/> by those of another <see cref="Vector2D"/>,
         /// yielding a new <see cref="Vector2D"/>.
         /// </summary>
         /// <param name="source">The first <see cref="Vector2D"/> to multiply.</param>
         /// <param name="other">The second <see cref="Vector2D"/> to multiply.</param>
-        /// <returns>The <see cref="Vector2D"/> whose values are the produce of the values of <c>source</c> and <c>other</c>.</returns>
+        /// <returns>The <see cref="Vector2D"/> whose values are the product of the values of <c>source</c> and <c>other</c>.</returns>
         public static Vector2D operator *(Vector2D source, Vector2D other) => new(
             source.X * other.X,
             source.Y * other.Y);
 
         /// <summary>
-        /// Divides the values of a <see cref="Vector2D"/> from those of another <see cref="Vector2D"/>,
+        /// Divides the values of a <see cref="Vector2D"/> by those of another <see cref="Vector2D"/>,
         /// yielding a new <see cref="Vector2D"/>.
         /// </summary>
         /// <param name="source">The first <see cref="Vector2D"/> to divide.</param>
-        /// <param name="other">The second <see cref="Vector2D"/> to divide.</param>
-        /// <returns>The <see cref="Vector2D"/> whose values are the division of the values of <c>source</c> and <c>other</c>.</returns>
+        /// <param name="other">The second <see cref="Vector2D"/> to divide by.</param>
+        /// <returns>The <see cref="Vector2D"/> whose values are the quotient of the values of <c>source</c> and <c>other</c>.</returns>
         public static Vector2D operator /(Vector2D source, Vector2D other) => new(
             source.X / other.X,
             source.Y / other.Y);
@@ -165,10 +166,9 @@ namespace NuciXNA.Primitives
         }
 
         /// <summary>
-        /// Returns a <see cref="string"/> that represents the current <see cref="Vector2D"/>.
+        /// Converts a <see cref="Vector2D"/> to a <see cref="Vector2"/> implicitly.
         /// </summary>
         /// <param name="source">The <see cref="Vector2D"/> to convert.</param>
-        /// <returns>A <see cref="string"/> that represents the current <see cref="Vector2D"/>.</returns>
         public static implicit operator Vector2(Vector2D source) => new(source.X, source.Y);
 
         /// <summary>

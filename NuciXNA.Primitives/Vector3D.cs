@@ -67,6 +67,7 @@ namespace NuciXNA.Primitives
         /// <param name="y">The Y-axis coordinate.</param>
         /// <param name="z">The Z-axis coordinate.</param>
         /// <returns><c>true</c> if the specified <see cref="float"/> values are equal to the current <see cref="Vector3D"/>;
+        /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(float x, float y, float z) =>
             X.Equals(x) &&
             Y.Equals(y) &&
@@ -111,31 +112,31 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <param name="source">The first <see cref="Vector3D"/> to subtract.</param>
         /// <param name="other">The second <see cref="Vector3D"/> to subtract.</param>
-        /// <returns>The <see cref="Vector3D"/> whose values are the sum of the values of <c>source</c> and <c>other</c>.</returns>
+        /// <returns>The <see cref="Vector3D"/> whose values are the difference of the values of <c>source</c> and <c>other</c>.</returns>
         public static Vector3D operator -(Vector3D source, Vector3D other) => new(
             source.X - other.X,
             source.Y - other.Y,
             source.Z - other.Z);
 
         /// <summary>
-        /// Multiples the values of a <see cref="Vector3D"/> from those of another <see cref="Vector3D"/>,
+        /// Multiplies the values of a <see cref="Vector3D"/> by those of another <see cref="Vector3D"/>,
         /// yielding a new <see cref="Vector3D"/>.
         /// </summary>
         /// <param name="source">The first <see cref="Vector3D"/> to multiply.</param>
         /// <param name="other">The second <see cref="Vector3D"/> to multiply.</param>
-        /// <returns>The <see cref="Vector3D"/> whose values are the produce of the values of <c>source</c> and <c>other</c>.</returns>
+        /// <returns>The <see cref="Vector3D"/> whose values are the product of the values of <c>source</c> and <c>other</c>.</returns>
         public static Vector3D operator *(Vector3D source, Vector3D other) => new(
             source.X * other.X,
             source.Y * other.Y,
             source.Z * other.Z);
 
         /// <summary>
-        /// Divides the values of a <see cref="Vector3D"/> from those of another <see cref="Vector3D"/>,
+        /// Divides the values of a <see cref="Vector3D"/> by those of another <see cref="Vector3D"/>,
         /// yielding a new <see cref="Vector3D"/>.
         /// </summary>
         /// <param name="source">The first <see cref="Vector3D"/> to divide.</param>
-        /// <param name="other">The second <see cref="Vector3D"/> to divide.</param>
-        /// <returns>The <see cref="Vector3D"/> whose values are the division of the values of <c>source</c> and <c>other</c>.</returns>
+        /// <param name="other">The second <see cref="Vector3D"/> to divide by.</param>
+        /// <returns>The <see cref="Vector3D"/> whose values are the quotient of the values of <c>source</c> and <c>other</c>.</returns>
         public static Vector3D operator /(Vector3D source, Vector3D other) => new(
             source.X / other.X,
             source.Y / other.Y,

@@ -79,6 +79,7 @@ namespace NuciXNA.Primitives
         /// <param name="x">The X-axis coordinate.</param>
         /// <param name="y">The Y-axis coordinate.</param>
         /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="Point2D"/>;
+        /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(int x, int y) => X.Equals(x) && Y.Equals(y);
 
         /// <summary>
@@ -97,7 +98,7 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <param name="source">The first <see cref="Point2D"/> to subtract.</param>
         /// <param name="other">The second <see cref="Point2D"/> to subtract.</param>
-        /// <returns>The <see cref="Point2D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
+        /// <returns>The <see cref="Point2D"/> whose coordinates are the difference of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static Point2D operator -(Point2D source, Point2D other)
             => new(source.X - other.X, source.Y - other.Y);
 
@@ -133,6 +134,7 @@ namespace NuciXNA.Primitives
 
         /// <summary>
         /// Divides the coordinates of a <see cref="Point2D"/> by an integer value,
+        /// yielding a new <see cref="Point2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="Point2D"/> to divide.</param>
         /// <param name="other">The integer value to divide with.</param>
@@ -174,19 +176,19 @@ namespace NuciXNA.Primitives
         }
 
         /// <summary>
-        /// Returns a <see cref="string"/> that represents the current <see cref="Point2D"/>.
+        /// Converts a <see cref="Point2D"/> to a <see cref="Point"/>.
         /// </summary>
-        /// <param name="source">The <see cref="Point2D"/> to convert to a <see cref="string"/>.</param>
+        /// <param name="source">The <see cref="Point2D"/> to convert to a <see cref="Point"/>.</param>
         public static implicit operator Point(Point2D source) => new(source.X, source.Y);
 
         /// <summary>
-        /// Converts a <see cref="Point"/> to a <see cref="Point2D"/>,
+        /// Converts a <see cref="Point"/> to a <see cref="Point2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="Point"/> to convert to a <see cref="Point2D"/>.</param>
         public static implicit operator Point2D(Point source) => new(source.X, source.Y);
 
         /// <summary>
-        /// Converts a <see cref="Point2D"/> to a <see cref="PointF2D"/>,
+        /// Converts a <see cref="Point2D"/> to a <see cref="PointF2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="Point2D"/> to convert to a <see cref="PointF2D"/>.</param>
         public static implicit operator PointF2D(Point2D source) => new(source.X, source.Y);

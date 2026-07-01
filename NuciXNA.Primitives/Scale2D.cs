@@ -3,7 +3,7 @@
 namespace NuciXNA.Primitives
 {
     /// <summary>
-    /// 2D scale strucure.
+    /// 2D scale structure.
     /// </summary>
     /// <remarks>
     /// Initializes a new instance of the <see cref="Scale2D"/> structure.
@@ -82,6 +82,7 @@ namespace NuciXNA.Primitives
         /// <param name="horizontal">The horizontal scale value.</param>
         /// <param name="vertical">The vertical scale value.</param>
         /// <returns><c>true</c> if the specified horizontal and vertical scale values are equal to the current
+        /// <see cref="Scale2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(float horizontal, float vertical) =>
             Horizontal.Equals(horizontal) &&
             Vertical.Equals(vertical);
@@ -130,51 +131,52 @@ namespace NuciXNA.Primitives
             source.Vertical - other.Vertical);
 
         /// <summary>
-        /// Multiplies the values of a <see cref="Scale2D"/> to those of another <see cref="Scale2D"/>,
+        /// Multiplies the values of a <see cref="Scale2D"/> by those of another <see cref="Scale2D"/>,
         /// yielding a new <see cref="Scale2D"/>.
         /// </summary>
         /// <param name="source">The first <see cref="Scale2D"/>.</param>
         /// <param name="other">The second <see cref="Scale2D"/>.</param>
-        /// <returns>The <see cref="Scale2D"/> that is the produce of the values of <c>source</c> and <c>other</c>.</returns>
+        /// <returns>The <see cref="Scale2D"/> that is the product of the values of <c>source</c> and <c>other</c>.</returns>
         public static Scale2D operator *(Scale2D source, Scale2D other) => new(
             source.Horizontal * other.Horizontal,
             source.Vertical * other.Vertical);
 
         /// <summary>
-        /// Divides the values of a <see cref="Scale2D"/> to those of another <see cref="Scale2D"/>,
+        /// Divides the values of a <see cref="Scale2D"/> by those of another <see cref="Scale2D"/>,
         /// yielding a new <see cref="Scale2D"/>.
         /// </summary>
         /// <param name="source">The first <see cref="Scale2D"/>.</param>
         /// <param name="other">The second <see cref="Scale2D"/>.</param>
-        /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> and <c>other</c>.</returns>
+        /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> by <c>other</c>.</returns>
         public static Scale2D operator /(Scale2D source, Scale2D other) => new(
             source.Horizontal / other.Horizontal,
             source.Vertical / other.Vertical);
 
         /// <summary>
-        /// Multiplies the values of a <see cref="Scale2D"/> to those of an <see cref="int"/>,
+        /// Multiplies the values of a <see cref="Scale2D"/> by an <see cref="int"/> value,
         /// yielding a new <see cref="Scale2D"/>.
         /// </summary>
-        /// <param name="source">The first <see cref="Scale2D"/>.</param>
-        /// <param name="value">The <see cref="int"/> to multiply with.</param>
-        /// <returns>The <see cref="Scale2D"/> that is the produce of the values of <c>source</c> and <c>value</c>.</returns>
+        /// <param name="source">The <see cref="Scale2D"/> to multiply.</param>
+        /// <param name="value">The <see cref="int"/> value to multiply with.</param>
+        /// <returns>The <see cref="Scale2D"/> that is the product of the values of <c>source</c> and <c>value</c>.</returns>
         public static Scale2D operator *(Scale2D source, int value) => new(
             source.Horizontal * value,
             source.Vertical * value);
 
         /// <summary>
-        /// Divides the values of a <see cref="Scale2D"/> to those of an <see cref="int"/>,
+        /// Divides the values of a <see cref="Scale2D"/> by an <see cref="int"/> value,
         /// yielding a new <see cref="Scale2D"/>.
         /// </summary>
-        /// <param name="source">The first <see cref="Scale2D"/>.</param>
-        /// <param name="value">The <see cref="int"/> to divide with.</param>
-        /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> and <c>value</c>.</returns>
+        /// <param name="source">The <see cref="Scale2D"/> to divide.</param>
+        /// <param name="value">The <see cref="int"/> value to divide by.</param>
+        /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> by <c>value</c>.</returns>
         public static Scale2D operator /(Scale2D source, int value) => new(
             source.Horizontal / value,
             source.Vertical / value);
 
         /// <summary>
         /// Multiplies the values of a <see cref="Scale2D"/> by a scalar value,
+        /// yielding a new <see cref="Scale2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="Scale2D"/> to multiply.</param>
         /// <param name="value">The scalar value to multiply with.</param>
@@ -185,10 +187,11 @@ namespace NuciXNA.Primitives
 
         /// <summary>
         /// Divides the values of a <see cref="Scale2D"/> by a scalar value,
+        /// yielding a new <see cref="Scale2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="Scale2D"/> to divide.</param>
-        /// <param name="value">The scalar value to divide with.</param>
-        /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> and <c>value</c>.</returns>
+        /// <param name="value">The scalar value to divide by.</param>
+        /// <returns>The <see cref="Scale2D"/> that is the division of the values of <c>source</c> by <c>value</c>.</returns>
         public static Scale2D operator /(Scale2D source, float value) => new(
             source.Horizontal / value,
             source.Vertical / value);
