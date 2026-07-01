@@ -62,6 +62,30 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenPoint2DAndWidthHeight_WhenConstructing_ThenPropertiesAreSet()
+        {
+            Point2D point = new(1, 2);
+            Rectangle2D rect = new(point, 10, 20);
+
+            Assert.That(rect.X, Is.EqualTo(1));
+            Assert.That(rect.Y, Is.EqualTo(2));
+            Assert.That(rect.Width, Is.EqualTo(10));
+            Assert.That(rect.Height, Is.EqualTo(20));
+        }
+
+        [Test]
+        public void GivenXYAndSize2D_WhenConstructing_ThenPropertiesAreSet()
+        {
+            Size2D size = new(10, 20);
+            Rectangle2D rect = new(1, 2, size);
+
+            Assert.That(rect.X, Is.EqualTo(1));
+            Assert.That(rect.Y, Is.EqualTo(2));
+            Assert.That(rect.Width, Is.EqualTo(10));
+            Assert.That(rect.Height, Is.EqualTo(20));
+        }
+
+        [Test]
         public void GivenAllZeroValues_WhenCheckingIsEmpty_ThenReturnsTrue()
         {
             Rectangle2D rect = new(0, 0, 0, 0);
@@ -184,6 +208,26 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenNewLocation_WhenSettingLocation_ThenXAndYAreUpdated()
+        {
+            Rectangle2D rect = new(1, 2, 10, 20);
+            rect.Location = new Point2D(5, 6);
+
+            Assert.That(rect.X, Is.EqualTo(5));
+            Assert.That(rect.Y, Is.EqualTo(6));
+        }
+
+        [Test]
+        public void GivenNewSize_WhenSettingSize_ThenWidthAndHeightAreUpdated()
+        {
+            Rectangle2D rect = new(1, 2, 10, 20);
+            rect.Size = new Size2D(50, 60);
+
+            Assert.That(rect.Width, Is.EqualTo(50));
+            Assert.That(rect.Height, Is.EqualTo(60));
+        }
+
+        [Test]
         public void GivenPointInsideRectangle_WhenCallingContainsWithXY_ThenReturnsTrue()
         {
             Rectangle2D rect = new(0, 0, 10, 10);
@@ -272,94 +316,6 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
-        {
-            Rectangle2D rect = new(1, 2, 10, 20);
-
-            Assert.That(rect.Equals(DateTime.Now), Is.False);
-        }
-
-        [Test]
-        public void GivenTwoEqualRectangles_WhenUsingEqualityOperator_ThenReturnsTrue()
-        {
-            Rectangle2D rect1 = new(1, 2, 10, 20);
-            Rectangle2D rect2 = new(1, 2, 10, 20);
-
-            Assert.That(rect1 == rect2, Is.True);
-        }
-
-        [Test]
-        public void GivenTwoDifferentRectangles_WhenUsingEqualityOperator_ThenReturnsFalse()
-        {
-            Rectangle2D rect1 = new(1, 2, 10, 20);
-            Rectangle2D rect2 = new(1, 2, 10, 21);
-
-            Assert.That(rect1 == rect2, Is.False);
-        }
-
-        [Test]
-        public void GivenTwoDifferentRectangles_WhenUsingInequalityOperator_ThenReturnsTrue()
-        {
-            Rectangle2D rect1 = new(1, 2, 10, 20);
-            Rectangle2D rect2 = new(1, 2, 10, 21);
-
-            Assert.That(rect1 != rect2, Is.True);
-        }
-
-        [Test]
-        public void GivenTwoEqualRectangles_WhenUsingInequalityOperator_ThenReturnsFalse()
-        {
-            Rectangle2D rect1 = new(1, 2, 10, 20);
-            Rectangle2D rect2 = new(1, 2, 10, 20);
-
-            Assert.That(rect1 != rect2, Is.False);
-        }
-
-        [Test]
-        public void GivenPoint2DAndWidthHeight_WhenConstructing_ThenPropertiesAreSet()
-        {
-            Point2D point = new(1, 2);
-            Rectangle2D rect = new(point, 10, 20);
-
-            Assert.That(rect.X, Is.EqualTo(1));
-            Assert.That(rect.Y, Is.EqualTo(2));
-            Assert.That(rect.Width, Is.EqualTo(10));
-            Assert.That(rect.Height, Is.EqualTo(20));
-        }
-
-        [Test]
-        public void GivenXYAndSize2D_WhenConstructing_ThenPropertiesAreSet()
-        {
-            Size2D size = new(10, 20);
-            Rectangle2D rect = new(1, 2, size);
-
-            Assert.That(rect.X, Is.EqualTo(1));
-            Assert.That(rect.Y, Is.EqualTo(2));
-            Assert.That(rect.Width, Is.EqualTo(10));
-            Assert.That(rect.Height, Is.EqualTo(20));
-        }
-
-        [Test]
-        public void GivenNewLocation_WhenSettingLocation_ThenXAndYAreUpdated()
-        {
-            Rectangle2D rect = new(1, 2, 10, 20);
-            rect.Location = new Point2D(5, 6);
-
-            Assert.That(rect.X, Is.EqualTo(5));
-            Assert.That(rect.Y, Is.EqualTo(6));
-        }
-
-        [Test]
-        public void GivenNewSize_WhenSettingSize_ThenWidthAndHeightAreUpdated()
-        {
-            Rectangle2D rect = new(1, 2, 10, 20);
-            rect.Size = new Size2D(50, 60);
-
-            Assert.That(rect.Width, Is.EqualTo(50));
-            Assert.That(rect.Height, Is.EqualTo(60));
-        }
-
-        [Test]
         public void GivenMatchingXYWidthHeight_WhenCallingEqualsWithXYWidthHeight_ThenReturnsTrue()
             => Assert.That(new Rectangle2D(1, 2, 10, 20).Equals(1, 2, 10, 20), Is.True);
 
@@ -417,6 +373,14 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
+        {
+            Rectangle2D rect = new(1, 2, 10, 20);
+
+            Assert.That(rect.Equals(DateTime.Now), Is.False);
+        }
+
+        [Test]
         public void GivenTwoRectanglesWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
         {
             Rectangle2D rect1 = new(1, 2, 10, 20);
@@ -432,6 +396,42 @@ namespace NuciXNA.Primitives.UnitTests
             Rectangle2D rect2 = new(1, 2, 10, 21);
 
             Assert.That(rect1.GetHashCode(), Is.Not.EqualTo(rect2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoEqualRectangles_WhenUsingEqualityOperator_ThenReturnsTrue()
+        {
+            Rectangle2D rect1 = new(1, 2, 10, 20);
+            Rectangle2D rect2 = new(1, 2, 10, 20);
+
+            Assert.That(rect1 == rect2, Is.True);
+        }
+
+        [Test]
+        public void GivenTwoDifferentRectangles_WhenUsingEqualityOperator_ThenReturnsFalse()
+        {
+            Rectangle2D rect1 = new(1, 2, 10, 20);
+            Rectangle2D rect2 = new(1, 2, 10, 21);
+
+            Assert.That(rect1 == rect2, Is.False);
+        }
+
+        [Test]
+        public void GivenTwoDifferentRectangles_WhenUsingInequalityOperator_ThenReturnsTrue()
+        {
+            Rectangle2D rect1 = new(1, 2, 10, 20);
+            Rectangle2D rect2 = new(1, 2, 10, 21);
+
+            Assert.That(rect1 != rect2, Is.True);
+        }
+
+        [Test]
+        public void GivenTwoEqualRectangles_WhenUsingInequalityOperator_ThenReturnsFalse()
+        {
+            Rectangle2D rect1 = new(1, 2, 10, 20);
+            Rectangle2D rect2 = new(1, 2, 10, 20);
+
+            Assert.That(rect1 != rect2, Is.False);
         }
 
         [Test]

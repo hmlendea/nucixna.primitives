@@ -7,25 +7,6 @@ namespace NuciXNA.Primitives.UnitTests
     public class Size2DTests
     {
         [Test]
-        [TestCase(10, 10, 2, 2, 20, 20)]
-        [TestCase(10, 10, 2.5f, 2.5f, 25, 25)]
-        [TestCase(10, 10, 2.51f, 2.51f, 25, 25)]
-        [TestCase(10, 20, 2.53f, 5.68f, 25, 113)]
-        public void GivenSize2D_WhenMultiplyingByScale2d_ThenTheCorrectValueIsReturned(
-            int width, int height,
-            float horizontalScale, float verticalScale,
-            int expectedWidth, int expectedHeight)
-        {
-            Size2D size = new(width, height);
-            Scale2D scale = new(horizontalScale, verticalScale);
-
-            Size2D expectedSize = size * scale;
-
-            Assert.That(expectedSize.Width, Is.EqualTo(expectedWidth));
-            Assert.That(expectedSize.Height, Is.EqualTo(expectedHeight));
-        }
-
-        [Test]
         public void GivenWidthAndHeight_WhenConstructing_ThenPropertiesAreSet()
         {
             Size2D size = new(10, 20);
@@ -121,11 +102,45 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenNonMatchingDimensions_WhenCallingEqualsWithWidthHeight_ThenReturnsFalse()
+        {
+            Size2D size = new(10, 20);
+
+            Assert.That(size.Equals(10, 99), Is.False);
+        }
+
+        [Test]
+        public void GivenSameSizeBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        {
+            Size2D size = new(10, 20);
+
+            Assert.That(size.Equals((object)new Size2D(10, 20)), Is.True);
+        }
+
+        [Test]
         public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             Size2D size = new(10, 20);
 
             Assert.That(size.Equals(DateTime.Now), Is.False);
+        }
+
+        [Test]
+        public void GivenTwoSizesWithSameDimensions_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            Size2D size1 = new(10, 20);
+            Size2D size2 = new(10, 20);
+
+            Assert.That(size1.GetHashCode(), Is.EqualTo(size2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoSizesWithDifferentDimensions_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            Size2D size1 = new(10, 20);
+            Size2D size2 = new(10, 21);
+
+            Assert.That(size1.GetHashCode(), Is.Not.EqualTo(size2.GetHashCode()));
         }
 
         [Test]
@@ -199,6 +214,25 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        [TestCase(10, 10, 2, 2, 20, 20)]
+        [TestCase(10, 10, 2.5f, 2.5f, 25, 25)]
+        [TestCase(10, 10, 2.51f, 2.51f, 25, 25)]
+        [TestCase(10, 20, 2.53f, 5.68f, 25, 113)]
+        public void GivenSize2D_WhenMultiplyingByScale2d_ThenTheCorrectValueIsReturned(
+            int width, int height,
+            float horizontalScale, float verticalScale,
+            int expectedWidth, int expectedHeight)
+        {
+            Size2D size = new(width, height);
+            Scale2D scale = new(horizontalScale, verticalScale);
+
+            Size2D expectedSize = size * scale;
+
+            Assert.That(expectedSize.Width, Is.EqualTo(expectedWidth));
+            Assert.That(expectedSize.Height, Is.EqualTo(expectedHeight));
+        }
+
+        [Test]
         public void GivenSizeAndScale2D_WhenDividing_ThenReturnsCorrectQuotient()
         {
             Size2D size = new(20, 30);
@@ -244,40 +278,6 @@ namespace NuciXNA.Primitives.UnitTests
             Size2D size2 = new(10, 20);
 
             Assert.That(size1 != size2, Is.False);
-        }
-
-        [Test]
-        public void GivenNonMatchingDimensions_WhenCallingEqualsWithWidthHeight_ThenReturnsFalse()
-        {
-            Size2D size = new(10, 20);
-
-            Assert.That(size.Equals(10, 99), Is.False);
-        }
-
-        [Test]
-        public void GivenSameSizeBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
-        {
-            Size2D size = new(10, 20);
-
-            Assert.That(size.Equals((object)new Size2D(10, 20)), Is.True);
-        }
-
-        [Test]
-        public void GivenTwoSizesWithSameDimensions_WhenGettingHashCode_ThenReturnSameHash()
-        {
-            Size2D size1 = new(10, 20);
-            Size2D size2 = new(10, 20);
-
-            Assert.That(size1.GetHashCode(), Is.EqualTo(size2.GetHashCode()));
-        }
-
-        [Test]
-        public void GivenTwoSizesWithDifferentDimensions_WhenGettingHashCode_ThenReturnDifferentHashes()
-        {
-            Size2D size1 = new(10, 20);
-            Size2D size2 = new(10, 21);
-
-            Assert.That(size1.GetHashCode(), Is.Not.EqualTo(size2.GetHashCode()));
         }
 
         [Test]

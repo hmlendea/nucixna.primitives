@@ -105,11 +105,37 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenSameVectorBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        {
+            Vector3D vector = new(1.5f, 2.5f, 3.5f);
+
+            Assert.That(vector.Equals((object)new Vector3D(1.5f, 2.5f, 3.5f)), Is.True);
+        }
+
+        [Test]
         public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             Vector3D vector = new(1.5f, 2.5f, 3.5f);
 
             Assert.That(vector.Equals(DateTime.Now), Is.False);
+        }
+
+        [Test]
+        public void GivenTwoVectorsWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            Vector3D vector1 = new(1.5f, 2.5f, 3.5f);
+            Vector3D vector2 = new(1.5f, 2.5f, 3.5f);
+
+            Assert.That(vector1.GetHashCode(), Is.EqualTo(vector2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoVectorsWithDifferentValues_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            Vector3D vector1 = new(1.5f, 2.5f, 3.5f);
+            Vector3D vector2 = new(1.5f, 2.5f, 4.5f);
+
+            Assert.That(vector1.GetHashCode(), Is.Not.EqualTo(vector2.GetHashCode()));
         }
 
         [Test]
@@ -222,32 +248,6 @@ namespace NuciXNA.Primitives.UnitTests
             Assert.That(vector3D.X, Is.EqualTo(1.5f));
             Assert.That(vector3D.Y, Is.EqualTo(2.5f));
             Assert.That(vector3D.Z, Is.EqualTo(3.5f));
-        }
-
-        [Test]
-        public void GivenSameVectorBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
-        {
-            Vector3D vector = new(1.5f, 2.5f, 3.5f);
-
-            Assert.That(vector.Equals((object)new Vector3D(1.5f, 2.5f, 3.5f)), Is.True);
-        }
-
-        [Test]
-        public void GivenTwoVectorsWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
-        {
-            Vector3D vector1 = new(1.5f, 2.5f, 3.5f);
-            Vector3D vector2 = new(1.5f, 2.5f, 3.5f);
-
-            Assert.That(vector1.GetHashCode(), Is.EqualTo(vector2.GetHashCode()));
-        }
-
-        [Test]
-        public void GivenTwoVectorsWithDifferentValues_WhenGettingHashCode_ThenReturnDifferentHashes()
-        {
-            Vector3D vector1 = new(1.5f, 2.5f, 3.5f);
-            Vector3D vector2 = new(1.5f, 2.5f, 4.5f);
-
-            Assert.That(vector1.GetHashCode(), Is.Not.EqualTo(vector2.GetHashCode()));
         }
     }
 }

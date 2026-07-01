@@ -112,11 +112,45 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenNonMatchingDimensions_WhenCallingEqualsWithWidthHeight_ThenReturnsFalse()
+        {
+            SizeF2D size = new(3.5f, 7.5f);
+
+            Assert.That(size.Equals(3.5f, 9.9f), Is.False);
+        }
+
+        [Test]
+        public void GivenSameSizeBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        {
+            SizeF2D size = new(3.5f, 7.5f);
+
+            Assert.That(size.Equals((object)new SizeF2D(3.5f, 7.5f)), Is.True);
+        }
+
+        [Test]
         public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             SizeF2D size = new(3.5f, 7.5f);
 
             Assert.That(size.Equals(DateTime.Now), Is.False);
+        }
+
+        [Test]
+        public void GivenTwoSizesWithSameDimensions_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            SizeF2D size1 = new(3.5f, 7.5f);
+            SizeF2D size2 = new(3.5f, 7.5f);
+
+            Assert.That(size1.GetHashCode(), Is.EqualTo(size2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoSizesWithDifferentDimensions_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            SizeF2D size1 = new(3.5f, 7.5f);
+            SizeF2D size2 = new(3.5f, 8.5f);
+
+            Assert.That(size1.GetHashCode(), Is.Not.EqualTo(size2.GetHashCode()));
         }
 
         [Test]
@@ -245,40 +279,6 @@ namespace NuciXNA.Primitives.UnitTests
 
             Assert.That(sizeF2D.Width, Is.EqualTo(3.5f));
             Assert.That(sizeF2D.Height, Is.EqualTo(7.5f));
-        }
-
-        [Test]
-        public void GivenNonMatchingDimensions_WhenCallingEqualsWithWidthHeight_ThenReturnsFalse()
-        {
-            SizeF2D size = new(3.5f, 7.5f);
-
-            Assert.That(size.Equals(3.5f, 9.9f), Is.False);
-        }
-
-        [Test]
-        public void GivenSameSizeBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
-        {
-            SizeF2D size = new(3.5f, 7.5f);
-
-            Assert.That(size.Equals((object)new SizeF2D(3.5f, 7.5f)), Is.True);
-        }
-
-        [Test]
-        public void GivenTwoSizesWithSameDimensions_WhenGettingHashCode_ThenReturnSameHash()
-        {
-            SizeF2D size1 = new(3.5f, 7.5f);
-            SizeF2D size2 = new(3.5f, 7.5f);
-
-            Assert.That(size1.GetHashCode(), Is.EqualTo(size2.GetHashCode()));
-        }
-
-        [Test]
-        public void GivenTwoSizesWithDifferentDimensions_WhenGettingHashCode_ThenReturnDifferentHashes()
-        {
-            SizeF2D size1 = new(3.5f, 7.5f);
-            SizeF2D size2 = new(3.5f, 8.5f);
-
-            Assert.That(size1.GetHashCode(), Is.Not.EqualTo(size2.GetHashCode()));
         }
     }
 }

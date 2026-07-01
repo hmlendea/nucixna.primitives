@@ -148,11 +148,37 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenSamePointBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        {
+            PointF3D point = new(1.5f, 2.5f, 3.5f);
+
+            Assert.That(point.Equals((object)new PointF3D(1.5f, 2.5f, 3.5f)), Is.True);
+        }
+
+        [Test]
         public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
             Assert.That(point.Equals(DateTime.Now), Is.False);
+        }
+
+        [Test]
+        public void GivenTwoPointsWithSameCoordinates_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            PointF3D point1 = new(1.5f, 2.5f, 3.5f);
+            PointF3D point2 = new(1.5f, 2.5f, 3.5f);
+
+            Assert.That(point1.GetHashCode(), Is.EqualTo(point2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoPointsWithDifferentCoordinates_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            PointF3D point1 = new(1.5f, 2.5f, 3.5f);
+            PointF3D point2 = new(1.5f, 2.5f, 4.5f);
+
+            Assert.That(point1.GetHashCode(), Is.Not.EqualTo(point2.GetHashCode()));
         }
 
         [Test]
@@ -265,32 +291,6 @@ namespace NuciXNA.Primitives.UnitTests
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);
 
             Assert.That(point1 != point2, Is.False);
-        }
-
-        [Test]
-        public void GivenSamePointBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
-        {
-            PointF3D point = new(1.5f, 2.5f, 3.5f);
-
-            Assert.That(point.Equals((object)new PointF3D(1.5f, 2.5f, 3.5f)), Is.True);
-        }
-
-        [Test]
-        public void GivenTwoPointsWithSameCoordinates_WhenGettingHashCode_ThenReturnSameHash()
-        {
-            PointF3D point1 = new(1.5f, 2.5f, 3.5f);
-            PointF3D point2 = new(1.5f, 2.5f, 3.5f);
-
-            Assert.That(point1.GetHashCode(), Is.EqualTo(point2.GetHashCode()));
-        }
-
-        [Test]
-        public void GivenTwoPointsWithDifferentCoordinates_WhenGettingHashCode_ThenReturnDifferentHashes()
-        {
-            PointF3D point1 = new(1.5f, 2.5f, 3.5f);
-            PointF3D point2 = new(1.5f, 2.5f, 4.5f);
-
-            Assert.That(point1.GetHashCode(), Is.Not.EqualTo(point2.GetHashCode()));
         }
     }
 }

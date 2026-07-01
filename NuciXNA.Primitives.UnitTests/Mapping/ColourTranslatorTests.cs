@@ -9,16 +9,6 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
     public class ColourTranslatorTests
     {
         [Test]
-        public void GivenColour_WhenCallingToHexadecimal_ThenReturnsCorrectValue()
-        {
-            Colour colour = Colour.ChromeYellow;
-            string expected = "#FCD116";
-            string actual = ColourTranslator.ToHexadecimal(colour);
-
-            Assert.That(actual, Is.EqualTo(expected));
-        }
-
-        [Test]
         public void GivenValidLongHexWithHashAndAlpha_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(255, 0, 255, 255);
@@ -111,33 +101,15 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
             => Assert.Throws<ArgumentNullException>(() => ColourTranslator.FromHexadecimal(null));
 
         [Test]
-        public void GivenColour_WhenCallingToArgb_ThenReturnsCorrectValue()
+        public void GivenColour_WhenCallingToHexadecimal_ThenReturnsCorrectValue()
         {
-            int expected = 67174915;
-            Colour colour = ColourTranslator.FromArgb(expected);
-
-            int actual = ColourTranslator.ToArgb(colour);
+            Colour colour = Colour.ChromeYellow;
+            string expected = "#FCD116";
+            string actual = ColourTranslator.ToHexadecimal(colour);
 
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        [Test]
-        public void GivenRgbComponents_WhenCallingToArgb_ThenReturnsCorrectValue()
-        {
-            int expected = -16711165;
-            int actual = ColourTranslator.ToArgb(1, 2, 3);
-
-            Assert.That(actual, Is.EqualTo(expected));
-        }
-
-        [Test]
-        public void GivenRgbaComponents_WhenCallingToArgb_ThenReturnsCorrectValue()
-        {
-            int expected = -16711165;
-            int actual = ColourTranslator.ToArgb(1, 2, 3, 255);
-
-            Assert.That(actual, Is.EqualTo(expected));
-        }
         [Test]
         public void GivenValidArgbInteger_WhenCallingFromArgb_ThenReturnsCorrectColour()
         {
@@ -185,6 +157,35 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
             Assert.That(result.R, Is.EqualTo(10));
             Assert.That(result.G, Is.EqualTo(20));
             Assert.That(result.B, Is.EqualTo(30));
+        }
+
+        [Test]
+        public void GivenColour_WhenCallingToArgb_ThenReturnsCorrectValue()
+        {
+            int expected = 67174915;
+            Colour colour = ColourTranslator.FromArgb(expected);
+
+            int actual = ColourTranslator.ToArgb(colour);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GivenRgbComponents_WhenCallingToArgb_ThenReturnsCorrectValue()
+        {
+            int expected = -16711165;
+            int actual = ColourTranslator.ToArgb(1, 2, 3);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GivenRgbaComponents_WhenCallingToArgb_ThenReturnsCorrectValue()
+        {
+            int expected = -16711165;
+            int actual = ColourTranslator.ToArgb(1, 2, 3, 255);
+
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
