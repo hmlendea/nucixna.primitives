@@ -35,6 +35,22 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenNonZeroYValue_WhenCheckingIsEmpty_ThenReturnsFalse()
+        {
+            Vector3D vector = new(0f, 1.0f, 0f);
+
+            Assert.That(vector.IsEmpty, Is.False);
+        }
+
+        [Test]
+        public void GivenNonZeroZValue_WhenCheckingIsEmpty_ThenReturnsFalse()
+        {
+            Vector3D vector = new(0f, 0f, 1.0f);
+
+            Assert.That(vector.IsEmpty, Is.False);
+        }
+
+        [Test]
         public void GivenZeroStatic_WhenCheckingValues_ThenAllAreZero()
         {
             Vector3D zero = Vector3D.Zero;

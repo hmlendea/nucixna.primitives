@@ -88,6 +88,22 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenNonZeroYCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
+        {
+            PointF3D point = new(0f, 1.0f, 0f);
+
+            Assert.That(point.IsEmpty, Is.False);
+        }
+
+        [Test]
+        public void GivenNonZeroZCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
+        {
+            PointF3D point = new(0f, 0f, 1.0f);
+
+            Assert.That(point.IsEmpty, Is.False);
+        }
+
+        [Test]
         public void GivenEmptyStatic_WhenCheckingCoordinates_ThenAllAreZero()
         {
             PointF3D empty = PointF3D.Empty;

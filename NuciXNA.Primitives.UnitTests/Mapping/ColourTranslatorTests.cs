@@ -9,7 +9,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
     public class ColourTranslatorTests
     {
         [Test]
-        public void ToHexadecimal_CalledWithColour_ReturnsCorrectValue()
+        public void GivenColour_WhenCallingToHexadecimal_ThenReturnsCorrectValue()
         {
             Colour colour = Colour.ChromeYellow;
             string expected = "#FCD116";
@@ -19,7 +19,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromHexadecimal_ValidHexLongWithHashWithAlpha_ReturnsCorrectColour()
+        public void GivenValidLongHexWithHashAndAlpha_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(255, 0, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("#FFFF00FF");
@@ -28,7 +28,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromHexadecimal_ValidHexLongWithHashWithoutAlpha_ReturnsCorrectColour()
+        public void GivenValidLongHexWithHashWithoutAlpha_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(255, 0, 255);
             Colour actual = ColourTranslator.FromHexadecimal("#FF00FF");
@@ -37,7 +37,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromHexadecimal_ValidHexLongWithoutHashWithAlpha_ReturnsCorrectColour()
+        public void GivenValidLongHexWithoutHashWithAlpha_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(0, 255, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("FF00FFFF");
@@ -46,7 +46,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromHexadecimal_ValidHexLongWithoutHashWithoutAlpha_ReturnsCorrectColour()
+        public void GivenValidLongHexWithoutHashOrAlpha_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(0, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("00FFFF");
@@ -55,7 +55,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromHexadecimal_ValidHexShortWithHashWithAlpha_ReturnsCorrectColour()
+        public void GivenValidShortHexWithHashAndAlpha_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(255, 0, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("#FF0F");
@@ -64,7 +64,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromHexadecimal_ValidHexShortWithHashWithoutAlpha_ReturnsCorrectColour()
+        public void GivenValidShortHexWithHashWithoutAlpha_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(255, 0, 255);
             Colour actual = ColourTranslator.FromHexadecimal("#F0F");
@@ -73,7 +73,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromHexadecimal_ValidHexShortWithoutHashWithAlpha_ReturnsCorrectColour()
+        public void GivenValidShortHexWithoutHashWithAlpha_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(0, 255, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("F0FF");
@@ -82,7 +82,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromHexadecimal_ValidHexShortWithoutHashWithoutAlpha_ReturnsCorrectColour()
+        public void GivenValidShortHexWithoutHashOrAlpha_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(0, 255, 255);
             Colour actual = ColourTranslator.FromHexadecimal("0FF");
@@ -91,23 +91,27 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromHexadecimal_InvalidHexTwoHashes_FormatException()
+        public void GivenHexWithTwoHashes_WhenCallingFromHexadecimal_ThenThrowsFormatException()
             => Assert.Throws<FormatException>(() => ColourTranslator.FromHexadecimal("##0FF"));
 
         [Test]
-        public void FromHexadecimal_InvalidHexDigitsOutsideHexRange__FormatException()
+        public void GivenHexWithDigitsOutsideHexRange_WhenCallingFromHexadecimal_ThenThrowsFormatException()
             => Assert.Throws<FormatException>(() => ColourTranslator.FromHexadecimal("#FZZ"));
 
         [Test]
-        public void FromHexadecimal_InvalidHexTooFewHexes_ArgumentException()
+        public void GivenHexWithTooFewDigits_WhenCallingFromHexadecimal_ThenThrowsArgumentException()
             => Assert.Throws<ArgumentException>(() => ColourTranslator.FromHexadecimal("#FF"));
 
         [Test]
-        public void FromHexadecimal_InvalidHexTooManyHexes_ArgumentException()
+        public void GivenHexWithTooManyDigits_WhenCallingFromHexadecimal_ThenThrowsArgumentException()
             => Assert.Throws<ArgumentException>(() => ColourTranslator.FromHexadecimal("#FF00FF00FF"));
 
         [Test]
-        public void ToArgb_CalledWithColour_ReturnsCorrectValue()
+        public void GivenNullArgument_WhenCallingFromHexadecimal_ThenThrowsArgumentNullException()
+            => Assert.Throws<ArgumentNullException>(() => ColourTranslator.FromHexadecimal(null));
+
+        [Test]
+        public void GivenColour_WhenCallingToArgb_ThenReturnsCorrectValue()
         {
             int expected = 67174915;
             Colour colour = ColourTranslator.FromArgb(expected);
@@ -118,7 +122,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void ToArgb_CalledWithRGB_ReturnsCorrectValue()
+        public void GivenRgbComponents_WhenCallingToArgb_ThenReturnsCorrectValue()
         {
             int expected = -16711165;
             int actual = ColourTranslator.ToArgb(1, 2, 3);
@@ -127,7 +131,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void ToArgb_CalledWithRGBA_ReturnsCorrectValue()
+        public void GivenRgbaComponents_WhenCallingToArgb_ThenReturnsCorrectValue()
         {
             int expected = -16711165;
             int actual = ColourTranslator.ToArgb(1, 2, 3, 255);
@@ -135,7 +139,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
             Assert.That(actual, Is.EqualTo(expected));
         }
         [Test]
-        public void FromArgb_ValidInteger_ReturnsCorrectColour()
+        public void GivenValidArgbInteger_WhenCallingFromArgb_ThenReturnsCorrectColour()
         {
             Colour expected = new(1, 2, 3, 4);
             Colour actual = ColourTranslator.FromArgb(67174915);
@@ -144,7 +148,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromArgb_ValidRGB_ReturnsCorrectColour()
+        public void GivenValidRgbComponents_WhenCallingFromArgb_ThenReturnsCorrectColour()
         {
             Colour expected = new(1, 2, 3);
             Colour actual = ColourTranslator.FromArgb(1, 2, 3);
@@ -153,7 +157,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void FromArgb_ValidARGB_ReturnsCorrectColour()
+        public void GivenValidArgbComponents_WhenCallingFromArgb_ThenReturnsCorrectColour()
         {
             Colour expected = new(1, 2, 3, 0);
             Colour actual = ColourTranslator.FromArgb(0, 1, 2, 3);
