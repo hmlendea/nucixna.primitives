@@ -164,5 +164,43 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
 
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void GivenByteRgbComponents_WhenCallingFromArgb_ThenAlphaIsMaxAndChannelsArePreserved()
+        {
+            Colour result = ColourTranslator.FromArgb((byte)10, (byte)20, (byte)30);
+
+            Assert.That(result.A, Is.EqualTo(255));
+            Assert.That(result.R, Is.EqualTo(10));
+            Assert.That(result.G, Is.EqualTo(20));
+            Assert.That(result.B, Is.EqualTo(30));
+        }
+
+        [Test]
+        public void GivenByteArgbComponents_WhenCallingFromArgb_ThenAllChannelsArePreserved()
+        {
+            Colour result = ColourTranslator.FromArgb((byte)128, (byte)10, (byte)20, (byte)30);
+
+            Assert.That(result.A, Is.EqualTo(128));
+            Assert.That(result.R, Is.EqualTo(10));
+            Assert.That(result.G, Is.EqualTo(20));
+            Assert.That(result.B, Is.EqualTo(30));
+        }
+
+        [Test]
+        public void GivenByteRgbComponents_WhenCallingToArgb_ThenReturnsCorrectValue()
+        {
+            int result = ColourTranslator.ToArgb((byte)1, (byte)2, (byte)3);
+
+            Assert.That(result, Is.EqualTo(-16711165));
+        }
+
+        [Test]
+        public void GivenByteArgbComponents_WhenCallingToArgb_ThenReturnsCorrectValue()
+        {
+            int result = ColourTranslator.ToArgb((byte)1, (byte)2, (byte)3, (byte)255);
+
+            Assert.That(result, Is.EqualTo(-16711165));
+        }
     }
 }

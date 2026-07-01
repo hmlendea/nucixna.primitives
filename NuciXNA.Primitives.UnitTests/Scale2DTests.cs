@@ -248,5 +248,39 @@ namespace NuciXNA.Primitives.UnitTests
 
             Assert.That(scale1 != scale2, Is.False);
         }
+
+        [Test]
+        public void GivenNonMatchingValues_WhenCallingEqualsWithHorizontalVertical_ThenReturnsFalse()
+        {
+            Scale2D scale = new(2.0f, 3.0f);
+
+            Assert.That(scale.Equals(2.0f, 9.9f), Is.False);
+        }
+
+        [Test]
+        public void GivenSameScaleBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        {
+            Scale2D scale = new(2.0f, 3.0f);
+
+            Assert.That(scale.Equals((object)new Scale2D(2.0f, 3.0f)), Is.True);
+        }
+
+        [Test]
+        public void GivenTwoScalesWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            Scale2D scale1 = new(2.0f, 3.0f);
+            Scale2D scale2 = new(2.0f, 3.0f);
+
+            Assert.That(scale1.GetHashCode(), Is.EqualTo(scale2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoScalesWithDifferentValues_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            Scale2D scale1 = new(2.0f, 3.0f);
+            Scale2D scale2 = new(2.0f, 4.0f);
+
+            Assert.That(scale1.GetHashCode(), Is.Not.EqualTo(scale2.GetHashCode()));
+        }
     }
 }

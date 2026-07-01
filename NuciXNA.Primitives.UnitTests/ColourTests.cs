@@ -333,5 +333,112 @@ namespace NuciXNA.Primitives.UnitTests
 
             Assert.That(colour1.GetHashCode(), Is.Not.EqualTo(colour2.GetHashCode()));
         }
+
+        [Test]
+        public void GivenTwoDifferentColours_WhenUsingInequalityOperator_ThenReturnsTrue()
+            => Assert.That(Colour.Black != Colour.White, Is.True);
+
+        [Test]
+        public void GivenTwoIdenticalColours_WhenUsingInequalityOperator_ThenReturnsFalse()
+            => Assert.That(Colour.Black != Colour.Black, Is.False);
+
+        [Test]
+        public void GivenColour_WhenCastingToInt_ThenReturnsArgbInteger()
+        {
+            Colour colour = new(1, 2, 3, 4);
+            int result = (int)colour;
+
+            Assert.That(result, Is.EqualTo(67174915));
+        }
+
+        [Test]
+        public void GivenArgbInteger_WhenCastingToColour_ThenReturnsCorrectColour()
+        {
+            Colour result = (Colour)67174915;
+
+            Assert.That(result.A, Is.EqualTo(4));
+            Assert.That(result.R, Is.EqualTo(1));
+            Assert.That(result.G, Is.EqualTo(2));
+            Assert.That(result.B, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void GivenColour_WhenCastingToString_ThenReturnsHexadecimalString()
+        {
+            Colour colour = new(255, 0, 0);
+            string result = (string)colour;
+
+            Assert.That(result, Is.EqualTo("#FF0000"));
+        }
+
+        [Test]
+        public void GivenHexString_WhenCastingToColour_ThenReturnsCorrectColour()
+        {
+            Colour result = (Colour)"#FF0000";
+
+            Assert.That(result.R, Is.EqualTo(255));
+            Assert.That(result.G, Is.EqualTo(0));
+            Assert.That(result.B, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void GivenMatchingArgbValues_WhenCallingEqualsWithArgb_ThenReturnsTrue()
+            => Assert.That(new Colour(1, 2, 3, 4).Equals(4, 1, 2, 3), Is.True);
+
+        [Test]
+        public void GivenNonMatchingArgbValues_WhenCallingEqualsWithArgb_ThenReturnsFalse()
+            => Assert.That(new Colour(1, 2, 3, 4).Equals(4, 1, 2, 99), Is.False);
+
+        [Test]
+        public void GivenMatchingRgbValues_WhenCallingEqualsWithRgb_ThenReturnsTrue()
+            => Assert.That(new Colour(1, 2, 3).Equals(1, 2, 3), Is.True);
+
+        [Test]
+        public void GivenNonMatchingRgbValues_WhenCallingEqualsWithRgb_ThenReturnsFalse()
+            => Assert.That(new Colour(1, 2, 3).Equals(1, 2, 99), Is.False);
+
+        [Test]
+        public void GivenByteRgb_WhenCallingFromArgb_ThenReturnsCorrectColour()
+        {
+            Colour result = Colour.FromArgb((byte)10, (byte)20, (byte)30);
+
+            Assert.That(result.R, Is.EqualTo(10));
+            Assert.That(result.G, Is.EqualTo(20));
+            Assert.That(result.B, Is.EqualTo(30));
+            Assert.That(result.A, Is.EqualTo(255));
+        }
+
+        [Test]
+        public void GivenByteArgb_WhenCallingFromArgb_ThenReturnsCorrectColour()
+        {
+            Colour result = Colour.FromArgb((byte)128, (byte)10, (byte)20, (byte)30);
+
+            Assert.That(result.A, Is.EqualTo(128));
+            Assert.That(result.R, Is.EqualTo(10));
+            Assert.That(result.G, Is.EqualTo(20));
+            Assert.That(result.B, Is.EqualTo(30));
+        }
+
+        [Test]
+        public void GivenTransparentColour_WhenCheckingComponents_ThenAlphaIsZero()
+            => Assert.That(Colour.Transparent.A, Is.EqualTo(0));
+
+        [Test]
+        public void GivenBlackColour_WhenCheckingComponents_ThenRgbAreZeroAndAlphaIsMax()
+        {
+            Assert.That(Colour.Black.R, Is.EqualTo(0));
+            Assert.That(Colour.Black.G, Is.EqualTo(0));
+            Assert.That(Colour.Black.B, Is.EqualTo(0));
+            Assert.That(Colour.Black.A, Is.EqualTo(255));
+        }
+
+        [Test]
+        public void GivenRedColour_WhenCheckingComponents_ThenOnlyRedChannelIsMax()
+        {
+            Assert.That(Colour.Red.R, Is.EqualTo(255));
+            Assert.That(Colour.Red.G, Is.EqualTo(0));
+            Assert.That(Colour.Red.B, Is.EqualTo(0));
+            Assert.That(Colour.Red.A, Is.EqualTo(255));
+        }
     }
 }

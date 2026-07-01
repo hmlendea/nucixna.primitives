@@ -240,5 +240,23 @@ namespace NuciXNA.Primitives.UnitTests
             Assert.That(pointF2D.X, Is.EqualTo(3f));
             Assert.That(pointF2D.Y, Is.EqualTo(7f));
         }
+
+        [Test]
+        public void GivenTwoPointsWithSameCoordinates_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            Point2D point1 = new(3, 7);
+            Point2D point2 = new(3, 7);
+
+            Assert.That(point1.GetHashCode(), Is.EqualTo(point2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoPointsWithDifferentCoordinates_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            Point2D point1 = new(3, 7);
+            Point2D point2 = new(3, 8);
+
+            Assert.That(point1.GetHashCode(), Is.Not.EqualTo(point2.GetHashCode()));
+        }
     }
 }

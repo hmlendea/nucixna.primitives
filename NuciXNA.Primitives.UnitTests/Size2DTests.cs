@@ -245,5 +245,72 @@ namespace NuciXNA.Primitives.UnitTests
 
             Assert.That(size1 != size2, Is.False);
         }
+
+        [Test]
+        public void GivenNonMatchingDimensions_WhenCallingEqualsWithWidthHeight_ThenReturnsFalse()
+        {
+            Size2D size = new(10, 20);
+
+            Assert.That(size.Equals(10, 99), Is.False);
+        }
+
+        [Test]
+        public void GivenSameSizeBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        {
+            Size2D size = new(10, 20);
+
+            Assert.That(size.Equals((object)new Size2D(10, 20)), Is.True);
+        }
+
+        [Test]
+        public void GivenTwoSizesWithSameDimensions_WhenGettingHashCode_ThenReturnSameHash()
+        {
+            Size2D size1 = new(10, 20);
+            Size2D size2 = new(10, 20);
+
+            Assert.That(size1.GetHashCode(), Is.EqualTo(size2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenTwoSizesWithDifferentDimensions_WhenGettingHashCode_ThenReturnDifferentHashes()
+        {
+            Size2D size1 = new(10, 20);
+            Size2D size2 = new(10, 21);
+
+            Assert.That(size1.GetHashCode(), Is.Not.EqualTo(size2.GetHashCode()));
+        }
+
+        [Test]
+        public void GivenSize2D_WhenConvertingToSystemSize_ThenDimensionsArePreserved()
+        {
+            Size2D size2D = new(12, 34);
+
+            System.Drawing.Size systemSize = size2D;
+
+            Assert.That(systemSize.Width, Is.EqualTo(12));
+            Assert.That(systemSize.Height, Is.EqualTo(34));
+        }
+
+        [Test]
+        public void GivenSystemSize_WhenConvertingToSize2D_ThenDimensionsArePreserved()
+        {
+            System.Drawing.Size systemSize = new(12, 34);
+
+            Size2D size2D = systemSize;
+
+            Assert.That(size2D.Width, Is.EqualTo(12));
+            Assert.That(size2D.Height, Is.EqualTo(34));
+        }
+
+        [Test]
+        public void GivenSize2D_WhenConvertingToSizeF2D_ThenDimensionsArePreserved()
+        {
+            Size2D size2D = new(12, 34);
+
+            SizeF2D sizeF2D = size2D;
+
+            Assert.That(sizeF2D.Width, Is.EqualTo(12f));
+            Assert.That(sizeF2D.Height, Is.EqualTo(34f));
+        }
     }
 }
