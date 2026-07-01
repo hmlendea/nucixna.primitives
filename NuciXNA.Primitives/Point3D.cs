@@ -42,7 +42,7 @@ namespace NuciXNA.Primitives
         /// Gets a value indicating whether the coordinates of this <see cref="Point3D"/> are zero.
         /// </summary>
         /// <value><c>true</c> if the coorinates are zero; otherwise, <c>false</c>.</value>
-        public readonly bool IsEmpty => X == 0 && Y == 0;
+        public readonly bool IsEmpty => X == 0 && Y == 0 && Z == 0;
 
         /// <summary>
         /// Gets a <see cref="Point3D"/> with the coordinates of zero.
@@ -57,7 +57,7 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="Point3D"/> is equal to the current <see cref="Point3D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Point3D other)
-            => Equals(X, other.X) && Equals(Y, other.Y) && Equals(Z, other.Z);
+            => X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
 
         /// <summary>
         /// Determines whether the specified coordinates are equal to the current <see cref="Point3D"/>.

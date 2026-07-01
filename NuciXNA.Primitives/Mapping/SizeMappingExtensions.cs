@@ -28,14 +28,14 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <param name="source">Source <see cref="Size2D"/>.</param>
         /// <returns>The <see cref="SystemSize"/>.</returns>
-        public static SystemSize ToSystemPoint(this Size2D source) => new(source.Width, source.Height);
+        public static SystemSize ToSystemSize(this Size2D source) => new(source.Width, source.Height);
 
         /// <summary>
         /// Converts a <see cref="XnaPoint"/> to a <see cref="SystemSize"/>.
         /// </summary>
         /// <param name="source">Source <see cref="XnaPoint"/>.</param>
         /// <returns>The <see cref="SystemSize"/>.</returns>
-        public static SystemSize ToSystemPoint(this XnaPoint source) => new(source.X, source.Y);
+        public static SystemSize ToSystemSize(this XnaPoint source) => new(source.X, source.Y);
 
         /// <summary>
         /// Converts a <see cref="Size2D"/> to a <see cref="XnaPoint"/>.

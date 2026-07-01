@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 using NuciXNA.Primitives.Mapping;
 
@@ -299,7 +298,7 @@ namespace NuciXNA.Primitives
         /// <returns>A monochrome colour.</returns>
         public Colour ToMonochromeLight()
         {
-            int lightest = new int[] { R, G, B }.Max();
+            int lightest = Math.Max(R, Math.Max(G, B));
 
             return new Colour(lightest, lightest, lightest, A);
         }
@@ -310,7 +309,7 @@ namespace NuciXNA.Primitives
         /// <returns>A monochrome colour.</returns>
         public Colour ToMonochromeDark()
         {
-            int darkest = new int[] { R, G, B }.Min();
+            int darkest = Math.Min(R, Math.Min(G, B));
 
             return new Colour(darkest, darkest, darkest, A);
         }
@@ -394,7 +393,17 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <param name="hexa">The hexadecimal code to compare with the current <see cref="Colour"/>.</param>
         /// <returns><c>true</c> if the specified hexadecimal code is equal to the current <see cref="Colour"/>; otherwise, <c>false</c>.</returns>
-        public bool Equals(string hexa) => Equals(FromHexadecimal(hexa));
+        public bool Equals(string hexa)
+        {
+            try
+            {
+                return Equals(FromHexadecimal(hexa));
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+        }
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="Colour"/>.
@@ -428,16 +437,7 @@ namespace NuciXNA.Primitives
         /// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a
         /// hash table.</returns>
         public override int GetHashCode()
-        {
-            unchecked
-            {
-                return
-                    A.GetHashCode() ^
-                    R.GetHashCode() ^
-                    G.GetHashCode() ^
-                    B.GetHashCode();
-            }
-        }
+            => HashCode.Combine(A, R, G, B);
 
         /// <summary>
         /// Multiplies a specified colour by a scalar factor.
