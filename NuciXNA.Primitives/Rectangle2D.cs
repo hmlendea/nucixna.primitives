@@ -6,7 +6,7 @@ using XnaRectangle = Microsoft.Xna.Framework.Rectangle;
 namespace NuciXNA.Primitives
 {
     /// <summary>
-    /// 2D rectangle structure
+    /// 2D rectangle structure.
     /// </summary>
     /// <remarks>
     /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
@@ -140,26 +140,31 @@ namespace NuciXNA.Primitives
         /// <summary>
         /// Gets the centre point of the rectangle.
         /// </summary>
+        /// <value>The point at the centre of the rectangle.</value>
         public readonly Point2D Centre => new(X + Width / 2, Y + Height / 2);
 
         /// <summary>
         /// Gets the top-left corner of the rectangle.
         /// </summary>
+        /// <value>The top-left corner point.</value>
         public readonly Point2D TopLeft => Location;
 
         /// <summary>
         /// Gets the top-right corner of the rectangle.
         /// </summary>
+        /// <value>The top-right corner point.</value>
         public readonly Point2D TopRight => new(Right, Top);
 
         /// <summary>
         /// Gets the bottom-left corner of the rectangle.
         /// </summary>
+        /// <value>The bottom-left corner point.</value>
         public readonly Point2D BottomLeft => new(Left, Bottom);
 
         /// <summary>
         /// Gets the bottom-right corner of the rectangle.
         /// </summary>
+        /// <value>The bottom-right corner point.</value>
         public readonly Point2D BottomRight => new(Right, Bottom);
 
         /// <summary>
@@ -172,7 +177,7 @@ namespace NuciXNA.Primitives
         /// Checks whether the specified <see cref="Rectangle2D"/> contains a set of coordinates.
         /// </summary>
         /// <param name="x">The X-axis coordinate.</param>
-        /// <param name="x">The Y-axis coordinate.</param>
+        /// <param name="y">The Y-axis coordinate.</param>
         /// <returns><c>true</c> if the specified set of coordinates are inside the rectangle area;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Contains(int x, int y)
@@ -213,9 +218,10 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <param name="x">The X-axis coordinate.</param>
         /// <param name="y">The Y-axis coordinate.</param>
-        /// <param name="width">Width.</param>
-        /// <param name="height">Height.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
         /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="Rectangle2D"/>;
+        /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(int x, int y, int width, int height)
             => X.Equals(x) && Y.Equals(y) && Width.Equals(width) && Height.Equals(height);
 
@@ -250,7 +256,7 @@ namespace NuciXNA.Primitives
         /// <param name="x">The X-axis coordinate.</param>
         /// <param name="y">The Y-axis coordinate.</param>
         /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if the specified coordinates and <see cref="Size2D"/> are equal to the current <see cref="Rectangle2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(int x, int y, Size2D size) =>
             X.Equals(x) &&
             Y.Equals(y) &&

@@ -3,11 +3,16 @@ using System.Drawing;
 
 namespace NuciXNA.Primitives.Mapping
 {
+    /// <summary>
+    /// Provides methods for converting between <see cref="Colour"/> and various colour representations
+    /// such as ARGB integers and hexadecimal strings.
+    /// </summary>
     public static class ColourTranslator
     {
         /// <summary>
-        /// Converts the colour to hexadecimal.
+        /// Converts the colour to its hexadecimal string representation.
         /// </summary>
+        /// <param name="colour">The colour to convert.</param>
         /// <returns>The hexadecimal code.</returns>
         public static string ToHexadecimal(Colour colour)
         {

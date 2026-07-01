@@ -16,19 +16,19 @@ namespace NuciXNA.Primitives
         /// <summary>
         /// Initializes a new instance of the <see cref="PointF2D"/> structure.
         /// </summary>
-        /// <param name="point">The <see cref="PointF"/> to copy the X and Y coordinates from.</param>
+        /// <param name="point">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
         public PointF2D(Point2D point) : this(point.X, point.Y) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PointF2D"/> structure.
         /// </summary>
-        /// <param name="size">Size.</param>
+        /// <param name="size">The <see cref="SizeF2D"/> to copy the width and height from.</param>
         public PointF2D(SizeF2D size) : this(size.Width, size.Height) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PointF2D"/> structure.
         /// </summary>
-        /// <param name="size">Size.</param>
+        /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
         public PointF2D(Size2D size) : this(size.Width, size.Height) { }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <param name="source">The first <see cref="PointF2D"/> to subtract.</param>
         /// <param name="other">The second <see cref="PointF2D"/> to subtract.</param>
-        /// <returns>The <see cref="PointF2D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
+        /// <returns>The <see cref="PointF2D"/> whose coordinates are the difference of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static PointF2D operator -(PointF2D source, PointF2D other) => new(
             source.X - other.X,
             source.Y - other.Y);
@@ -141,6 +141,7 @@ namespace NuciXNA.Primitives
 
         /// <summary>
         /// Multiplies the values of a <see cref="PointF2D"/> by a scalar value,
+        /// yielding a new <see cref="PointF2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="PointF2D"/> to multiply.</param>
         /// <param name="other">The scalar value to multiply with.</param>
@@ -151,6 +152,7 @@ namespace NuciXNA.Primitives
 
         /// <summary>
         /// Divides the values of a <see cref="PointF2D"/> by a scalar value,
+        /// yielding a new <see cref="PointF2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="PointF2D"/> to divide.</param>
         /// <param name="other">The scalar value to divide with.</param>
@@ -191,13 +193,13 @@ namespace NuciXNA.Primitives
         }
 
         /// <summary>
-        /// Converts a <see cref="PointF2D"/> to a <see cref="PointF"/>,
+        /// Converts a <see cref="PointF2D"/> to a <see cref="PointF"/>.
         /// </summary>
         /// <param name="source">The <see cref="PointF2D"/> to convert.</param>
         public static implicit operator PointF(PointF2D source) => new(source.X, source.Y);
 
         /// <summary>
-        /// Converts a <see cref="PointF"/> to a <see cref="PointF2D"/>,
+        /// Converts a <see cref="PointF"/> to a <see cref="PointF2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="PointF"/> to convert.</param>
         public static implicit operator PointF2D(PointF source) => new(source.X, source.Y);

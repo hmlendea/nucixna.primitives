@@ -52,6 +52,7 @@ namespace NuciXNA.Primitives
         /// <summary>
         /// Gets the perimeter.
         /// </summary>
+        /// <value>The perimeter of the rectangle described by this size.</value>
         public readonly double Perimeter => Width * 2 + Height * 2;
 
         /// <summary>
@@ -82,6 +83,7 @@ namespace NuciXNA.Primitives
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
         /// <returns><c>true</c> if the specified width and height are equal to the current <see cref="SizeF2D"/>;
+        /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(float width, float height) =>
             Width.Equals(width) &&
             Height.Equals(height);
@@ -130,7 +132,8 @@ namespace NuciXNA.Primitives
             source.Height - other.Height);
 
         /// <summary>
-        /// Multiplies the values of a <see cref="SizeF2D"/> from those of another <see cref="SizeF2D"/>,
+        /// Multiplies the values of a <see cref="SizeF2D"/> by those of another <see cref="SizeF2D"/>,
+        /// yielding a new <see cref="SizeF2D"/>.
         /// </summary>
         /// <param name="source">The first <see cref="SizeF2D"/> to multiply.</param>
         /// <param name="other">The second <see cref="SizeF2D"/> to multiply.</param>
@@ -140,10 +143,11 @@ namespace NuciXNA.Primitives
             source.Height * other.Height);
 
         /// <summary>
-        /// Divides the values of a <see cref="SizeF2D"/> from those of another <see cref="SizeF2D"/>,
+        /// Divides the values of a <see cref="SizeF2D"/> by those of another <see cref="SizeF2D"/>,
+        /// yielding a new <see cref="SizeF2D"/>.
         /// </summary>
         /// <param name="source">The first <see cref="SizeF2D"/> to divide.</param>
-        /// <param name="other">The second <see cref="SizeF2D"/> to divide.</param>
+        /// <param name="other">The second <see cref="SizeF2D"/> to divide by.</param>
         /// <returns>The <see cref="SizeF2D"/> whose values are the quotient of the values of <c>source</c> and <c>other</c>.</returns>
         public static SizeF2D operator /(SizeF2D source, SizeF2D other) => new(
             source.Width / other.Width,
@@ -151,6 +155,7 @@ namespace NuciXNA.Primitives
 
         /// <summary>
         /// Multiplies the values of a <see cref="SizeF2D"/> by a scalar value,
+        /// yielding a new <see cref="SizeF2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="SizeF2D"/> to multiply.</param>
         /// <param name="other">The scalar value to multiply with.</param>
@@ -161,9 +166,10 @@ namespace NuciXNA.Primitives
 
         /// <summary>
         /// Divides the values of a <see cref="SizeF2D"/> by a scalar value,
+        /// yielding a new <see cref="SizeF2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="SizeF2D"/> to divide.</param>
-        /// <param name="other">The scalar value to divide with.</param>
+        /// <param name="other">The scalar value to divide by.</param>
         /// <returns>The <see cref="SizeF2D"/> whose values are the quotient of the values of <c>source</c> and <c>other</c>.</returns>
         public static SizeF2D operator /(SizeF2D source, float other) => new(
             source.Width / other,

@@ -3,7 +3,7 @@
 namespace NuciXNA.Primitives
 {
     /// <summary>
-    /// 2D orthogonal coordinates structure.
+    /// 3D orthogonal coordinates structure.
     /// </summary>
     /// <remarks>
     /// Initializes a new instance of the <see cref="Point3D"/> structure.
@@ -109,7 +109,7 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <param name="source">The first <see cref="Point3D"/> to subtract.</param>
         /// <param name="other">The second <see cref="Point3D"/> to subtract.</param>
-        /// <returns>The <see cref="Point3D"/> whose coordinates are the sum of the coordinates of <c>source</c> and <c>other</c>.</returns>
+        /// <returns>The <see cref="Point3D"/> whose coordinates are the difference of the coordinates of <c>source</c> and <c>other</c>.</returns>
         public static Point3D operator -(Point3D source, Point3D other) => new(
             source.X - other.X,
             source.Y - other.Y,
