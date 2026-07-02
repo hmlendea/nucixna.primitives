@@ -62,6 +62,42 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
+        public void GivenGrayColour_WhenCheckingComponents_ThenRgbAreEqualTo128AndAlphaIsMax()
+        {
+            Assert.That(Colour.Gray.R, Is.EqualTo(128));
+            Assert.That(Colour.Gray.G, Is.EqualTo(128));
+            Assert.That(Colour.Gray.B, Is.EqualTo(128));
+            Assert.That(Colour.Gray.A, Is.EqualTo(255));
+        }
+
+        [Test]
+        public void GivenMaroonColour_WhenCheckingComponents_ThenOnlyRedIs128AndAlphaIsMax()
+        {
+            Assert.That(Colour.Maroon.R, Is.EqualTo(128));
+            Assert.That(Colour.Maroon.G, Is.EqualTo(0));
+            Assert.That(Colour.Maroon.B, Is.EqualTo(0));
+            Assert.That(Colour.Maroon.A, Is.EqualTo(255));
+        }
+
+        [Test]
+        public void GivenNavyColour_WhenCheckingComponents_ThenOnlyBlueIs128AndAlphaIsMax()
+        {
+            Assert.That(Colour.Navy.R, Is.EqualTo(0));
+            Assert.That(Colour.Navy.G, Is.EqualTo(0));
+            Assert.That(Colour.Navy.B, Is.EqualTo(128));
+            Assert.That(Colour.Navy.A, Is.EqualTo(255));
+        }
+
+        [Test]
+        public void GivenPurpleColour_WhenCheckingComponents_ThenRedAndBlueAre128AndAlphaIsMax()
+        {
+            Assert.That(Colour.Purple.R, Is.EqualTo(128));
+            Assert.That(Colour.Purple.G, Is.EqualTo(0));
+            Assert.That(Colour.Purple.B, Is.EqualTo(128));
+            Assert.That(Colour.Purple.A, Is.EqualTo(255));
+        }
+
+        [Test]
         public void GivenHexString_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(255, 0, 0);
