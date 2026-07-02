@@ -107,14 +107,22 @@ namespace NuciXNA.Primitives
         public static Colour DodgerBlue => new(30, 144, 255, 255);
         /// <summary>The Gold colour (#FFD700).</summary>
         public static Colour Gold => new(255, 215, 0, 255);
+        /// <summary>The Gray colour (#808080).</summary>
+        public static Colour Gray => new(128, 128, 128, 255);
         /// <summary>The Green colour (#00FF00).</summary>
         public static Colour Green => new(0, 255, 0, 255);
+        /// <summary>The Maroon colour (#800000).</summary>
+        public static Colour Maroon => new(128, 0, 0, 255);
+        /// <summary>The Navy colour (#000080).</summary>
+        public static Colour Navy => new(0, 0, 128, 255);
         /// <summary>The Olive colour (#808000).</summary>
         public static Colour Olive => new(128, 128, 0, 255);
         /// <summary>The Olive Drab colour (#6B8E2D).</summary>
         public static Colour OliveDrab => new(107, 142, 45, 255);
         /// <summary>The Orange colour (#FFA500).</summary>
         public static Colour Orange => new(255, 165, 0, 255);
+        /// <summary>The Purple colour (#800080).</summary>
+        public static Colour Purple => new(128, 0, 128, 255);
         /// <summary>The Red colour (#FF0000).</summary>
         public static Colour Red => new(255, 0, 0, 255);
         /// <summary>The Royal Blue colour (#4169FF).</summary>
