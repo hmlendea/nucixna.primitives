@@ -239,6 +239,7 @@ namespace NuciXNA.Primitives
         /// Converts a <see cref="Size2D"/> to a <see cref="SizeF2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="Size2D"/> to convert.</param>
-        public static implicit operator SizeF2D(Size2D source) => new(source.Width, source.Height);
+        public static implicit operator SizeF2D(Size2D source)
+            => new(source.Width, source.Height);
     }
 }

@@ -229,7 +229,8 @@ namespace NuciXNA.Primitives
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(byte r, byte g, byte b) => ColourTranslator.FromArgb(r, g, b);
+        public static Colour FromArgb(byte r, byte g, byte b)
+            => ColourTranslator.FromArgb(r, g, b);
 
         /// <summary>
         /// Creates a colour from RGB values.
@@ -238,7 +239,8 @@ namespace NuciXNA.Primitives
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(int r, int g, int b) => ColourTranslator.FromArgb(r, g, b);
+        public static Colour FromArgb(int r, int g, int b)
+            => ColourTranslator.FromArgb(r, g, b);
 
         /// <summary>
         /// Creates a colour from ARGB values.
@@ -248,7 +250,8 @@ namespace NuciXNA.Primitives
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(byte a, byte r, byte g, byte b) => ColourTranslator.FromArgb(a, r, g, b);
+        public static Colour FromArgb(byte a, byte r, byte g, byte b)
+            => ColourTranslator.FromArgb(a, r, g, b);
 
         /// <summary>
         /// Creates a colour from ARGB values.
@@ -258,14 +261,16 @@ namespace NuciXNA.Primitives
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(int a, int r, int g, int b) => ColourTranslator.FromArgb(a, r, g, b);
+        public static Colour FromArgb(int a, int r, int g, int b)
+            => ColourTranslator.FromArgb(a, r, g, b);
 
         /// <summary>
         /// Creates a colour from a hexadecimal code.
         /// </summary>
         /// <returns>The colour.</returns>
         /// <param name="hexa">Hexadecimal code.</param>
-        public static Colour FromHexadecimal(string hexa) => ColourTranslator.FromHexadecimal(hexa);
+        public static Colour FromHexadecimal(string hexa)
+            => ColourTranslator.FromHexadecimal(hexa);
 
         /// <summary>
         /// Converts the colour to a 32 bit integer.
@@ -478,20 +483,24 @@ namespace NuciXNA.Primitives
         public static explicit operator int(Colour self)
             => self.ToArgb();
 
+        /// <summary>
+        /// Converts a <see cref="Colour"/> to its hexadecimal string representation.
+        /// </summary>
+        /// <param name="self">Colour to convert.</param>
         public static explicit operator string(Colour self)
             => self.ToString();
 
         /// <summary>
         /// Converts an ARGB integer to a <see cref="Colour"/>.
         /// </summary>
-        /// <param name="argb"></param>
+        /// <param name="argb">The ARGB integer.</param>
         public static explicit operator Colour(int argb)
             => FromArgb(argb);
 
         /// <summary>
         /// Converts a hexadecimal string to a <see cref="Colour"/>.
         /// </summary>
-        /// <param name="hexadecimal"></param>
+        /// <param name="hexadecimal">The hexadecimal string.</param>
         public static explicit operator Colour(string hexadecimal)
             => FromHexadecimal(hexadecimal);
     }

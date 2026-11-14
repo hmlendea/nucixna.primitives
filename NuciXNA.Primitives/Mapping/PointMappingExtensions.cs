@@ -22,7 +22,8 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <param name="source">Source <see cref="Vector2"/>.</param>
         /// <returns>The <see cref="Point2D"/>.</returns>
-        public static Point2D ToPoint2D(this Vector2 source) => new((int)source.X, (int)source.Y);
+        public static Point2D ToPoint2D(this Vector2 source)
+            => new((int)source.X, (int)source.Y);
 
         /// <summary>
         /// Converts a <see cref="XnaPoint"/> to a <see cref="Point2D"/>.
@@ -43,14 +44,16 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <param name="source">Source <see cref="Vector2"/>.</param>
         /// <returns>The <see cref="SystemPoint"/>.</returns>
-        public static SystemPoint ToSystemPoint(this Vector2 source) => new((int)source.X, (int)source.Y);
+        public static SystemPoint ToSystemPoint(this Vector2 source)
+            => new((int)source.X, (int)source.Y);
 
         /// <summary>
         /// Converts a <see cref="XnaPoint"/> to a <see cref="SystemPoint"/>.
         /// </summary>
         /// <param name="source">Source <see cref="XnaPoint"/>.</param>
         /// <returns>The <see cref="SystemPoint"/>.</returns>
-        public static SystemPoint ToSystemPoint(this XnaPoint source) => new(source.X, source.Y);
+        public static SystemPoint ToSystemPoint(this XnaPoint source)
+            => new(source.X, source.Y);
 
         /// <summary>
         /// Converts a <see cref="SystemPoint"/> to a <see cref="Vector2"/>.

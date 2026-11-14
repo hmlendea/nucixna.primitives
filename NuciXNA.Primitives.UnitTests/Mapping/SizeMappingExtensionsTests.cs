@@ -11,6 +11,7 @@ using XnaPoint = Microsoft.Xna.Framework.Point;
 
 namespace NuciXNA.Primitives.UnitTests.Mapping
 {
+    [TestFixture]
     public class SizeMappingExtensionsTests
     {
         [Test]
@@ -71,6 +72,23 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
 
             Assert.That(result.X, Is.EqualTo(12));
             Assert.That(result.Y, Is.EqualTo(34));
+        }
+        [Test]
+        public void GivenSize2D_WhenRoundTrippingThroughSystemSize_ThenDimensionsArePreserved()
+        {
+            Size2D size = new(7, 13);
+            Size2D result = size.ToSystemSize().ToSize2D();
+
+            Assert.That(result, Is.EqualTo(size));
+        }
+
+        [Test]
+        public void GivenSize2D_WhenRoundTrippingThroughXnaPoint_ThenDimensionsArePreserved()
+        {
+            Size2D size = new(7, 13);
+            Size2D result = size.ToXnaPoint().ToSize2D();
+
+            Assert.That(result, Is.EqualTo(size));
         }
     }
 }

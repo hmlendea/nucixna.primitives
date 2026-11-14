@@ -178,9 +178,7 @@ namespace NuciXNA.Primitives.ArchitectureTests
         }
 
         private static IEnumerable<SyntaxTree> GetUnitTestSourceTrees()
-        {
-            return CollectParseTrees(ArchitectureResources.UnitTestSourcePrefix);
-        }
+            => CollectParseTrees(ArchitectureResources.UnitTestSourcePrefix);
 
         private static IReadOnlyList<string> CollectSourcePaths(string sourcePrefix)
             => ArchitectureResources.GetResourcePaths(sourcePrefix);

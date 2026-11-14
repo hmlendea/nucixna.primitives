@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 namespace NuciXNA.Primitives.UnitTests
 {
+    [TestFixture]
     public class Size2DTests
     {
         [Test]
@@ -122,7 +123,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Size2D size = new(10, 20);
 
-            Assert.That(size.Equals(DateTime.Now), Is.False);
+            Assert.That(size.Equals((object)"Unrelated"), Is.False);
         }
 
         [Test]
@@ -311,6 +312,29 @@ namespace NuciXNA.Primitives.UnitTests
 
             Assert.That(sizeF2D.Width, Is.EqualTo(12f));
             Assert.That(sizeF2D.Height, Is.EqualTo(34f));
+        }
+        [Test]
+        public void GivenNegativeDimensions_WhenGettingArea_ThenReturnsPositiveValue()
+        {
+            Size2D size = new(-4, -5);
+
+            Assert.That(size.Area, Is.EqualTo(20));
+        }
+
+        [Test]
+        public void GivenNegativeDimensions_WhenGettingPerimeter_ThenReturnsNegativeValue()
+        {
+            Size2D size = new(-4, -5);
+
+            Assert.That(size.Perimeter, Is.EqualTo(-18));
+        }
+
+        [Test]
+        public void GivenSameSizeReference_WhenCallingObjectEquals_ThenReturnsTrue()
+        {
+            Size2D size = new(4, 5);
+
+            Assert.That(size.Equals((object)size));
         }
     }
 }

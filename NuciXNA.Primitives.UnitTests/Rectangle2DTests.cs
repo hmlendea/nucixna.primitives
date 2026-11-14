@@ -10,6 +10,7 @@ using XnaRectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace NuciXNA.Primitives.UnitTests
 {
+    [TestFixture]
     public class Rectangle2DTests
     {
         [Test]
@@ -377,7 +378,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Rectangle2D rect = new(1, 2, 10, 20);
 
-            Assert.That(rect.Equals(DateTime.Now), Is.False);
+            Assert.That(rect.Equals((object)"Unrelated"), Is.False);
         }
 
         [Test]
@@ -480,6 +481,39 @@ namespace NuciXNA.Primitives.UnitTests
             Assert.That(result.Y, Is.EqualTo(2));
             Assert.That(result.Width, Is.EqualTo(10));
             Assert.That(result.Height, Is.EqualTo(20));
+        }
+        [Test]
+        public void GivenDegenerateRectangleWithZeroSize_WhenCallingContains_ThenOnlyItsOriginIsContained()
+        {
+            Rectangle2D rectangle = new(5, 5, 0, 0);
+
+            Assert.That(rectangle.Contains(5, 5));
+            Assert.That(rectangle.Contains(6, 5), Is.False);
+        }
+
+        [Test]
+        public void GivenRectangleAndSelf_WhenCallingContains_ThenReturnsTrue()
+        {
+            Rectangle2D rectangle = new(1, 2, 10, 20);
+
+            Assert.That(rectangle.Contains(rectangle));
+        }
+
+        [Test]
+        public void GivenRectangleFullyOutsideTheOther_WhenCallingContains_ThenReturnsFalse()
+        {
+            Rectangle2D outer = new(0, 0, 10, 10);
+            Rectangle2D inner = new(50, 50, 5, 5);
+
+            Assert.That(outer.Contains(inner), Is.False);
+        }
+
+        [Test]
+        public void GivenSameRectangleReference_WhenCallingObjectEquals_ThenReturnsTrue()
+        {
+            Rectangle2D rectangle = new(1, 2, 3, 4);
+
+            Assert.That(rectangle.Equals((object)rectangle));
         }
     }
 }

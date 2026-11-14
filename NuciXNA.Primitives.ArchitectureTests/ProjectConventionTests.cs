@@ -159,7 +159,14 @@ namespace NuciXNA.Primitives.ArchitectureTests
             IEnumerable<XElement> elements = project.Descendants()
                 .Where(element => string.Equals(element.Name.LocalName, name, StringComparison.Ordinal));
 
-            return elements.FirstOrDefault()?.Value ?? string.Empty;
+            XElement? firstElement = elements.FirstOrDefault();
+
+            if (firstElement is null)
+            {
+                return string.Empty;
+            }
+
+            return firstElement.Value;
         }
     }
 }

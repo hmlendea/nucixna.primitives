@@ -178,12 +178,14 @@ namespace NuciXNA.Primitives
         /// Converts a <see cref="Vector3D"/> to a <see cref="Vector3"/> implicitly.
         /// </summary>
         /// <param name="source">The <see cref="Vector3D"/> to convert.</param>
-        public static implicit operator Vector3(Vector3D source) => new(source.X, source.Y, source.Z);
+        public static implicit operator Vector3(Vector3D source)
+            => new(source.X, source.Y, source.Z);
 
         /// <summary>
         /// Converts a <see cref="Vector3"/> to a <see cref="Vector3D"/> implicitly.
         /// </summary>
         /// <param name="source">The <see cref="Vector3"/> to convert.</param>
-        public static implicit operator Vector3D(Vector3 source) => new(source.X, source.Y, source.Z);
+        public static implicit operator Vector3D(Vector3 source)
+            => new(source.X, source.Y, source.Z);
     }
 }

@@ -8,6 +8,7 @@ using XnaPoint = Microsoft.Xna.Framework.Point;
 
 namespace NuciXNA.Primitives.UnitTests.Mapping
 {
+    [TestFixture]
     public class PointMappingExtensionsTests
     {
         [Test]
@@ -108,6 +109,33 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
 
             Assert.That(result.X, Is.EqualTo(12));
             Assert.That(result.Y, Is.EqualTo(34));
+        }
+        [Test]
+        public void GivenPoint2D_WhenRoundTrippingThroughXnaPoint_ThenCoordinatesArePreserved()
+        {
+            Point2D point = new(7, 13);
+            Point2D result = point.ToXnaPoint().ToPoint2D();
+
+            Assert.That(result, Is.EqualTo(point));
+        }
+
+        [Test]
+        public void GivenPoint2D_WhenRoundTrippingThroughSystemPoint_ThenCoordinatesArePreserved()
+        {
+            Point2D point = new(7, 13);
+            Point2D result = point.ToSystemPoint().ToPoint2D();
+
+            Assert.That(result, Is.EqualTo(point));
+        }
+
+        [Test]
+        public void GivenVector2_WhenRoundTrippingThroughPoint2D_ThenIntegerCoordinatesArePreserved()
+        {
+            Vector2 vector = new(7f, 13f);
+            Vector2 result = vector.ToPoint2D().ToXnaVector2();
+
+            Assert.That(result.X, Is.EqualTo(7f));
+            Assert.That(result.Y, Is.EqualTo(13f));
         }
     }
 }

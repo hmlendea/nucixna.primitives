@@ -291,7 +291,8 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Rectangle2D"/> to compare.</param>
         /// <param name="other">The second <see cref="Rectangle2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
-        public static bool operator ==(Rectangle2D source, Rectangle2D other) => source.Equals(other);
+        public static bool operator ==(Rectangle2D source, Rectangle2D other)
+            => source.Equals(other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Rectangle2D"/> is not equal
@@ -300,7 +301,8 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Rectangle2D"/> to compare.</param>
         /// <param name="other">The second <see cref="Rectangle2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are not equal; otherwise, <c>false</c>.</returns>
-        public static bool operator !=(Rectangle2D source, Rectangle2D other) => !(source == other);
+        public static bool operator !=(Rectangle2D source, Rectangle2D other)
+            => !(source == other);
 
         /// <summary>
         /// Serves as a hash function for a <see cref="Rectangle2D"/> object.

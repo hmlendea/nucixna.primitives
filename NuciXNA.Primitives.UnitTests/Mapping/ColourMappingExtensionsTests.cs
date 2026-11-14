@@ -1,3 +1,5 @@
+using System;
+
 using NUnit.Framework;
 
 using NuciXNA.Primitives.Mapping;
@@ -7,6 +9,7 @@ using XnaColor = Microsoft.Xna.Framework.Color;
 
 namespace NuciXNA.Primitives.UnitTests.Mapping
 {
+    [TestFixture]
     public class ColourMappingExtensionsTests
     {
         [Test]
@@ -161,6 +164,35 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
             Assert.That(result, Has.Length.EqualTo(2));
             Assert.That(result[0].R, Is.EqualTo(10));
             Assert.That(result[1].R, Is.EqualTo(40));
+        }
+        [Test]
+        public void GivenEmptySystemColorArray_WhenConvertingToColours_ThenResultIsEmpty()
+            => Assert.That(Array.Empty<SystemColor>().ToColours(), Is.Empty);
+
+        [Test]
+        public void GivenEmptyXnaColorArray_WhenConvertingToColours_ThenResultIsEmpty()
+            => Assert.That(Array.Empty<XnaColor>().ToColours(), Is.Empty);
+
+        [Test]
+        public void GivenEmptyColourArray_WhenConvertingToXnaColors_ThenResultIsEmpty()
+            => Assert.That(Array.Empty<Colour>().ToXnaColors(), Is.Empty);
+
+        [Test]
+        public void GivenColour_WhenRoundTrippingThroughXnaColor_ThenColourIsPreserved()
+        {
+            Colour colour = new(11, 22, 33, 44);
+            Colour result = colour.ToXnaColor().ToColour();
+
+            Assert.That(result, Is.EqualTo(colour));
+        }
+
+        [Test]
+        public void GivenColour_WhenRoundTrippingThroughSystemColor_ThenColourIsPreserved()
+        {
+            Colour colour = new(11, 22, 33, 44);
+            Colour result = colour.ToSystemColor().ToColour();
+
+            Assert.That(result, Is.EqualTo(colour));
         }
     }
 }

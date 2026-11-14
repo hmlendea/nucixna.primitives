@@ -20,7 +20,8 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <param name="source">Source <see cref="Vector3"/>.</param>
         /// <returns>The <see cref="Vector3D"/>.</returns>
-        public static Vector3D ToVector3D(this Vector3 source) => new(source.X, source.Y, source.Z);
+        public static Vector3D ToVector3D(this Vector3 source)
+            => new(source.X, source.Y, source.Z);
 
         /// <summary>
         /// Converts a <see cref="Vector2D"/> to a <see cref="Vector2"/>.
@@ -34,6 +35,7 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <param name="source">Source <see cref="Vector3D"/>.</param>
         /// <returns>The <see cref="Vector3"/>.</returns>
-        public static Vector3 ToXnaVector(this Vector3D source) => new(source.X, source.Y, source.Z);
+        public static Vector3 ToXnaVector(this Vector3D source)
+            => new(source.X, source.Y, source.Z);
     }
 }

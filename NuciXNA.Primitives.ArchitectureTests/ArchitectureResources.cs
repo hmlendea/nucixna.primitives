@@ -30,7 +30,12 @@ namespace NuciXNA.Primitives.ArchitectureTests
 
             foreach (string resourceName in typeof(ArchitectureResources).Assembly.GetManifestResourceNames())
             {
-                if (!string.Equals(Normalise(resourceName), expectedName, StringComparison.Ordinal))
+                bool isExpectedResource = string.Equals(
+                    Normalise(resourceName),
+                    expectedName,
+                    StringComparison.Ordinal);
+
+                if (!isExpectedResource)
                 {
                     continue;
                 }

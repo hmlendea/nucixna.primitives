@@ -7,6 +7,7 @@ using XnaRectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace NuciXNA.Primitives.UnitTests.Mapping
 {
+    [TestFixture]
     public class RectangleMappingExtensionsTests
     {
         [Test]
@@ -79,6 +80,23 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
             Assert.That(result.Y, Is.EqualTo(2));
             Assert.That(result.Width, Is.EqualTo(10));
             Assert.That(result.Height, Is.EqualTo(20));
+        }
+        [Test]
+        public void GivenRectangle2D_WhenRoundTrippingThroughSystemRectangle_ThenValuesArePreserved()
+        {
+            Rectangle2D rectangle = new(1, 2, 10, 20);
+            Rectangle2D result = rectangle.ToSystemRectangle().ToRectangle2D();
+
+            Assert.That(result, Is.EqualTo(rectangle));
+        }
+
+        [Test]
+        public void GivenRectangle2D_WhenRoundTrippingThroughXnaRectangle_ThenValuesArePreserved()
+        {
+            Rectangle2D rectangle = new(1, 2, 10, 20);
+            Rectangle2D result = rectangle.ToXnaRectangle().ToRectangle2D();
+
+            Assert.That(result, Is.EqualTo(rectangle));
         }
     }
 }

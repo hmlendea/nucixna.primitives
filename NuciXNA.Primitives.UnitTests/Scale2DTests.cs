@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 namespace NuciXNA.Primitives.UnitTests
 {
+    [TestFixture]
     public class Scale2DTests
     {
         [Test]
@@ -134,7 +135,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Scale2D scale = new(2.0f, 3.0f);
 
-            Assert.That(scale.Equals(DateTime.Now), Is.False);
+            Assert.That(scale.Equals((object)"Unrelated"), Is.False);
         }
 
         [Test]

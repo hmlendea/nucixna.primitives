@@ -91,7 +91,8 @@ namespace NuciXNA.Primitives.Mapping
         /// </summary>
         /// <returns>The ARGB integer value.</returns>
         /// <param name="colour">Colour.</param>
-        public static int ToArgb(Colour colour) => ToArgb(colour.R, colour.G, colour.B, colour.A);
+        public static int ToArgb(Colour colour)
+            => ToArgb(colour.R, colour.G, colour.B, colour.A);
 
         /// <summary>
         /// Converts the RGB components to a 32 bit integer.
@@ -109,7 +110,8 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="r">The red component.</param>
         /// <param name="g">The green component.</param>
         /// <param name="b">The blue component.</param>
-        public static int ToArgb(int r, int g, int b) => ToArgb((byte)r, (byte)g, (byte)b, (byte)255);
+        public static int ToArgb(int r, int g, int b)
+            => ToArgb((byte)r, (byte)g, (byte)b, (byte)255);
 
         /// <summary>
         /// Converts the ARGB components to a 32 bit integer.
@@ -119,7 +121,8 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="g">The green component.</param>
         /// <param name="b">The blue component.</param>
         /// <param name="a">The alpha component.</param>
-        public static int ToArgb(byte r, byte g, byte b, byte a) => (a << 24) | (r << 16) | (g << 8) | b;
+        public static int ToArgb(byte r, byte g, byte b, byte a)
+            => (a << 24) | (r << 16) | (g << 8) | b;
 
         /// <summary>
         /// Converts the ARGB components to a 32 bit integer.
@@ -129,7 +132,8 @@ namespace NuciXNA.Primitives.Mapping
         /// <param name="g">The green component.</param>
         /// <param name="b">The blue component.</param>
         /// <param name="a">The alpha component.</param>
-        public static int ToArgb(int r, int g, int b, int a) => ToArgb((byte)r, (byte)g, (byte)b, (byte)a);
+        public static int ToArgb(int r, int g, int b, int a)
+            => ToArgb((byte)r, (byte)g, (byte)b, (byte)a);
 
         /// <summary>
         /// Creates a colour from an ARGB integer.
