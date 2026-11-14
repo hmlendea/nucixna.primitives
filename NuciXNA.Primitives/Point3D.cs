@@ -76,7 +76,7 @@ namespace NuciXNA.Primitives
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="Point3D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
         /// <see cref="Point3D"/>; otherwise, <c>false</c>.</returns>
-        public override readonly bool Equals(object obj)
+        public override readonly bool Equals(object? obj)
         {
             if (obj is null)
             {

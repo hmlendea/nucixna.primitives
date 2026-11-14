@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>NuciXNA.Primitives.ArchitectureTests</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <ExcludeFromCodeCoverage>true</ExcludeFromCodeCoverage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
+    <PackageReference Include="NUnit" Version="4.5.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="6.2.0" />
+    <PackageReference Include="TngTech.ArchUnitNET" Version="0.13.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NuciXNA.Primitives\NuciXNA.Primitives.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\NuciXNA.Primitives\**\*.cs" Exclude="..\NuciXNA.Primitives\bin\**\*.cs;..\NuciXNA.Primitives\obj\**\*.cs">
+      <LogicalName>ProductionSources/%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\NuciXNA.Primitives.UnitTests\**\*.cs" Exclude="..\NuciXNA.Primitives.UnitTests\bin\**\*.cs;..\NuciXNA.Primitives.UnitTests\obj\**\*.cs">
+      <LogicalName>UnitTestSources/%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\NuciXNA.Primitives.ArchitectureTests\**\*.cs" Exclude="..\NuciXNA.Primitives.ArchitectureTests\bin\**\*.cs;..\NuciXNA.Primitives.ArchitectureTests\obj\**\*.cs">
+      <LogicalName>ArchitectureTestSources/%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\NuciXNA.slnx">
+      <LogicalName>ProjectFiles/NuciXNA.slnx</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\NuciXNA.Primitives\NuciXNA.Primitives.csproj">
+      <LogicalName>ProjectFiles/NuciXNA.Primitives/NuciXNA.Primitives.csproj</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\NuciXNA.Primitives.UnitTests\NuciXNA.Primitives.UnitTests.csproj">
+      <LogicalName>ProjectFiles/NuciXNA.Primitives.UnitTests/NuciXNA.Primitives.UnitTests.csproj</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\NuciXNA.Primitives.ArchitectureTests\NuciXNA.Primitives.ArchitectureTests.csproj">
+      <LogicalName>ProjectFiles/NuciXNA.Primitives.ArchitectureTests/NuciXNA.Primitives.ArchitectureTests.csproj</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
