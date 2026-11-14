@@ -4,6 +4,10 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>NuciXNA.Primitives</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
     <Version>2.1.7</Version>
     <Description>Reusable primitives for MonoGame/XNA.</Description>
     <Authors>Horațiu Mlendea</Authors>

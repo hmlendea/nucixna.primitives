@@ -6,6 +6,7 @@ using XnaVector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace NuciXNA.Primitives.UnitTests.Mapping
 {
+    [TestFixture]
     public class ScaleMappingExtensionsTests
     {
         [Test]
@@ -26,6 +27,14 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
 
             Assert.That(result.X, Is.EqualTo(1.5f));
             Assert.That(result.Y, Is.EqualTo(2.5f));
+        }
+        [Test]
+        public void GivenScale2D_WhenRoundTrippingThroughXnaVector2_ThenValuesArePreserved()
+        {
+            Scale2D scale = new(1.5f, 2.5f);
+            Scale2D result = scale.ToXnaVector2().ToScale2D();
+
+            Assert.That(result, Is.EqualTo(scale));
         }
     }
 }

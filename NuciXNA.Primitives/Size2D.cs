@@ -88,7 +88,7 @@ namespace NuciXNA.Primitives
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="Size2D"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current <see cref="Size2D"/>;
         /// otherwise, <c>false</c>.</returns>
-        public override readonly bool Equals(object obj)
+        public override readonly bool Equals(object? obj)
         {
             if (obj is null)
             {
@@ -239,6 +239,7 @@ namespace NuciXNA.Primitives
         /// Converts a <see cref="Size2D"/> to a <see cref="SizeF2D"/>.
         /// </summary>
         /// <param name="source">The <see cref="Size2D"/> to convert.</param>
-        public static implicit operator SizeF2D(Size2D source) => new(source.Width, source.Height);
+        public static implicit operator SizeF2D(Size2D source)
+            => new(source.Width, source.Height);
     }
 }

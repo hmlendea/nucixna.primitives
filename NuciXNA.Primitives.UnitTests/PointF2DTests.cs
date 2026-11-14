@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 namespace NuciXNA.Primitives.UnitTests
 {
+    [TestFixture]
     public class PointF2DTests
     {
         [Test]
@@ -118,7 +119,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             PointF2D point = new(1.5f, 2.5f);
 
-            Assert.That(point.Equals(DateTime.Now), Is.False);
+            Assert.That(point.Equals((object)"Unrelated"), Is.False);
         }
 
         [Test]

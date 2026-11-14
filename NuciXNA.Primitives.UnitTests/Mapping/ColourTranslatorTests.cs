@@ -6,6 +6,7 @@ using NuciXNA.Primitives.Mapping;
 
 namespace NuciXNA.Primitives.UnitTests.Mapping
 {
+    [TestFixture]
     public class ColourTranslatorTests
     {
         [Test]
@@ -98,7 +99,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
 
         [Test]
         public void GivenNullArgument_WhenCallingFromHexadecimal_ThenThrowsArgumentNullException()
-            => Assert.Throws<ArgumentNullException>(() => ColourTranslator.FromHexadecimal(null));
+            => Assert.Throws<ArgumentNullException>(() => ColourTranslator.FromHexadecimal(null!));
 
         [Test]
         public void GivenColour_WhenCallingToHexadecimal_ThenReturnsCorrectValue()

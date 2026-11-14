@@ -6,6 +6,7 @@ using NUnit.Framework;
 
 namespace NuciXNA.Primitives.UnitTests
 {
+    [TestFixture]
     public class Vector3DTests
     {
         [Test]
@@ -117,7 +118,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Vector3D vector = new(1.5f, 2.5f, 3.5f);
 
-            Assert.That(vector.Equals(DateTime.Now), Is.False);
+            Assert.That(vector.Equals((object)"Unrelated"), Is.False);
         }
 
         [Test]

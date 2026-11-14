@@ -70,11 +70,9 @@ namespace NuciXNA.Primitives
         /// <value>The blue value.</value>
         public byte B { get; set; } = b;
 
-        #region Predefined colours
         /// <summary>A fully transparent colour (A:0, R:0, G:0, B:0).</summary>
         public static Colour Transparent => new(0, 0, 0, 0);
 
-        #region XNA colours
         /// <summary>The Alice Blue colour (#F0F8FF).</summary>
         public static Colour AliceBlue => new(240, 248, 255, 255);
         /// <summary>The Antique White colour (#FAEBD7).</summary>
@@ -157,9 +155,7 @@ namespace NuciXNA.Primitives
         public static Colour Yellow => new(255, 255, 0, 255);
         /// <summary>The Yellow Green colour (#9ACD32).</summary>
         public static Colour YellowGreen => new(154, 205, 50, 255);
-        #endregion
 
-        #region NuciXNA colours
         /// <summary>Cobalt blue, as defined on the romanian flag.</summary>
         public static Colour CobaltBlue => new(0, 43, 127, 255);
         /// <summary>Chrome yellow, as defined on the romanian flag.</summary>
@@ -170,9 +166,7 @@ namespace NuciXNA.Primitives
         public static Colour Vermilion => new(227, 66, 52, 255);
         /// <summary>Vermilion red, as defined on the romanian flag.</summary>
         public static Colour VermilionRed => new(206, 17, 38, 255);
-        #endregion
 
-        #region Pantone colours
         /// <summary>PANTONE PQ-15-0343TCX Greenery.</summary>
         public static Colour Greenery => new(136, 176, 75, 255);
         /// <summary>PANTONE PQ-18-2120TCX Honeysuckle.</summary>
@@ -183,9 +177,7 @@ namespace NuciXNA.Primitives
         public static Colour TangerineTango => new(221, 65, 36, 255);
         /// <summary>PANTONE PQ-18-3838TCX Ultra Violet.</summary>
         public static Colour UltraViolet => new(95, 75, 139, 255);
-        #endregion
 
-        #region Material colours
         /// <summary>Material Design Red colour (#F44336).</summary>
         public static Colour MaterialRed => new(244, 67, 54, 255);
         /// <summary>Material Design Pink colour (#E91E63).</summary>
@@ -222,8 +214,6 @@ namespace NuciXNA.Primitives
         public static Colour MaterialGrey => new(158, 158, 158, 255);
         /// <summary>Material Design Blue Grey colour (#607D8B).</summary>
         public static Colour MaterialBlueGrey => new(96, 125, 139, 255);
-        #endregion
-        #endregion
 
         /// <summary>
         /// Creates a colour from an ARGB integer.
@@ -239,7 +229,8 @@ namespace NuciXNA.Primitives
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(byte r, byte g, byte b) => ColourTranslator.FromArgb(r, g, b);
+        public static Colour FromArgb(byte r, byte g, byte b)
+            => ColourTranslator.FromArgb(r, g, b);
 
         /// <summary>
         /// Creates a colour from RGB values.
@@ -248,7 +239,8 @@ namespace NuciXNA.Primitives
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(int r, int g, int b) => ColourTranslator.FromArgb(r, g, b);
+        public static Colour FromArgb(int r, int g, int b)
+            => ColourTranslator.FromArgb(r, g, b);
 
         /// <summary>
         /// Creates a colour from ARGB values.
@@ -258,7 +250,8 @@ namespace NuciXNA.Primitives
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(byte a, byte r, byte g, byte b) => ColourTranslator.FromArgb(a, r, g, b);
+        public static Colour FromArgb(byte a, byte r, byte g, byte b)
+            => ColourTranslator.FromArgb(a, r, g, b);
 
         /// <summary>
         /// Creates a colour from ARGB values.
@@ -268,14 +261,16 @@ namespace NuciXNA.Primitives
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static Colour FromArgb(int a, int r, int g, int b) => ColourTranslator.FromArgb(a, r, g, b);
+        public static Colour FromArgb(int a, int r, int g, int b)
+            => ColourTranslator.FromArgb(a, r, g, b);
 
         /// <summary>
         /// Creates a colour from a hexadecimal code.
         /// </summary>
         /// <returns>The colour.</returns>
         /// <param name="hexa">Hexadecimal code.</param>
-        public static Colour FromHexadecimal(string hexa) => ColourTranslator.FromHexadecimal(hexa);
+        public static Colour FromHexadecimal(string hexa)
+            => ColourTranslator.FromHexadecimal(hexa);
 
         /// <summary>
         /// Converts the colour to a 32 bit integer.
@@ -357,7 +352,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The <see cref="Colour"/> to compare with the current <see cref="Colour"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="Colour"/> is equal to the current
         /// <see cref="Colour"/>; otherwise, <c>false</c>.</returns>
-        public bool Equals(Colour other)
+        public bool Equals(Colour? other)
         {
             if (other is null)
             {
@@ -419,7 +414,7 @@ namespace NuciXNA.Primitives
         /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="Colour"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
         /// <see cref="Colour"/>; otherwise, <c>false</c>.</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is null)
             {
@@ -462,7 +457,7 @@ namespace NuciXNA.Primitives
         /// <param name="self">The first <see cref="Colour"/> to compare.</param>
         /// <param name="other">The second <see cref="Colour"/> to compare.</param>
         /// <returns><c>true</c> if <c>self</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
-        public static bool operator ==(Colour self, Colour other)
+        public static bool operator ==(Colour? self, Colour? other)
         {
             if (self is null)
             {
@@ -488,20 +483,24 @@ namespace NuciXNA.Primitives
         public static explicit operator int(Colour self)
             => self.ToArgb();
 
+        /// <summary>
+        /// Converts a <see cref="Colour"/> to its hexadecimal string representation.
+        /// </summary>
+        /// <param name="self">Colour to convert.</param>
         public static explicit operator string(Colour self)
             => self.ToString();
 
         /// <summary>
         /// Converts an ARGB integer to a <see cref="Colour"/>.
         /// </summary>
-        /// <param name="argb"></param>
+        /// <param name="argb">The ARGB integer.</param>
         public static explicit operator Colour(int argb)
             => FromArgb(argb);
 
         /// <summary>
         /// Converts a hexadecimal string to a <see cref="Colour"/>.
         /// </summary>
-        /// <param name="hexadecimal"></param>
+        /// <param name="hexadecimal">The hexadecimal string.</param>
         public static explicit operator Colour(string hexadecimal)
             => FromHexadecimal(hexadecimal);
     }

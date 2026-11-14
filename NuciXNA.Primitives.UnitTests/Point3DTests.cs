@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 namespace NuciXNA.Primitives.UnitTests
 {
+    [TestFixture]
     public class Point3DTests
     {
         [Test]
@@ -116,7 +117,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             Point3D point = new(3, 7, 11);
 
-            Assert.That(point.Equals(DateTime.Now), Is.False);
+            Assert.That(point.Equals((object)"Unrelated"), Is.False);
         }
 
         [Test]
@@ -247,6 +248,29 @@ namespace NuciXNA.Primitives.UnitTests
             Point3D point2 = new(3, 7, 11);
 
             Assert.That(point1 != point2, Is.False);
+        }
+        [Test]
+        public void GivenSamePoint3DReference_WhenCallingObjectEquals_ThenReturnsTrue()
+        {
+            Point3D point = new(1, 2, 3);
+
+            Assert.That(point.Equals((object)point));
+        }
+
+        [Test]
+        public void GivenPoint3DAndUnrelatedValueType_WhenCallingObjectEquals_ThenReturnsFalse()
+        {
+            Point3D point = new(1, 2, 3);
+
+            Assert.That(point.Equals((object)"not a point"), Is.False);
+        }
+
+        [Test]
+        public void GivenPoint3DWithNegativeCoordinates_WhenCheckingIsEmpty_ThenReturnsFalse()
+        {
+            Point3D point = new(-1, 0, 0);
+
+            Assert.That(point.IsEmpty, Is.False);
         }
     }
 }

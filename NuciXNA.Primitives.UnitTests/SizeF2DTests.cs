@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 namespace NuciXNA.Primitives.UnitTests
 {
+    [TestFixture]
     public class SizeF2DTests
     {
         [Test]
@@ -132,7 +133,7 @@ namespace NuciXNA.Primitives.UnitTests
         {
             SizeF2D size = new(3.5f, 7.5f);
 
-            Assert.That(size.Equals(DateTime.Now), Is.False);
+            Assert.That(size.Equals((object)"Unrelated"), Is.False);
         }
 
         [Test]
