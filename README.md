@@ -1,6 +1,7 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![Latest Release](https://img.shields.io/github/v/release/hmlendea/nucixna.primitives)](https://github.com/hmlendea/nucixna.primitives/releases/latest)
 [![Build Status](https://github.com/hmlendea/nucixna.primitives/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nucixna.primitives/actions/workflows/dotnet.yml)
+[![Security Scan](https://github.com/hmlendea/nucixna.primitives/actions/workflows/security.yml/badge.svg)](https://github.com/hmlendea/nucixna.primitives/actions/workflows/security.yml)
 [![NuGet](https://img.shields.io/nuget/v/NuciXNA.Primitives)](https://nuget.org/packages/NuciXNA.Primitives)
 [![License](https://img.shields.io/github/license/hmlendea/nucixna.primitives)](https://github.com/hmlendea/nucixna.primitives/blob/master/LICENSE)
 
@@ -25,6 +26,7 @@ It sits between application code, `System.Drawing`, and MonoGame primitives so y
 - [Acknowledgements](#acknowledgements)
 - [Contributing](#contributing)
 - [Security](#security)
+- [Support](#support)
 - [Project Engagement](#project-engagement)
 - [License](#license)
 
@@ -154,6 +156,7 @@ dotnet test NuciXNA.sln --configuration Release --no-build
 | Workflow | Purpose | What it does |
 |----------|---------|--------------|
 | [ dotnet.yml ](https://github.com/hmlendea/nucixna.primitives/blob/master/.github/workflows/dotnet.yml) | Continuous integration | Restores, builds, and tests on every push and pull request to `master` |
+| [ security.yml ](https://github.com/hmlendea/nucixna.primitives/blob/master/.github/workflows/security.yml) | Security scanning | Checks for vulnerable packages and runs CodeQL analysis on every push, pull request, and weekly schedule |
 | [ nuget-release.yml ](https://github.com/hmlendea/nucixna.primitives/blob/master/.github/workflows/nuget-release.yml) | NuGet.org release | Packs and publishes the NuGet package on GitHub release publication using OIDC |
 | [ github-release.yml ](https://github.com/hmlendea/nucixna.primitives/blob/master/.github/workflows/github-release.yml) | GitHub Release | Packs the NuGet package, calculates SHA256, and uploads to the GitHub Release |
 
@@ -212,6 +215,10 @@ See the [contributing guidelines](./CONTRIBUTING.md) for details on how to repor
 NuciXNA.Primitives follows coordinated disclosure for security vulnerabilities.
 
 For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
+
+## 💬 Support
+
+For support, please [open an issue](https://github.com/hmlendea/nucixna.primitives/issues).
 
 ## 💝 Project Engagement
 
