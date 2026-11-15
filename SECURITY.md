@@ -8,6 +8,7 @@ This document describes the security policy for NuciXNA.Primitives, a .NET libra
 - [Reporting a Vulnerability](#-reporting-a-vulnerability)
 - [Scope](#-scope)
 - [Disclosure Policy](#-disclosure-policy)
+- [Automated Security Scanning](#-automated-security-scanning)
 
 ## 🛡️ Supported Versions
 
@@ -30,6 +31,8 @@ To report a vulnerability:
 
 ## 📌 Scope
 
+The original maintainers are not responsible for changes, modifications, or security issues introduced by downstream forks.
+
 The subsequent report categories are in scope for this repository:
 - Security vulnerabilities in the NuciXNA.Primitives library source code
 - Security vulnerabilities in dependency packages referenced by the project
@@ -46,3 +49,11 @@ This project follows coordinated disclosure:
 2. A remediation plan is prepared and validated.
 3. Public disclosure is published after a fix, mitigation, or agreed risk decision is available.
 4. Credit is attributed in accordance with reporter preference and project policy.
+
+## 🔍 Automated Security Scanning
+
+This repository runs automated security scans on every push and pull request to `master`, and on a weekly schedule. The scan includes:
+- **Dependency vulnerability audit** — `dotnet list package --vulnerable --include-transitive` reports known vulnerabilities in direct and transitive NuGet packages.
+- **CodeQL static analysis** — analyses the C# source code for security weaknesses and uploads the results as code-scanning alerts.
+
+Results are published to the [Security](https://github.com/hmlendea/nucixna.primitives/security) tab and the [Actions](https://github.com/hmlendea/nucixna.primitives/actions/workflows/security.yml) workflow page.
