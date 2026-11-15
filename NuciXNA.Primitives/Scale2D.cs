@@ -8,9 +8,9 @@ namespace NuciXNA.Primitives
     /// <remarks>
     /// Initializes a new instance of the <see cref="Scale2D"/> structure.
     /// </remarks>
-    /// <param name="horizontal">The horizontal scale.</param>
-    /// <param name="vertical">The vertical scale.</param>
-    public struct Scale2D(float horizontal, float vertical) : IEquatable<Scale2D>
+    /// <param name="horizontalScale">The horizontal scale.</param>
+    /// <param name="verticalScale">The vertical scale.</param>
+    public struct Scale2D(float horizontalScale, float verticalScale) : IEquatable<Scale2D>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Scale2D"/> structure with equal horizontal and vertical scale.
@@ -34,19 +34,21 @@ namespace NuciXNA.Primitives
         /// Gets or sets the horizontal scale.
         /// </summary>
         /// <value>The horizontal scale.</value>
-        public float Horizontal { get; set; } = horizontal;
+        public float Horizontal { get; set; } = horizontalScale;
 
         /// <summary>
         /// Gets or sets the vertical scale.
         /// </summary>
         /// <value>The vertical scale.</value>
-        public float Vertical { get; set; } = vertical;
+        public float Vertical { get; set; } = verticalScale;
 
         /// <summary>
         /// Gets a value indicating whether the values of this <see cref="Scale2D"/> are zero.
         /// </summary>
         /// <value><c>true</c> if is empty; otherwise, <c>false</c>.</value>
-        public readonly bool IsEmpty => Horizontal == 0 && Vertical == 0;
+        public readonly bool IsEmpty =>
+            object.Equals(Horizontal, 0f) &&
+            object.Equals(Vertical, 0f);
 
         /// <summary>
         /// Gets a scale of zero.
@@ -73,19 +75,19 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="Scale2D"/> is equal to the current
         /// <see cref="Scale2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Scale2D other) =>
-            Horizontal.Equals(other.Horizontal) &&
-            Vertical.Equals(other.Vertical);
+            object.Equals(Horizontal, other.Horizontal) &&
+            object.Equals(Vertical, other.Vertical);
 
         /// <summary>
         /// Determines whether the specified horizontal and vertical scale values are equal to the current <see cref="Scale2D"/>.
         /// </summary>
-        /// <param name="horizontal">The horizontal scale value.</param>
-        /// <param name="vertical">The vertical scale value.</param>
+        /// <param name="horizontalScale">The horizontal scale value.</param>
+        /// <param name="verticalScale">The vertical scale value.</param>
         /// <returns><c>true</c> if the specified horizontal and vertical scale values are equal to the current
         /// <see cref="Scale2D"/>; otherwise, <c>false</c>.</returns>
-        public readonly bool Equals(float horizontal, float vertical) =>
-            Horizontal.Equals(horizontal) &&
-            Vertical.Equals(vertical);
+        public readonly bool Equals(float horizontalScale, float verticalScale) =>
+            object.Equals(Horizontal, horizontalScale) &&
+            object.Equals(Vertical, verticalScale);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="Scale2D"/>.
@@ -100,7 +102,7 @@ namespace NuciXNA.Primitives
                 return false;
             }
 
-            if (obj.GetType() != GetType())
+            if (!Equals(obj.GetType(), GetType()))
             {
                 return false;
             }
@@ -203,7 +205,7 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Scale2D"/> to compare.</param>
         /// <param name="other">The second <see cref="Scale2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
-        public static bool operator ==(Scale2D source, Scale2D other) => source.Equals(other);
+        public static bool operator ==(Scale2D source, Scale2D other) => Equals(source, other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Scale2D"/> is not equal to

@@ -6,10 +6,10 @@ using NUnit.Framework;
 namespace NuciXNA.Primitives.UnitTests
 {
     [TestFixture]
-    public class SizeF2DTests
+    public sealed class SizeF2DTests
     {
         [Test]
-        public void GivenWidthAndHeight_WhenConstructing_ThenPropertiesAreSet()
+        public static void GivenWidthAndHeight_WhenConstructing_ThenPropertiesAreSet()
         {
             SizeF2D size = new(3.5f, 7.5f);
 
@@ -18,7 +18,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSingleFloatValue_WhenConstructing_ThenBothDimensionsAreEqual()
+        public static void GivenSingleFloatValue_WhenConstructing_ThenBothDimensionsAreEqual()
         {
             SizeF2D size = new(5.0f);
 
@@ -27,7 +27,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSingleIntValue_WhenConstructing_ThenBothDimensionsAreEqual()
+        public static void GivenSingleIntValue_WhenConstructing_ThenBothDimensionsAreEqual()
         {
             SizeF2D size = new(5);
 
@@ -36,7 +36,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPointF2D_WhenConstructing_ThenPropertiesMatchPointCoordinates()
+        public static void GivenPointF2D_WhenConstructing_ThenPropertiesMatchPointCoordinates()
         {
             PointF2D point = new(3.5f, 7.5f);
             SizeF2D size = new(point);
@@ -46,7 +46,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenZeroDimensions_WhenCheckingIsEmpty_ThenReturnsTrue()
+        public static void GivenZeroDimensions_WhenCheckingIsEmpty_ThenReturnsTrue()
         {
             SizeF2D size = new(0f, 0f);
 
@@ -54,7 +54,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonZeroDimensions_WhenCheckingIsEmpty_ThenReturnsFalse()
+        public static void GivenNonZeroDimensions_WhenCheckingIsEmpty_ThenReturnsFalse()
         {
             SizeF2D size = new(1.0f, 0f);
 
@@ -62,7 +62,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenEmptyStatic_WhenCheckingDimensions_ThenBothAreZero()
+        public static void GivenEmptyStatic_WhenCheckingDimensions_ThenBothAreZero()
         {
             SizeF2D empty = SizeF2D.Empty;
 
@@ -71,7 +71,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenWidthAndHeight_WhenGettingArea_ThenReturnsCorrectValue()
+        public static void GivenWidthAndHeight_WhenGettingArea_ThenReturnsCorrectValue()
         {
             SizeF2D size = new(4.0f, 5.0f);
 
@@ -79,7 +79,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenWidthAndHeight_WhenGettingPerimeter_ThenReturnsCorrectValue()
+        public static void GivenWidthAndHeight_WhenGettingPerimeter_ThenReturnsCorrectValue()
         {
             SizeF2D size = new(4.0f, 5.0f);
 
@@ -87,7 +87,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoSizesWithSameDimensions_WhenCheckingEquality_ThenReturnsTrue()
+        public static void GivenTwoSizesWithSameDimensions_WhenCheckingEquality_ThenReturnsTrue()
         {
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.5f);
@@ -96,7 +96,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoSizesWithDifferentDimensions_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenTwoSizesWithDifferentDimensions_WhenCheckingEquality_ThenReturnsFalse()
         {
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.6f);
@@ -105,7 +105,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenMatchingFloatDimensions_WhenCheckingEqualityWithWidthHeight_ThenReturnsTrue()
+        public static void GivenMatchingFloatDimensions_WhenCheckingEqualityWithWidthHeight_ThenReturnsTrue()
         {
             SizeF2D size = new(3.5f, 7.5f);
 
@@ -113,7 +113,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonMatchingDimensions_WhenCallingEqualsWithWidthHeight_ThenReturnsFalse()
+        public static void GivenNonMatchingDimensions_WhenCallingEqualsWithWidthHeight_ThenReturnsFalse()
         {
             SizeF2D size = new(3.5f, 7.5f);
 
@@ -121,7 +121,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSameSizeBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        public static void GivenSameSizeBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
         {
             SizeF2D size = new(3.5f, 7.5f);
 
@@ -129,7 +129,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
+        public static void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             SizeF2D size = new(3.5f, 7.5f);
 
@@ -137,7 +137,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoSizesWithSameDimensions_WhenGettingHashCode_ThenReturnSameHash()
+        public static void GivenTwoSizesWithSameDimensions_WhenGettingHashCode_ThenReturnSameHash()
         {
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.5f);
@@ -146,7 +146,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoSizesWithDifferentDimensions_WhenGettingHashCode_ThenReturnDifferentHashes()
+        public static void GivenTwoSizesWithDifferentDimensions_WhenGettingHashCode_ThenReturnDifferentHashes()
         {
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 8.5f);
@@ -155,7 +155,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoSizes_WhenAdding_ThenReturnsCorrectSum()
+        public static void GivenTwoSizes_WhenAdding_ThenReturnsCorrectSum()
         {
             SizeF2D size1 = new(3.0f, 5.0f);
             SizeF2D size2 = new(1.5f, 2.5f);
@@ -167,7 +167,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoSizes_WhenSubtracting_ThenReturnsCorrectDifference()
+        public static void GivenTwoSizes_WhenSubtracting_ThenReturnsCorrectDifference()
         {
             SizeF2D size1 = new(10.0f, 20.0f);
             SizeF2D size2 = new(3.5f, 7.5f);
@@ -179,7 +179,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoSizes_WhenMultiplying_ThenReturnsCorrectProduct()
+        public static void GivenTwoSizes_WhenMultiplying_ThenReturnsCorrectProduct()
         {
             SizeF2D size1 = new(2.0f, 3.0f);
             SizeF2D size2 = new(4.0f, 5.0f);
@@ -191,7 +191,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoSizes_WhenDividing_ThenReturnsCorrectQuotient()
+        public static void GivenTwoSizes_WhenDividing_ThenReturnsCorrectQuotient()
         {
             SizeF2D size1 = new(10.0f, 20.0f);
             SizeF2D size2 = new(2.0f, 4.0f);
@@ -203,7 +203,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSizeAndFloatScalar_WhenMultiplying_ThenReturnsCorrectProduct()
+        public static void GivenSizeAndFloatScalar_WhenMultiplying_ThenReturnsCorrectProduct()
         {
             SizeF2D size = new(2.0f, 4.0f);
 
@@ -214,7 +214,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSizeAndFloatScalar_WhenDividing_ThenReturnsCorrectQuotient()
+        public static void GivenSizeAndFloatScalar_WhenDividing_ThenReturnsCorrectQuotient()
         {
             SizeF2D size = new(10.0f, 20.0f);
 
@@ -225,7 +225,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoEqualSizes_WhenUsingEqualityOperator_ThenReturnsTrue()
+        public static void GivenTwoEqualSizes_WhenUsingEqualityOperator_ThenReturnsTrue()
         {
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.5f);
@@ -234,7 +234,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoDifferentSizes_WhenUsingEqualityOperator_ThenReturnsFalse()
+        public static void GivenTwoDifferentSizes_WhenUsingEqualityOperator_ThenReturnsFalse()
         {
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.6f);
@@ -243,7 +243,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoDifferentSizes_WhenUsingInequalityOperator_ThenReturnsTrue()
+        public static void GivenTwoDifferentSizes_WhenUsingInequalityOperator_ThenReturnsTrue()
         {
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.6f);
@@ -252,7 +252,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoEqualSizes_WhenUsingInequalityOperator_ThenReturnsFalse()
+        public static void GivenTwoEqualSizes_WhenUsingInequalityOperator_ThenReturnsFalse()
         {
             SizeF2D size1 = new(3.5f, 7.5f);
             SizeF2D size2 = new(3.5f, 7.5f);
@@ -261,7 +261,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSizeF2D_WhenConvertingToSystemSizeF_ThenDimensionsArePreserved()
+        public static void GivenSizeF2D_WhenConvertingToSystemSizeF_ThenDimensionsArePreserved()
         {
             SizeF2D sizeF2D = new(3.5f, 7.5f);
 
@@ -272,7 +272,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSystemSizeF_WhenConvertingToSizeF2D_ThenDimensionsArePreserved()
+        public static void GivenSystemSizeF_WhenConvertingToSizeF2D_ThenDimensionsArePreserved()
         {
             SizeF systemSizeF = new(3.5f, 7.5f);
 

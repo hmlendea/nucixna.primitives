@@ -9,10 +9,10 @@ using XnaPoint = Microsoft.Xna.Framework.Point;
 namespace NuciXNA.Primitives.UnitTests.Mapping
 {
     [TestFixture]
-    public class PointMappingExtensionsTests
+    public sealed class PointMappingExtensionsTests
     {
         [Test]
-        public void GivenSystemPoint_WhenConvertingToPoint2D_ThenCoordinatesArePreserved()
+        public static void GivenSystemPoint_WhenConvertingToPoint2D_ThenCoordinatesArePreserved()
         {
             SystemPoint source = new(12, 34);
             Point2D result = source.ToPoint2D();
@@ -22,7 +22,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenVector2_WhenConvertingToPoint2D_ThenCoordinatesAreTruncated()
+        public static void GivenVector2_WhenConvertingToPoint2D_ThenCoordinatesAreTruncated()
         {
             Vector2 source = new(12.9f, 34.9f);
             Point2D result = source.ToPoint2D();
@@ -32,7 +32,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenXnaPoint_WhenConvertingToPoint2D_ThenCoordinatesArePreserved()
+        public static void GivenXnaPoint_WhenConvertingToPoint2D_ThenCoordinatesArePreserved()
         {
             XnaPoint source = new(12, 34);
             Point2D result = source.ToPoint2D();
@@ -42,7 +42,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenPoint2D_WhenConvertingToSystemPoint_ThenCoordinatesArePreserved()
+        public static void GivenPoint2D_WhenConvertingToSystemPoint_ThenCoordinatesArePreserved()
         {
             Point2D source = new(12, 34);
             SystemPoint result = source.ToSystemPoint();
@@ -52,7 +52,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenVector2_WhenConvertingToSystemPoint_ThenCoordinatesAreTruncated()
+        public static void GivenVector2_WhenConvertingToSystemPoint_ThenCoordinatesAreTruncated()
         {
             Vector2 source = new(12.9f, 34.9f);
             SystemPoint result = source.ToSystemPoint();
@@ -62,7 +62,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenXnaPoint_WhenConvertingToSystemPoint_ThenCoordinatesArePreserved()
+        public static void GivenXnaPoint_WhenConvertingToSystemPoint_ThenCoordinatesArePreserved()
         {
             XnaPoint source = new(12, 34);
             SystemPoint result = source.ToSystemPoint();
@@ -72,7 +72,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenSystemPoint_WhenConvertingToXnaVector2_ThenCoordinatesArePreserved()
+        public static void GivenSystemPoint_WhenConvertingToXnaVector2_ThenCoordinatesArePreserved()
         {
             SystemPoint source = new(12, 34);
             Vector2 result = source.ToXnaVector2();
@@ -82,7 +82,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenPoint2D_WhenConvertingToXnaVector2_ThenCoordinatesArePreserved()
+        public static void GivenPoint2D_WhenConvertingToXnaVector2_ThenCoordinatesArePreserved()
         {
             Point2D source = new(12, 34);
             Vector2 result = source.ToXnaVector2();
@@ -92,7 +92,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenPoint2D_WhenConvertingToXnaPoint_ThenCoordinatesArePreserved()
+        public static void GivenPoint2D_WhenConvertingToXnaPoint_ThenCoordinatesArePreserved()
         {
             Point2D source = new(12, 34);
             XnaPoint result = source.ToXnaPoint();
@@ -102,7 +102,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenSystemPoint_WhenConvertingToXnaPoint_ThenCoordinatesArePreserved()
+        public static void GivenSystemPoint_WhenConvertingToXnaPoint_ThenCoordinatesArePreserved()
         {
             SystemPoint source = new(12, 34);
             XnaPoint result = source.ToXnaPoint();
@@ -110,8 +110,9 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
             Assert.That(result.X, Is.EqualTo(12));
             Assert.That(result.Y, Is.EqualTo(34));
         }
+
         [Test]
-        public void GivenPoint2D_WhenRoundTrippingThroughXnaPoint_ThenCoordinatesArePreserved()
+        public static void GivenPoint2D_WhenRoundTrippingThroughXnaPoint_ThenCoordinatesArePreserved()
         {
             Point2D point = new(7, 13);
             Point2D result = point.ToXnaPoint().ToPoint2D();
@@ -120,7 +121,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenPoint2D_WhenRoundTrippingThroughSystemPoint_ThenCoordinatesArePreserved()
+        public static void GivenPoint2D_WhenRoundTrippingThroughSystemPoint_ThenCoordinatesArePreserved()
         {
             Point2D point = new(7, 13);
             Point2D result = point.ToSystemPoint().ToPoint2D();
@@ -129,7 +130,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenVector2_WhenRoundTrippingThroughPoint2D_ThenIntegerCoordinatesArePreserved()
+        public static void GivenVector2_WhenRoundTrippingThroughPoint2D_ThenIntegerCoordinatesArePreserved()
         {
             Vector2 vector = new(7f, 13f);
             Vector2 result = vector.ToPoint2D().ToXnaVector2();

@@ -59,7 +59,7 @@ namespace NuciXNA.Primitives
         /// Gets a value indicating whether this <see cref="SizeF2D"/> is zero.
         /// </summary>
         /// <value><c>true</c> if is empty; otherwise, <c>false</c>.</value>
-        public readonly bool IsEmpty => Width.Equals(0) && Height.Equals(0);
+        public readonly bool IsEmpty => object.Equals(Width, 0f) && object.Equals(Height, 0f);
 
         /// <summary>
         /// Gets the size of zero.
@@ -74,8 +74,8 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="SizeF2D"/> is equal to the current <see cref="SizeF2D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(SizeF2D other) =>
-            Width.Equals(other.Width) &&
-            Height.Equals(other.Height);
+            object.Equals(Width, other.Width) &&
+            object.Equals(Height, other.Height);
 
         /// <summary>
         /// Determines whether the specified width and height are equal to the current <see cref="SizeF2D"/>.
@@ -85,8 +85,8 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified width and height are equal to the current <see cref="SizeF2D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(float width, float height) =>
-            Width.Equals(width) &&
-            Height.Equals(height);
+            object.Equals(Width, width) &&
+            object.Equals(Height, height);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="SizeF2D"/>.
@@ -101,7 +101,7 @@ namespace NuciXNA.Primitives
                 return false;
             }
 
-            if (obj.GetType() != GetType())
+            if (!Equals(obj.GetType(), GetType()))
             {
                 return false;
             }
@@ -182,7 +182,7 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="SizeF2D"/> to compare.</param>
         /// <param name="other">The second <see cref="SizeF2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
-        public static bool operator ==(SizeF2D source, SizeF2D other) => source.Equals(other);
+        public static bool operator ==(SizeF2D source, SizeF2D other) => Equals(source, other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="SizeF2D"/> is not equal to

@@ -8,10 +8,10 @@ using XnaRectangle = Microsoft.Xna.Framework.Rectangle;
 namespace NuciXNA.Primitives.UnitTests.Mapping
 {
     [TestFixture]
-    public class RectangleMappingExtensionsTests
+    public sealed class RectangleMappingExtensionsTests
     {
         [Test]
-        public void GivenSystemRectangle_WhenConvertingToRectangle2D_ThenValuesArePreserved()
+        public static void GivenSystemRectangle_WhenConvertingToRectangle2D_ThenValuesArePreserved()
         {
             SystemRectangle source = new(1, 2, 10, 20);
             Rectangle2D result = source.ToRectangle2D();
@@ -23,7 +23,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenXnaRectangle_WhenConvertingToRectangle2D_ThenValuesArePreserved()
+        public static void GivenXnaRectangle_WhenConvertingToRectangle2D_ThenValuesArePreserved()
         {
             XnaRectangle source = new(1, 2, 10, 20);
             Rectangle2D result = source.ToRectangle2D();
@@ -35,7 +35,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenRectangle2D_WhenConvertingToSystemRectangle_ThenValuesArePreserved()
+        public static void GivenRectangle2D_WhenConvertingToSystemRectangle_ThenValuesArePreserved()
         {
             Rectangle2D source = new(1, 2, 10, 20);
             SystemRectangle result = source.ToSystemRectangle();
@@ -47,7 +47,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenXnaRectangle_WhenConvertingToSystemRectangle_ThenValuesArePreserved()
+        public static void GivenXnaRectangle_WhenConvertingToSystemRectangle_ThenValuesArePreserved()
         {
             XnaRectangle source = new(1, 2, 10, 20);
             SystemRectangle result = source.ToSystemRectangle();
@@ -59,7 +59,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenRectangle2D_WhenConvertingToXnaRectangle_ThenValuesArePreserved()
+        public static void GivenRectangle2D_WhenConvertingToXnaRectangle_ThenValuesArePreserved()
         {
             Rectangle2D source = new(1, 2, 10, 20);
             XnaRectangle result = source.ToXnaRectangle();
@@ -71,7 +71,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenSystemRectangle_WhenConvertingToXnaRectangle_ThenValuesArePreserved()
+        public static void GivenSystemRectangle_WhenConvertingToXnaRectangle_ThenValuesArePreserved()
         {
             SystemRectangle source = new(1, 2, 10, 20);
             XnaRectangle result = source.ToXnaRectangle();
@@ -81,8 +81,9 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
             Assert.That(result.Width, Is.EqualTo(10));
             Assert.That(result.Height, Is.EqualTo(20));
         }
+
         [Test]
-        public void GivenRectangle2D_WhenRoundTrippingThroughSystemRectangle_ThenValuesArePreserved()
+        public static void GivenRectangle2D_WhenRoundTrippingThroughSystemRectangle_ThenValuesArePreserved()
         {
             Rectangle2D rectangle = new(1, 2, 10, 20);
             Rectangle2D result = rectangle.ToSystemRectangle().ToRectangle2D();
@@ -91,7 +92,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenRectangle2D_WhenRoundTrippingThroughXnaRectangle_ThenValuesArePreserved()
+        public static void GivenRectangle2D_WhenRoundTrippingThroughXnaRectangle_ThenValuesArePreserved()
         {
             Rectangle2D rectangle = new(1, 2, 10, 20);
             Rectangle2D result = rectangle.ToXnaRectangle().ToRectangle2D();

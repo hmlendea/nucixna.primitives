@@ -10,9 +10,9 @@ namespace NuciXNA.Primitives
     /// <remarks>
     /// Initializes a new instance of the <see cref="Vector2D"/> structure.
     /// </remarks>
-    /// <param name="x">The X-axis value.</param>
-    /// <param name="y">The Y-axis value.</param>
-    public struct Vector2D(float x, float y) : IEquatable<Vector2D>
+    /// <param name="xCoordinate">The X-axis value.</param>
+    /// <param name="yCoordinate">The Y-axis value.</param>
+    public struct Vector2D(float xCoordinate, float yCoordinate) : IEquatable<Vector2D>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Vector2D"/> structure.
@@ -24,19 +24,19 @@ namespace NuciXNA.Primitives
         /// Gets or sets the X-axis value.
         /// </summary>
         /// <value>The X-axis value.</value>
-        public float X { get; set; } = x;
+        public float X { get; set; } = xCoordinate;
 
         /// <summary>
         /// Gets or sets the Y-axis value.
         /// </summary>
         /// <value>The Y-axis value.</value>
-        public float Y { get; set; } = y;
+        public float Y { get; set; } = yCoordinate;
 
         /// <summary>
         /// Gets a value indicating whether the values of this <see cref="Vector2D"/> are zero.
         /// </summary>
         /// <value><c>true</c> if the coorinates are zero; otherwise, <c>false</c>.</value>
-        public readonly bool IsEmpty => X == 0 && Y == 0;
+        public readonly bool IsEmpty => object.Equals(X, 0f) && object.Equals(Y, 0f);
 
         /// <summary>
         /// Gets a <see cref="Vector2D"/> with the values of zero.
@@ -55,19 +55,19 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="Vector2D"/> is equal to the current <see cref="Vector2D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Vector2D other) =>
-            X.Equals(other.X) &&
-            Y.Equals(other.Y);
+            object.Equals(X, other.X) &&
+            object.Equals(Y, other.Y);
 
         /// <summary>
         /// Determines whether the specified <see cref="float"/> values are equal to the current <see cref="Vector2D"/>.
         /// </summary>
-        /// <param name="x">The X-axis value.</param>
-        /// <param name="y">The Y-axis value.</param>
+        /// <param name="xCoordinate">The X-axis value.</param>
+        /// <param name="yCoordinate">The Y-axis value.</param>
         /// <returns><c>true</c> if the specified <see cref="float"/> values are equal to the current <see cref="Vector2D"/>;
         /// otherwise, <c>false</c>.</returns>
-        public readonly bool Equals(float x, float y) =>
-            X.Equals(x) &&
-            Y.Equals(y);
+        public readonly bool Equals(float xCoordinate, float yCoordinate) =>
+            object.Equals(X, xCoordinate) &&
+            object.Equals(Y, yCoordinate);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="Vector2D"/>.
@@ -82,7 +82,7 @@ namespace NuciXNA.Primitives
                 return false;
             }
 
-            if (obj.GetType() != GetType())
+            if (!Equals(obj.GetType(), GetType()))
             {
                 return false;
             }
@@ -140,7 +140,8 @@ namespace NuciXNA.Primitives
         /// <param name="source">The first <see cref="Vector2D"/> to compare.</param>
         /// <param name="other">The second <see cref="Vector2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
-        public static bool operator ==(Vector2D source, Vector2D other) => source.Equals(other);
+        public static bool operator ==(Vector2D source, Vector2D other)
+            => Equals(source, other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Vector2D"/> is not equal to

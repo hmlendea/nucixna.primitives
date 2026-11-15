@@ -5,10 +5,10 @@ using NUnit.Framework;
 namespace NuciXNA.Primitives.UnitTests
 {
     [TestFixture]
-    public class PointF3DTests
+    public sealed class PointF3DTests
     {
         [Test]
-        public void GivenFloatXYZ_WhenConstructing_ThenPropertiesAreSet()
+        public static void GivenFloatXYZ_WhenConstructing_ThenPropertiesAreSet()
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
@@ -18,7 +18,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPoint3D_WhenConstructing_ThenCoordinatesArePreserved()
+        public static void GivenPoint3D_WhenConstructing_ThenCoordinatesArePreserved()
         {
             Point3D source = new(2, 4, 6);
             PointF3D point = new(source);
@@ -29,7 +29,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPointF2DAndIntZ_WhenConstructing_ThenAllPropertiesAreSet()
+        public static void GivenPointF2DAndIntZ_WhenConstructing_ThenAllPropertiesAreSet()
         {
             PointF2D point2D = new(1.5f, 2.5f);
             PointF3D point3D = new(point2D, 3);
@@ -40,7 +40,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPointF2DAndFloatZ_WhenConstructing_ThenAllPropertiesAreSet()
+        public static void GivenPointF2DAndFloatZ_WhenConstructing_ThenAllPropertiesAreSet()
         {
             PointF2D point2D = new(1.5f, 2.5f);
             PointF3D point3D = new(point2D, 3.5f);
@@ -51,7 +51,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPoint2DAndIntZ_WhenConstructing_ThenAllPropertiesAreSet()
+        public static void GivenPoint2DAndIntZ_WhenConstructing_ThenAllPropertiesAreSet()
         {
             Point2D point2D = new(3, 7);
             PointF3D point3D = new(point2D, 11);
@@ -62,7 +62,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPoint2DAndFloatZ_WhenConstructing_ThenAllPropertiesAreSet()
+        public static void GivenPoint2DAndFloatZ_WhenConstructing_ThenAllPropertiesAreSet()
         {
             Point2D point2D = new(3, 7);
             PointF3D point3D = new(point2D, 11.5f);
@@ -73,7 +73,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenZeroCoordinates_WhenCheckingIsEmpty_ThenReturnsTrue()
+        public static void GivenZeroCoordinates_WhenCheckingIsEmpty_ThenReturnsTrue()
         {
             PointF3D point = new(0f, 0f, 0f);
 
@@ -81,7 +81,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonZeroXCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
+        public static void GivenNonZeroXCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
         {
             PointF3D point = new(1.0f, 0f, 0f);
 
@@ -89,7 +89,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonZeroYCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
+        public static void GivenNonZeroYCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
         {
             PointF3D point = new(0f, 1.0f, 0f);
 
@@ -97,7 +97,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonZeroZCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
+        public static void GivenNonZeroZCoordinate_WhenCheckingIsEmpty_ThenReturnsFalse()
         {
             PointF3D point = new(0f, 0f, 1.0f);
 
@@ -105,7 +105,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenEmptyStatic_WhenCheckingCoordinates_ThenAllAreZero()
+        public static void GivenEmptyStatic_WhenCheckingCoordinates_ThenAllAreZero()
         {
             PointF3D empty = PointF3D.Empty;
 
@@ -115,7 +115,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPointsWithSameCoordinates_WhenCheckingEquality_ThenReturnsTrue()
+        public static void GivenTwoPointsWithSameCoordinates_WhenCheckingEquality_ThenReturnsTrue()
         {
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);
@@ -124,7 +124,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPointsWithDifferentZCoordinate_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenTwoPointsWithDifferentZCoordinate_WhenCheckingEquality_ThenReturnsFalse()
         {
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.6f);
@@ -133,7 +133,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenMatchingFloatCoordinates_WhenCheckingEqualityWithXYZ_ThenReturnsTrue()
+        public static void GivenMatchingFloatCoordinates_WhenCheckingEqualityWithXYZ_ThenReturnsTrue()
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
@@ -141,7 +141,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonMatchingFloatCoordinates_WhenCheckingEqualityWithXYZ_ThenReturnsFalse()
+        public static void GivenNonMatchingFloatCoordinates_WhenCheckingEqualityWithXYZ_ThenReturnsFalse()
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
@@ -149,7 +149,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSamePointBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        public static void GivenSamePointBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
@@ -157,7 +157,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
+        public static void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             PointF3D point = new(1.5f, 2.5f, 3.5f);
 
@@ -165,7 +165,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPointsWithSameCoordinates_WhenGettingHashCode_ThenReturnSameHash()
+        public static void GivenTwoPointsWithSameCoordinates_WhenGettingHashCode_ThenReturnSameHash()
         {
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);
@@ -174,7 +174,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPointsWithDifferentCoordinates_WhenGettingHashCode_ThenReturnDifferentHashes()
+        public static void GivenTwoPointsWithDifferentCoordinates_WhenGettingHashCode_ThenReturnDifferentHashes()
         {
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 4.5f);
@@ -183,7 +183,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPoints_WhenAdding_ThenReturnsCorrectSum()
+        public static void GivenTwoPoints_WhenAdding_ThenReturnsCorrectSum()
         {
             PointF3D point1 = new(1.0f, 2.0f, 3.0f);
             PointF3D point2 = new(0.5f, 1.5f, 2.5f);
@@ -196,7 +196,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPoints_WhenSubtracting_ThenReturnsCorrectDifference()
+        public static void GivenTwoPoints_WhenSubtracting_ThenReturnsCorrectDifference()
         {
             PointF3D point1 = new(5.0f, 8.0f, 11.0f);
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);
@@ -209,7 +209,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPoints_WhenMultiplying_ThenReturnsCorrectProduct()
+        public static void GivenTwoPoints_WhenMultiplying_ThenReturnsCorrectProduct()
         {
             PointF3D point1 = new(2.0f, 3.0f, 4.0f);
             PointF3D point2 = new(5.0f, 6.0f, 7.0f);
@@ -222,7 +222,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPoints_WhenDividing_ThenReturnsCorrectQuotient()
+        public static void GivenTwoPoints_WhenDividing_ThenReturnsCorrectQuotient()
         {
             PointF3D point1 = new(10.0f, 20.0f, 30.0f);
             PointF3D point2 = new(2.0f, 4.0f, 5.0f);
@@ -235,7 +235,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPointAndScalar_WhenMultiplying_ThenAllComponentsAreScaled()
+        public static void GivenPointAndScalar_WhenMultiplying_ThenAllComponentsAreScaled()
         {
             PointF3D point = new(2.0f, 3.0f, 4.0f);
 
@@ -247,7 +247,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPointAndScalar_WhenDividing_ThenAllComponentsAreDivided()
+        public static void GivenPointAndScalar_WhenDividing_ThenAllComponentsAreDivided()
         {
             PointF3D point = new(6.0f, 9.0f, 12.0f);
 
@@ -259,7 +259,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoEqualPoints_WhenUsingEqualityOperator_ThenReturnsTrue()
+        public static void GivenTwoEqualPoints_WhenUsingEqualityOperator_ThenReturnsTrue()
         {
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);
@@ -268,7 +268,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoDifferentPoints_WhenUsingEqualityOperator_ThenReturnsFalse()
+        public static void GivenTwoDifferentPoints_WhenUsingEqualityOperator_ThenReturnsFalse()
         {
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.6f);
@@ -277,7 +277,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoDifferentPoints_WhenUsingInequalityOperator_ThenReturnsTrue()
+        public static void GivenTwoDifferentPoints_WhenUsingInequalityOperator_ThenReturnsTrue()
         {
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.6f);
@@ -286,7 +286,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoEqualPoints_WhenUsingInequalityOperator_ThenReturnsFalse()
+        public static void GivenTwoEqualPoints_WhenUsingInequalityOperator_ThenReturnsFalse()
         {
             PointF3D point1 = new(1.5f, 2.5f, 3.5f);
             PointF3D point2 = new(1.5f, 2.5f, 3.5f);

@@ -64,7 +64,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <returns>The <see cref="SystemColor"/> array.</returns>
         /// <param name="source">Source <see cref="Colour"/> array.</param>
         public static Colour[] ToColours(this SystemColor[] source)
-            => source.Select(x => x.ToColour()).ToArray();
+            => source.Select(sourceColour => sourceColour.ToColour()).ToArray();
 
         /// <summary>
         /// Converts an array of <see cref="XnaColor"/> to an array of <see cref="Colour"/>.
@@ -72,7 +72,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <returns>The <see cref="Colour"/> array.</returns>
         /// <param name="source">Source <see cref="XnaColor"/> array.</param>
         public static Colour[] ToColours(this XnaColor[] source)
-            => source.Select(x => x.ToColour()).ToArray();
+            => source.Select(sourceColour => sourceColour.ToColour()).ToArray();
 
         /// <summary>
         /// Converts an array of <see cref="XnaColor"/> to an array of <see cref="SystemColor"/>.
@@ -80,7 +80,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <returns>The <see cref="SystemColor"/> array.</returns>
         /// <param name="source">Source <see cref="XnaColor"/> array.</param>
         public static SystemColor[] ToSystemColors(this XnaColor[] source)
-            => source.Select(x => x.ToSystemColor()).ToArray();
+            => source.Select(sourceColour => sourceColour.ToSystemColor()).ToArray();
 
         /// <summary>
         /// Converts an array of <see cref="Colour"/> to an array of <see cref="SystemColor"/>.
@@ -88,7 +88,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <returns>The <see cref="SystemColor"/> array.</returns>
         /// <param name="source">Source <see cref="Colour"/> array.</param>
         public static SystemColor[] ToSystemColors(this Colour[] source)
-            => source.Select(x => x.ToSystemColor()).ToArray();
+            => source.Select(sourceColour => sourceColour.ToSystemColor()).ToArray();
 
         /// <summary>
         /// Converts an array of <see cref="Colour"/> to an array of <see cref="XnaColor"/>.
@@ -96,7 +96,7 @@ namespace NuciXNA.Primitives.Mapping
         /// <returns>The <see cref="XnaColor"/> array.</returns>
         /// <param name="source">Source <see cref="Colour"/> array.</param>
         public static XnaColor[] ToXnaColors(this Colour[] source)
-            => source.Select(x => x.ToXnaColor()).ToArray();
+            => source.Select(sourceColour => sourceColour.ToXnaColor()).ToArray();
 
         /// <summary>
         /// Converts an array of <see cref="SystemColor"/> to an array of <see cref="XnaColor"/>.
@@ -104,6 +104,6 @@ namespace NuciXNA.Primitives.Mapping
         /// <returns>The <see cref="XnaColor"/> array.</returns>
         /// <param name="source">Source <see cref="SystemColor"/> array.</param>
         public static XnaColor[] ToXnaColors(this SystemColor[] source)
-            => source.Select(x => x.ToXnaColor()).ToArray();
+            => source.Select(sourceColour => sourceColour.ToXnaColor()).ToArray();
     }
 }

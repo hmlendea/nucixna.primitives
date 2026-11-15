@@ -11,18 +11,23 @@ namespace NuciXNA.Primitives
     /// <remarks>
     /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
     /// </remarks>
-    /// <param name="x">The x coordinate.</param>
-    /// <param name="y">The y coordinate.</param>
+    /// <param name="xCoordinate">The X-axis coordinate.</param>
+    /// <param name="yCoordinate">The Y-axis coordinate.</param>
     /// <param name="width">Width.</param>
     /// <param name="height">Height.</param>
-    public struct Rectangle2D(int x, int y, int width, int height) : IEquatable<Rectangle2D>
+    public struct Rectangle2D(
+        int xCoordinate,
+        int yCoordinate,
+        int width,
+        int height) : IEquatable<Rectangle2D>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
         /// </summary>
         /// <param name="point">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
         /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
-        public Rectangle2D(Point2D point, Size2D size) : this(point.X, point.Y, size.Width, size.Height) { }
+        public Rectangle2D(Point2D point, Size2D size)
+            : this(point.X, point.Y, size.Width, size.Height) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
@@ -30,22 +35,25 @@ namespace NuciXNA.Primitives
         /// <param name="point">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
         /// <param name="width">Width.</param>
         /// <param name="height">Height.</param>
-        public Rectangle2D(Point2D point, int width, int height) : this(point.X, point.Y, width, height) { }
+        public Rectangle2D(Point2D point, int width, int height)
+            : this(point.X, point.Y, width, height) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
         /// </summary>
-        /// <param name="x">The X-axis coordinate.</param>
-        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="xCoordinate">The X-axis coordinate.</param>
+        /// <param name="yCoordinate">The Y-axis coordinate.</param>
         /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
-        public Rectangle2D(int x, int y, Size2D size) : this(x, y, size.Width, size.Height) { }
+        public Rectangle2D(int xCoordinate, int yCoordinate, Size2D size)
+            : this(xCoordinate, yCoordinate, size.Width, size.Height) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
         /// </summary>
         /// <param name="start">The start point of the rectangle.</param>
         /// <param name="end">The end point of the rectangle.</param>
-        public Rectangle2D(Point2D start, Point2D end) : this(start.X, start.Y, end.X - start.X, end.Y - start.Y) { }
+        public Rectangle2D(Point2D start, Point2D end)
+            : this(start.X, start.Y, end.X - start.X, end.Y - start.Y) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Rectangle2D"/> structure.
@@ -85,13 +93,13 @@ namespace NuciXNA.Primitives
         /// Gets or sets the X-axis coordinate.
         /// </summary>
         /// <value>The X-axis coordinate.</value>
-        public int X { get; set; } = x;
+        public int X { get; set; } = xCoordinate;
 
         /// <summary>
         /// Gets or sets the Y-axis coordinate.
         /// </summary>
         /// <value>The Y-axis coordinate.</value>
-        public int Y { get; set; } = y;
+        public int Y { get; set; } = yCoordinate;
 
         /// <summary>
         /// Gets or sets the width.
@@ -111,7 +119,10 @@ namespace NuciXNA.Primitives
         /// </summary>
         /// <value><c>true</c> if is empty; otherwise, <c>false</c>.</value>
         public readonly bool IsEmpty
-            => X.Equals(0) && Y.Equals(0) && Width.Equals(0) && Height.Equals(0);
+            => object.Equals(X, 0) &&
+                object.Equals(Y, 0) &&
+                object.Equals(Width, 0) &&
+                object.Equals(Height, 0);
 
         /// <summary>
         /// Gets the lowest Y-axis coordinate of the rectangle.
@@ -176,12 +187,15 @@ namespace NuciXNA.Primitives
         /// <summary>
         /// Checks whether the specified <see cref="Rectangle2D"/> contains a set of coordinates.
         /// </summary>
-        /// <param name="x">The X-axis coordinate.</param>
-        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="xCoordinate">The X-axis coordinate.</param>
+        /// <param name="yCoordinate">The Y-axis coordinate.</param>
         /// <returns><c>true</c> if the specified set of coordinates are inside the rectangle area;
         /// otherwise, <c>false</c>.</returns>
-        public readonly bool Contains(int x, int y)
-            => Left <= x && Right >= x && Top <= y && Bottom >= y;
+        public readonly bool Contains(int xCoordinate, int yCoordinate)
+            => Left <= xCoordinate &&
+                Right >= xCoordinate &&
+                Top <= yCoordinate &&
+                Bottom >= yCoordinate;
 
         /// <summary>
         /// Checks whether the specified <see cref="Rectangle2D"/> contains a <see cref="Point2D"/>.
@@ -208,22 +222,25 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="Rectangle2D"/> is equal to the current
         /// <see cref="Rectangle2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Rectangle2D other) =>
-            X.Equals(other.X) &&
-            Y.Equals(other.Y) &&
-            Width.Equals(other.Width) &&
-            Height.Equals(other.Height);
+            Equals(X, other.X) &&
+            Equals(Y, other.Y) &&
+            Equals(Width, other.Width) &&
+            Equals(Height, other.Height);
 
         /// <summary>
         /// Determines whether the specified coordinates are equal to the current <see cref="Rectangle2D"/>.
         /// </summary>
-        /// <param name="x">The X-axis coordinate.</param>
-        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="xCoordinate">The X-axis coordinate.</param>
+        /// <param name="yCoordinate">The Y-axis coordinate.</param>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
         /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="Rectangle2D"/>;
         /// otherwise, <c>false</c>.</returns>
-        public readonly bool Equals(int x, int y, int width, int height)
-            => X.Equals(x) && Y.Equals(y) && Width.Equals(width) && Height.Equals(height);
+        public readonly bool Equals(int xCoordinate, int yCoordinate, int width, int height)
+            => Equals(X, xCoordinate) &&
+                Equals(Y, yCoordinate) &&
+                Equals(Width, width) &&
+                Equals(Height, height);
 
         /// <summary>
         /// Determines whether the specified <see cref="Point2D"/> and <see cref="Size2D"/> are equal to the current <see cref="Rectangle2D"/>.
@@ -232,10 +249,10 @@ namespace NuciXNA.Primitives
         /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
         /// <returns><c>true</c> if the specified <see cref="Point2D"/> and <see cref="Size2D"/> are equal to the current <see cref="Rectangle2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Point2D location, Size2D size) =>
-            X.Equals(location.X) &&
-            Y.Equals(location.Y) &&
-            Width.Equals(size.Width) &&
-            Height.Equals(size.Height);
+            Equals(X, location.X) &&
+            Equals(Y, location.Y) &&
+            Equals(Width, size.Width) &&
+            Equals(Height, size.Height);
 
         /// <summary>
         /// Determines whether the specified <see cref="Point2D"/> and width and height are equal to the current <see cref="Rectangle2D"/>.
@@ -245,23 +262,23 @@ namespace NuciXNA.Primitives
         /// <param name="height">Height.</param>
         /// <returns><c>true</c> if the specified <see cref="Point2D"/> and width and height are equal to the current <see cref="Rectangle2D"/>; otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Point2D location, int width, int height) =>
-            X.Equals(location.X) &&
-            Y.Equals(location.Y) &&
-            Width.Equals(width) &&
-            Height.Equals(height);
+            Equals(X, location.X) &&
+            Equals(Y, location.Y) &&
+            Equals(Width, width) &&
+            Equals(Height, height);
 
         /// <summary>
         /// Determines whether the specified coordinates and <see cref="Size2D"/> are equal to the current <see cref="Rectangle2D"/>.
         /// </summary>
-        /// <param name="x">The X-axis coordinate.</param>
-        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="xCoordinate">The X-axis coordinate.</param>
+        /// <param name="yCoordinate">The Y-axis coordinate.</param>
         /// <param name="size">The <see cref="Size2D"/> to copy the width and height from.</param>
         /// <returns><c>true</c> if the specified coordinates and <see cref="Size2D"/> are equal to the current <see cref="Rectangle2D"/>; otherwise, <c>false</c>.</returns>
-        public readonly bool Equals(int x, int y, Size2D size) =>
-            X.Equals(x) &&
-            Y.Equals(y) &&
-            Width.Equals(size.Width) &&
-            Height.Equals(size.Height);
+        public readonly bool Equals(int xCoordinate, int yCoordinate, Size2D size) =>
+            Equals(X, xCoordinate) &&
+            Equals(Y, yCoordinate) &&
+            Equals(Width, size.Width) &&
+            Equals(Height, size.Height);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="Rectangle2D"/>.
@@ -276,7 +293,7 @@ namespace NuciXNA.Primitives
                 return false;
             }
 
-            if (obj.GetType() != GetType())
+            if (!Equals(obj.GetType(), GetType()))
             {
                 return false;
             }
@@ -292,7 +309,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Rectangle2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
         public static bool operator ==(Rectangle2D source, Rectangle2D other)
-            => source.Equals(other);
+            => Equals(source, other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Rectangle2D"/> is not equal

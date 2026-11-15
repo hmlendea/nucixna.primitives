@@ -9,9 +9,9 @@ namespace NuciXNA.Primitives
     /// <remarks>
     /// Initializes a new instance of the <see cref="Point2D"/> structure.
     /// </remarks>
-    /// <param name="x">The X-axis coordinate.</param>
-    /// <param name="y">The Y-axis coordinate.</param>
-    public struct Point2D(int x, int y) : IEquatable<Point2D>
+    /// <param name="xCoordinate">The X-axis coordinate.</param>
+    /// <param name="yCoordinate">The Y-axis coordinate.</param>
+    public struct Point2D(int xCoordinate, int yCoordinate) : IEquatable<Point2D>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Point2D"/> structure.
@@ -23,19 +23,19 @@ namespace NuciXNA.Primitives
         /// Gets or sets the X-axis coordinate.
         /// </summary>
         /// <value>The X-axis coordinate.</value>
-        public int X { get; set; } = x;
+        public int X { get; set; } = xCoordinate;
 
         /// <summary>
         /// Gets or sets the Y-axis coordinate.
         /// </summary>
         /// <value>The Y-axis coordinate.</value>
-        public int Y { get; set; } = y;
+        public int Y { get; set; } = yCoordinate;
 
         /// <summary>
         /// Gets a value indicating whether the coordinates of this <see cref="Point2D"/> are zero.
         /// </summary>
         /// <value><c>true</c> if the coorinates are zero; otherwise, <c>false</c>.</value>
-        public readonly bool IsEmpty => X.Equals(0) && Y.Equals(0);
+        public readonly bool IsEmpty => object.Equals(X, 0) && object.Equals(Y, 0);
 
         /// <summary>
         /// Gets a <see cref="Point2D"/> with the coordinates of zero.
@@ -50,7 +50,7 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="Point2D"/> is equal to the current <see cref="Point2D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(Point2D other)
-            => X.Equals(other.X) && Y.Equals(other.Y);
+            => object.Equals(X, other.X) && object.Equals(Y, other.Y);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="Point2D"/>.
@@ -65,7 +65,7 @@ namespace NuciXNA.Primitives
                 return false;
             }
 
-            if (obj.GetType() != GetType())
+            if (!Equals(obj.GetType(), GetType()))
             {
                 return false;
             }
@@ -76,11 +76,12 @@ namespace NuciXNA.Primitives
         /// <summary>
         /// Determines whether the specified coordinates are equal to the current <see cref="Point2D"/>.
         /// </summary>
-        /// <param name="x">The X-axis coordinate.</param>
-        /// <param name="y">The Y-axis coordinate.</param>
+        /// <param name="xCoordinate">The X-axis coordinate.</param>
+        /// <param name="yCoordinate">The Y-axis coordinate.</param>
         /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="Point2D"/>;
         /// otherwise, <c>false</c>.</returns>
-        public readonly bool Equals(int x, int y) => X.Equals(x) && Y.Equals(y);
+        public readonly bool Equals(int xCoordinate, int yCoordinate)
+            => object.Equals(X, xCoordinate) && object.Equals(Y, yCoordinate);
 
         /// <summary>
         /// Adds the coordinates of a <see cref="Point2D"/> to those of another <see cref="Point2D"/>,
@@ -149,7 +150,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="Point2D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
         public static bool operator ==(Point2D source, Point2D other)
-            => source.Equals(other);
+            => Equals(source, other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="Point2D"/> is not equal to

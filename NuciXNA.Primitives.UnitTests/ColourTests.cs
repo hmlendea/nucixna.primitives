@@ -6,10 +6,10 @@ using NUnit.Framework;
 namespace NuciXNA.Primitives.UnitTests
 {
     [TestFixture]
-    public class ColourTests
+    public sealed class ColourTests
     {
         [Test]
-        public void GivenDefaultConstructor_WhenConstructing_ThenAlphaIsMaxAndRGBIsZero()
+        public static void GivenDefaultConstructor_WhenConstructing_ThenAlphaIsMaxAndRGBIsZero()
         {
             Colour colour = new();
 
@@ -20,7 +20,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenRgbComponents_WhenConstructing_ThenPropertiesAreSet()
+        public static void GivenRgbComponents_WhenConstructing_ThenPropertiesAreSet()
         {
             Colour colour = new(1, 2, 3);
 
@@ -31,7 +31,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenRgbaComponents_WhenConstructing_ThenPropertiesAreSet()
+        public static void GivenRgbaComponents_WhenConstructing_ThenPropertiesAreSet()
         {
             Colour colour = new(1, 2, 3, 4);
 
@@ -42,11 +42,11 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTransparentColour_WhenCheckingComponents_ThenAlphaIsZero()
+        public static void GivenTransparentColour_WhenCheckingComponents_ThenAlphaIsZero()
             => Assert.That(Colour.Transparent.A, Is.EqualTo(0));
 
         [Test]
-        public void GivenBlackColour_WhenCheckingComponents_ThenRgbAreZeroAndAlphaIsMax()
+        public static void GivenBlackColour_WhenCheckingComponents_ThenRgbAreZeroAndAlphaIsMax()
         {
             Assert.That(Colour.Black.R, Is.EqualTo(0));
             Assert.That(Colour.Black.G, Is.EqualTo(0));
@@ -55,7 +55,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenRedColour_WhenCheckingComponents_ThenOnlyRedChannelIsMax()
+        public static void GivenRedColour_WhenCheckingComponents_ThenOnlyRedChannelIsMax()
         {
             Assert.That(Colour.Red.R, Is.EqualTo(255));
             Assert.That(Colour.Red.G, Is.EqualTo(0));
@@ -64,7 +64,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenGrayColour_WhenCheckingComponents_ThenRgbAreEqualTo128AndAlphaIsMax()
+        public static void GivenGrayColour_WhenCheckingComponents_ThenRgbAreEqualTo128AndAlphaIsMax()
         {
             Assert.That(Colour.Gray.R, Is.EqualTo(128));
             Assert.That(Colour.Gray.G, Is.EqualTo(128));
@@ -73,7 +73,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenMaroonColour_WhenCheckingComponents_ThenOnlyRedIs128AndAlphaIsMax()
+        public static void GivenMaroonColour_WhenCheckingComponents_ThenOnlyRedIs128AndAlphaIsMax()
         {
             Assert.That(Colour.Maroon.R, Is.EqualTo(128));
             Assert.That(Colour.Maroon.G, Is.EqualTo(0));
@@ -82,7 +82,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNavyColour_WhenCheckingComponents_ThenOnlyBlueIs128AndAlphaIsMax()
+        public static void GivenNavyColour_WhenCheckingComponents_ThenOnlyBlueIs128AndAlphaIsMax()
         {
             Assert.That(Colour.Navy.R, Is.EqualTo(0));
             Assert.That(Colour.Navy.G, Is.EqualTo(0));
@@ -91,7 +91,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPurpleColour_WhenCheckingComponents_ThenRedAndBlueAre128AndAlphaIsMax()
+        public static void GivenPurpleColour_WhenCheckingComponents_ThenRedAndBlueAre128AndAlphaIsMax()
         {
             Assert.That(Colour.Purple.R, Is.EqualTo(128));
             Assert.That(Colour.Purple.G, Is.EqualTo(0));
@@ -100,7 +100,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenHexString_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
+        public static void GivenHexString_WhenCallingFromHexadecimal_ThenReturnsCorrectColour()
         {
             Colour expected = new(255, 0, 0);
             Colour actual = Colour.FromHexadecimal("#FF0000");
@@ -109,7 +109,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenArgbInteger_WhenCallingFromArgb_ThenReturnsCorrectColour()
+        public static void GivenArgbInteger_WhenCallingFromArgb_ThenReturnsCorrectColour()
         {
             Colour expected = new(1, 2, 3, 4);
             Colour actual = Colour.FromArgb(67174915);
@@ -118,7 +118,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenByteRgb_WhenCallingFromArgb_ThenReturnsCorrectColour()
+        public static void GivenByteRgb_WhenCallingFromArgb_ThenReturnsCorrectColour()
         {
             Colour result = Colour.FromArgb((byte)10, (byte)20, (byte)30);
 
@@ -129,7 +129,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenByteArgb_WhenCallingFromArgb_ThenReturnsCorrectColour()
+        public static void GivenByteArgb_WhenCallingFromArgb_ThenReturnsCorrectColour()
         {
             Colour result = Colour.FromArgb((byte)128, (byte)10, (byte)20, (byte)30);
 
@@ -140,7 +140,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCallingToString_ThenReturnsHexadecimalString()
+        public static void GivenColour_WhenCallingToString_ThenReturnsHexadecimalString()
         {
             Colour colour = new(255, 0, 0);
             string expected = "#FF0000";
@@ -150,7 +150,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenFullyOpaqueColour_WhenCallingToHexadecimal_ThenOmitsAlpha()
+        public static void GivenFullyOpaqueColour_WhenCallingToHexadecimal_ThenOmitsAlpha()
         {
             Colour colour = new(0, 255, 0);
             string expected = "#00FF00";
@@ -161,7 +161,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourWithAlpha_WhenCallingToHexadecimal_ThenIncludesAlphaPrefix()
+        public static void GivenColourWithAlpha_WhenCallingToHexadecimal_ThenIncludesAlphaPrefix()
         {
             Colour colour = new(255, 0, 0, 128);
             string expected = "#80FF0000";
@@ -172,7 +172,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCallingToArgb_ThenReturnsCorrectInteger()
+        public static void GivenColour_WhenCallingToArgb_ThenReturnsCorrectInteger()
         {
             Colour colour = new(1, 2, 3);
             int expected = -16711165;
@@ -183,7 +183,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCallingToMonochromeAverage_ThenReturnsCorrectColour()
+        public static void GivenColour_WhenCallingToMonochromeAverage_ThenReturnsCorrectColour()
         {
             Colour colour = new(8, 16, 24);
             Colour expected = new(16, 16, 16);
@@ -193,7 +193,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourWithEqualRGBComponents_WhenCallingToMonochromeAverage_ThenReturnsUnchangedColour()
+        public static void GivenColourWithEqualRGBComponents_WhenCallingToMonochromeAverage_ThenReturnsUnchangedColour()
         {
             Colour colour = new(10, 10, 10);
             Colour expected = new(10, 10, 10);
@@ -204,7 +204,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCallingToMonochromeAverage_ThenAlphaIsPreserved()
+        public static void GivenColour_WhenCallingToMonochromeAverage_ThenAlphaIsPreserved()
         {
             Colour colour = new(8, 16, 24, 200);
 
@@ -214,7 +214,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCallingToMonochromeLight_ThenReturnsCorrectColour()
+        public static void GivenColour_WhenCallingToMonochromeLight_ThenReturnsCorrectColour()
         {
             Colour colour = new(8, 16, 24);
             Colour expected = new(24, 24, 24);
@@ -224,7 +224,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCallingToMonochromeLight_ThenAlphaIsPreserved()
+        public static void GivenColour_WhenCallingToMonochromeLight_ThenAlphaIsPreserved()
         {
             Colour colour = new(8, 16, 24, 200);
 
@@ -234,7 +234,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCallingToMonochromeDark_ThenReturnsCorrectColour()
+        public static void GivenColour_WhenCallingToMonochromeDark_ThenReturnsCorrectColour()
         {
             Colour colour = new(8, 16, 24);
             Colour expected = new(8, 8, 8);
@@ -244,7 +244,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCallingToMonochromeDark_ThenAlphaIsPreserved()
+        public static void GivenColour_WhenCallingToMonochromeDark_ThenAlphaIsPreserved()
         {
             Colour colour = new(8, 16, 24, 200);
 
@@ -254,7 +254,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoSimilarColours_WhenCallingIsSimilarTo_ThenReturnsTrue()
+        public static void GivenTwoSimilarColours_WhenCallingIsSimilarTo_ThenReturnsTrue()
         {
             Colour colour1 = new(8, 16, 24);
             Colour colour2 = new(10, 18, 26);
@@ -264,7 +264,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourAtExactToleranceBoundary_WhenCallingIsSimilarTo_ThenReturnsTrue()
+        public static void GivenColourAtExactToleranceBoundary_WhenCallingIsSimilarTo_ThenReturnsTrue()
         {
             Colour colour1 = new(10, 10, 10);
             Colour colour2 = new(12, 12, 12);
@@ -275,7 +275,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourSlightlyOutsideTolerance_WhenCallingIsSimilarTo_ThenReturnsFalse()
+        public static void GivenColourSlightlyOutsideTolerance_WhenCallingIsSimilarTo_ThenReturnsFalse()
         {
             Colour colour1 = new(8, 16, 24);
             Colour colour2 = new(10, 18, 27);
@@ -286,7 +286,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourAndValidFactor_WhenCallingMultiply_ThenReturnsCorrectColour()
+        public static void GivenColourAndValidFactor_WhenCallingMultiply_ThenReturnsCorrectColour()
         {
             Colour colour = new(8, 8, 8, 8);
             Colour expected = new(16, 16, 16, 16);
@@ -296,7 +296,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourAndHugeFactor_WhenCallingMultiply_ThenReturnsWhiteColour()
+        public static void GivenColourAndHugeFactor_WhenCallingMultiply_ThenReturnsWhiteColour()
         {
             Colour colour = new(8, 8, 8, 8);
             Colour expected = new(255, 255, 255, 255);
@@ -306,7 +306,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourAndNegativeFactor_WhenCallingMultiply_ThenReturnsBlackColour()
+        public static void GivenColourAndNegativeFactor_WhenCallingMultiply_ThenReturnsBlackColour()
         {
             Colour colour = new(8, 8, 8, 8);
             Colour expected = new(0, 0, 0, 0);
@@ -316,11 +316,11 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoColoursWithSameRgb_WhenCheckingEquality_ThenReturnsTrue()
+        public static void GivenTwoColoursWithSameRgb_WhenCheckingEquality_ThenReturnsTrue()
             => Assert.That(new Colour(1, 2, 3), Is.EqualTo(new Colour(1, 2, 3)));
 
         [Test]
-        public void GivenTwoColoursWithDifferentRgb_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenTwoColoursWithDifferentRgb_WhenCheckingEquality_ThenReturnsFalse()
         {
             Colour colour1 = new(1, 2, 3);
             Colour colour2 = new(1, 2, 4);
@@ -329,47 +329,47 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoColoursWithSameRgba_WhenCheckingEquality_ThenReturnsTrue()
+        public static void GivenTwoColoursWithSameRgba_WhenCheckingEquality_ThenReturnsTrue()
             => Assert.That(new Colour(1, 2, 3, 4), Is.EqualTo(new Colour(1, 2, 3, 4)));
 
         [Test]
-        public void GivenTwoColoursWithDifferentRgba_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenTwoColoursWithDifferentRgba_WhenCheckingEquality_ThenReturnsFalse()
             => Assert.That(new Colour(1, 2, 3, 4), Is.Not.EqualTo(new Colour(1, 2, 3, 5)));
 
         [Test]
-        public void GivenMatchingRgbValues_WhenCallingEqualsWithRgb_ThenReturnsTrue()
+        public static void GivenMatchingRgbValues_WhenCallingEqualsWithRgb_ThenReturnsTrue()
             => Assert.That(new Colour(1, 2, 3).Equals(1, 2, 3));
 
         [Test]
-        public void GivenNonMatchingRgbValues_WhenCallingEqualsWithRgb_ThenReturnsFalse()
+        public static void GivenNonMatchingRgbValues_WhenCallingEqualsWithRgb_ThenReturnsFalse()
             => Assert.That(new Colour(1, 2, 3).Equals(1, 2, 99), Is.False);
 
         [Test]
-        public void GivenMatchingArgbValues_WhenCallingEqualsWithArgb_ThenReturnsTrue()
+        public static void GivenMatchingArgbValues_WhenCallingEqualsWithArgb_ThenReturnsTrue()
             => Assert.That(new Colour(1, 2, 3, 4).Equals(4, 1, 2, 3));
 
         [Test]
-        public void GivenNonMatchingArgbValues_WhenCallingEqualsWithArgb_ThenReturnsFalse()
+        public static void GivenNonMatchingArgbValues_WhenCallingEqualsWithArgb_ThenReturnsFalse()
             => Assert.That(new Colour(1, 2, 3, 4).Equals(4, 1, 2, 99), Is.False);
 
         [Test]
-        public void GivenColourAndMatchingHexString_WhenCheckingEquality_ThenReturnsTrue()
+        public static void GivenColourAndMatchingHexString_WhenCheckingEquality_ThenReturnsTrue()
             => Assert.That(new Colour(255, 0, 255).Equals("#FF00FF"));
 
         [Test]
-        public void GivenColourAndInvalidHexString_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenColourAndInvalidHexString_WhenCheckingEquality_ThenReturnsFalse()
             => Assert.That(new Colour(255, 0, 0).Equals("INVALID"), Is.False);
 
         [Test]
-        public void GivenColourAndNullHexString_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenColourAndNullHexString_WhenCheckingEquality_ThenReturnsFalse()
             => Assert.That(new Colour(255, 0, 0).Equals((string)null!), Is.False);
 
         [Test]
-        public void GivenColourAndUnrelatedObject_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenColourAndUnrelatedObject_WhenCheckingEquality_ThenReturnsFalse()
             => Assert.That(new Colour(255, 0, 255), Is.Not.EqualTo((object)"Unrelated"));
 
         [Test]
-        public void GivenColoursWithSameComponents_WhenGettingHashCode_ThenReturnSameHash()
+        public static void GivenColoursWithSameComponents_WhenGettingHashCode_ThenReturnSameHash()
         {
             Colour colour1 = new(10, 20, 30, 40);
             Colour colour2 = new(10, 20, 30, 40);
@@ -378,7 +378,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColoursWithPermutedComponents_WhenGettingHashCode_ThenReturnDifferentHashes()
+        public static void GivenColoursWithPermutedComponents_WhenGettingHashCode_ThenReturnDifferentHashes()
         {
             Colour colour1 = new(255, 0, 0, 1);
             Colour colour2 = new(0, 255, 1, 0);
@@ -387,7 +387,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourAndFactor_WhenUsingMultiplyOperator_ThenReturnsCorrectColour()
+        public static void GivenColourAndFactor_WhenUsingMultiplyOperator_ThenReturnsCorrectColour()
         {
             Colour colour = new(8, 8, 8, 8);
             Colour expected = new(16, 16, 16, 16);
@@ -397,7 +397,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourAndHugeFactor_WhenUsingMultiplyOperator_ThenReturnsWhiteColour()
+        public static void GivenColourAndHugeFactor_WhenUsingMultiplyOperator_ThenReturnsWhiteColour()
         {
             Colour colour = new(8, 8, 8, 8);
             Colour expected = new(255, 255, 255, 255);
@@ -407,7 +407,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourAndNegativeFactor_WhenUsingMultiplyOperator_ThenReturnsBlackColour()
+        public static void GivenColourAndNegativeFactor_WhenUsingMultiplyOperator_ThenReturnsBlackColour()
         {
             Colour colour = new(8, 8, 8, 8);
             Colour expected = new(0, 0, 0, 0);
@@ -417,26 +417,26 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoIdenticalColours_WhenUsingEqualityOperator_ThenReturnsTrue()
+        public static void GivenTwoIdenticalColours_WhenUsingEqualityOperator_ThenReturnsTrue()
             => Assert.That(Colour.Black == Colour.Black);
 
         [Test]
-        public void GivenTwoDifferentColours_WhenUsingEqualityOperator_ThenReturnsFalse()
+        public static void GivenTwoDifferentColours_WhenUsingEqualityOperator_ThenReturnsFalse()
             => Assert.That(Colour.Black == Colour.White, Is.False);
 
         [Test]
-        public void GivenColourAndNull_WhenUsingEqualityOperator_ThenReturnsFalse()
+        public static void GivenColourAndNull_WhenUsingEqualityOperator_ThenReturnsFalse()
             => Assert.That(Colour.Black == null, Is.False);
 
         [Test]
-        public void GivenTwoDifferentColours_WhenUsingInequalityOperator_ThenReturnsTrue()
+        public static void GivenTwoDifferentColours_WhenUsingInequalityOperator_ThenReturnsTrue()
             => Assert.That(Colour.Black != Colour.White);
         [Test]
-        public void GivenTwoIdenticalColours_WhenUsingInequalityOperator_ThenReturnsFalse()
+        public static void GivenTwoIdenticalColours_WhenUsingInequalityOperator_ThenReturnsFalse()
             => Assert.That(Colour.Black != Colour.Black, Is.False);
 
         [Test]
-        public void GivenColour_WhenCastingToInt_ThenReturnsArgbInteger()
+        public static void GivenColour_WhenCastingToInt_ThenReturnsArgbInteger()
         {
             Colour colour = new(1, 2, 3, 4);
             int result = (int)colour;
@@ -445,7 +445,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenArgbInteger_WhenCastingToColour_ThenReturnsCorrectColour()
+        public static void GivenArgbInteger_WhenCastingToColour_ThenReturnsCorrectColour()
         {
             Colour result = (Colour)67174915;
 
@@ -456,7 +456,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCastingToString_ThenReturnsHexadecimalString()
+        public static void GivenColour_WhenCastingToString_ThenReturnsHexadecimalString()
         {
             Colour colour = new(255, 0, 0);
             string result = (string)colour;
@@ -465,7 +465,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenHexString_WhenCastingToColour_ThenReturnsCorrectColour()
+        public static void GivenHexString_WhenCastingToColour_ThenReturnsCorrectColour()
         {
             Colour result = (Colour)"#FF0000";
 
@@ -547,7 +547,7 @@ namespace NuciXNA.Primitives.UnitTests
         public void GivenPredefinedColour_WhenInspectingChannels_ThenTheyMatchTheDocumentedValues(
             string colourName, int r, int g, int b, int a)
         {
-            Colour colour = GetPredefinedColour(colourName);
+            Colour colour = BuildPredefinedColour(colourName);
 
             Assert.That((int)colour.R, Is.EqualTo(r));
             Assert.That((int)colour.G, Is.EqualTo(g));
@@ -627,7 +627,7 @@ namespace NuciXNA.Primitives.UnitTests
         [TestCase(nameof(Colour.MaterialBlueGrey))]
         public void GivenPredefinedColour_WhenConvertingToAndFromHexadecimal_ThenTheColourIsPreserved(string colourName)
         {
-            Colour colour = GetPredefinedColour(colourName);
+            Colour colour = BuildPredefinedColour(colourName);
             Colour roundTripped = Colour.FromHexadecimal(colour.ToHexadecimal());
 
             Assert.That(roundTripped, Is.EqualTo(colour));
@@ -705,14 +705,14 @@ namespace NuciXNA.Primitives.UnitTests
         [TestCase(nameof(Colour.MaterialBlueGrey))]
         public void GivenPredefinedColour_WhenConvertingToAndFromArgb_ThenTheColourIsPreserved(string colourName)
         {
-            Colour colour = GetPredefinedColour(colourName);
+            Colour colour = BuildPredefinedColour(colourName);
             Colour roundTripped = Colour.FromArgb(colour.ToArgb());
 
             Assert.That(roundTripped, Is.EqualTo(colour));
         }
 
         [Test]
-        public void GivenColourAndFactor_WhenMultiplyingByFractionalFactor_ThenChannelsAreTruncated()
+        public static void GivenColourAndFactor_WhenMultiplyingByFractionalFactor_ThenChannelsAreTruncated()
         {
             Colour colour = new(3, 5, 7, 255);
             Colour actual = colour * 1.5f;
@@ -724,7 +724,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourAndZeroFactor_WhenCallingMultiply_ThenReturnsFullyTransparentBlack()
+        public static void GivenColourAndZeroFactor_WhenCallingMultiply_ThenReturnsFullyTransparentBlack()
         {
             Colour colour = new(200, 150, 100, 50);
             Colour actual = Colour.Multiply(colour, 0);
@@ -733,7 +733,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenMultiplyingByExactIdentity_ThenColourIsUnchanged()
+        public static void GivenColour_WhenMultiplyingByExactIdentity_ThenColourIsUnchanged()
         {
             Colour colour = new(12, 34, 56, 78);
             Colour actual = colour * 1f;
@@ -742,7 +742,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourWithAlpha_WhenCallingToMonochromeAverage_ThenAlphaIsPreserved()
+        public static void GivenColourWithAlpha_WhenCallingToMonochromeAverage_ThenAlphaIsPreserved()
         {
             Colour colour = new(30, 60, 90, 40);
             Colour actual = colour.ToMonochromeAverage();
@@ -751,7 +751,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourWithAlpha_WhenCallingToMonochromeLight_ThenLightestChannelAndAlphaAreUsed()
+        public static void GivenColourWithAlpha_WhenCallingToMonochromeLight_ThenLightestChannelAndAlphaAreUsed()
         {
             Colour colour = new(30, 60, 90, 40);
             Colour actual = colour.ToMonochromeLight();
@@ -761,7 +761,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourWithAlpha_WhenCallingToMonochromeDark_ThenDarkestChannelAndAlphaAreUsed()
+        public static void GivenColourWithAlpha_WhenCallingToMonochromeDark_ThenDarkestChannelAndAlphaAreUsed()
         {
             Colour colour = new(30, 60, 90, 40);
             Colour actual = colour.ToMonochromeDark();
@@ -771,15 +771,15 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColourAndNegativeTolerance_WhenCallingIsSimilarTo_ThenReturnsFalse()
+        public static void GivenColourAndNegativeTolerance_WhenCallingIsSimilarTo_ThenReturnsFalse()
             => Assert.That(new Colour(10, 10, 10).IsSimilarTo(new Colour(10, 10, 10), -1), Is.False);
 
         [Test]
-        public void GivenColourAndZeroTolerance_WhenCallingIsSimilarTo_ThenRequiresExactEquality()
+        public static void GivenColourAndZeroTolerance_WhenCallingIsSimilarTo_ThenRequiresExactEquality()
             => Assert.That(new Colour(10, 10, 10).IsSimilarTo(new Colour(10, 10, 11), 0), Is.False);
 
         [Test]
-        public void GivenSameColourReference_WhenCallingObjectEquals_ThenReturnsTrue()
+        public static void GivenSameColourReference_WhenCallingObjectEquals_ThenReturnsTrue()
         {
             Colour colour = new(10, 20, 30);
 
@@ -787,7 +787,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoNullOperands_WhenUsingEqualityOperator_ThenReturnsTrue()
+        public static void GivenTwoNullOperands_WhenUsingEqualityOperator_ThenReturnsTrue()
         {
             Colour? left = null;
             Colour? right = null;
@@ -796,14 +796,14 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenColour_WhenCallingEqualsOnItself_ThenReturnsTrue()
+        public static void GivenColour_WhenCallingEqualsOnItself_ThenReturnsTrue()
         {
             Colour colour = new(10, 20, 30, 40);
 
             Assert.That(colour.Equals(colour));
         }
 
-        private static Colour GetPredefinedColour(string colourName)
+        private static Colour BuildPredefinedColour(string colourName)
         {
             PropertyInfo? property = typeof(Colour).GetProperty(colourName, BindingFlags.Public | BindingFlags.Static);
 

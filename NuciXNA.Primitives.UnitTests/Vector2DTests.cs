@@ -7,10 +7,10 @@ using NUnit.Framework;
 namespace NuciXNA.Primitives.UnitTests
 {
     [TestFixture]
-    public class Vector2DTests
+    public sealed class Vector2DTests
     {
         [Test]
-        public void GivenXAndYValues_WhenConstructing_ThenPropertiesAreSet()
+        public static void GivenXAndYValues_WhenConstructing_ThenPropertiesAreSet()
         {
             Vector2D vector = new(1.5f, 2.5f);
 
@@ -19,7 +19,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPoint2D_WhenConstructing_ThenPropertiesMatchPointCoordinates()
+        public static void GivenPoint2D_WhenConstructing_ThenPropertiesMatchPointCoordinates()
         {
             Point2D point = new(3, 7);
             Vector2D vector = new(point);
@@ -29,7 +29,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenZeroValues_WhenCheckingIsEmpty_ThenReturnsTrue()
+        public static void GivenZeroValues_WhenCheckingIsEmpty_ThenReturnsTrue()
         {
             Vector2D vector = new(0f, 0f);
 
@@ -37,7 +37,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonZeroValues_WhenCheckingIsEmpty_ThenReturnsFalse()
+        public static void GivenNonZeroValues_WhenCheckingIsEmpty_ThenReturnsFalse()
         {
             Vector2D vector = new(1.0f, 0f);
 
@@ -45,7 +45,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenZeroStatic_WhenCheckingValues_ThenBothAreZero()
+        public static void GivenZeroStatic_WhenCheckingValues_ThenBothAreZero()
         {
             Vector2D zero = Vector2D.Zero;
 
@@ -54,7 +54,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenOneStatic_WhenCheckingValues_ThenBothAreOne()
+        public static void GivenOneStatic_WhenCheckingValues_ThenBothAreOne()
         {
             Vector2D one = Vector2D.One;
 
@@ -63,25 +63,25 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoVectorsWithSameValues_WhenCheckingEquality_ThenReturnsTrue()
+        public static void GivenTwoVectorsWithSameValues_WhenCheckingEquality_ThenReturnsTrue()
         {
-            Vector2D v1 = new(1.5f, 2.5f);
-            Vector2D v2 = new(1.5f, 2.5f);
+            Vector2D firstVector = new(1.5f, 2.5f);
+            Vector2D secondVector = new(1.5f, 2.5f);
 
-            Assert.That(v1.Equals(v2));
+            Assert.That(firstVector.Equals(secondVector));
         }
 
         [Test]
-        public void GivenTwoVectorsWithDifferentValues_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenTwoVectorsWithDifferentValues_WhenCheckingEquality_ThenReturnsFalse()
         {
-            Vector2D v1 = new(1.5f, 2.5f);
-            Vector2D v2 = new(1.5f, 2.6f);
+            Vector2D firstVector = new(1.5f, 2.5f);
+            Vector2D secondVector = new(1.5f, 2.6f);
 
-            Assert.That(v1.Equals(v2), Is.False);
+            Assert.That(firstVector.Equals(secondVector), Is.False);
         }
 
         [Test]
-        public void GivenMatchingFloatValues_WhenCheckingEqualityWithXY_ThenReturnsTrue()
+        public static void GivenMatchingFloatValues_WhenCheckingEqualityWithXY_ThenReturnsTrue()
         {
             Vector2D vector = new(1.5f, 2.5f);
 
@@ -89,7 +89,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonMatchingValues_WhenCheckingEqualityWithXY_ThenReturnsFalse()
+        public static void GivenNonMatchingValues_WhenCheckingEqualityWithXY_ThenReturnsFalse()
         {
             Vector2D vector = new(1.5f, 2.5f);
 
@@ -97,7 +97,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSameVectorBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        public static void GivenSameVectorBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
         {
             Vector2D vector = new(1.5f, 2.5f);
 
@@ -105,7 +105,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
+        public static void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             Vector2D vector = new(1.5f, 2.5f);
 
@@ -113,7 +113,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoVectorsWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
+        public static void GivenTwoVectorsWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
         {
             Vector2D vector1 = new(1.5f, 2.5f);
             Vector2D vector2 = new(1.5f, 2.5f);
@@ -122,7 +122,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoVectorsWithDifferentValues_WhenGettingHashCode_ThenReturnDifferentHashes()
+        public static void GivenTwoVectorsWithDifferentValues_WhenGettingHashCode_ThenReturnDifferentHashes()
         {
             Vector2D vector1 = new(1.5f, 2.5f);
             Vector2D vector2 = new(1.5f, 3.5f);
@@ -131,91 +131,91 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoVectors_WhenAdding_ThenReturnsCorrectSum()
+        public static void GivenTwoVectors_WhenAdding_ThenReturnsCorrectSum()
         {
-            Vector2D v1 = new(1.0f, 2.0f);
-            Vector2D v2 = new(0.5f, 1.5f);
+            Vector2D firstVector = new(1.0f, 2.0f);
+            Vector2D secondVector = new(0.5f, 1.5f);
 
-            Vector2D result = v1 + v2;
+            Vector2D result = firstVector + secondVector;
 
             Assert.That(result.X, Is.EqualTo(1.5f));
             Assert.That(result.Y, Is.EqualTo(3.5f));
         }
 
         [Test]
-        public void GivenTwoVectors_WhenSubtracting_ThenReturnsCorrectDifference()
+        public static void GivenTwoVectors_WhenSubtracting_ThenReturnsCorrectDifference()
         {
-            Vector2D v1 = new(5.0f, 8.0f);
-            Vector2D v2 = new(1.5f, 2.5f);
+            Vector2D firstVector = new(5.0f, 8.0f);
+            Vector2D secondVector = new(1.5f, 2.5f);
 
-            Vector2D result = v1 - v2;
+            Vector2D result = firstVector - secondVector;
 
             Assert.That(result.X, Is.EqualTo(3.5f));
             Assert.That(result.Y, Is.EqualTo(5.5f));
         }
 
         [Test]
-        public void GivenTwoVectors_WhenMultiplying_ThenReturnsCorrectProduct()
+        public static void GivenTwoVectors_WhenMultiplying_ThenReturnsCorrectProduct()
         {
-            Vector2D v1 = new(2.0f, 3.0f);
-            Vector2D v2 = new(4.0f, 5.0f);
+            Vector2D firstVector = new(2.0f, 3.0f);
+            Vector2D secondVector = new(4.0f, 5.0f);
 
-            Vector2D result = v1 * v2;
+            Vector2D result = firstVector * secondVector;
 
             Assert.That(result.X, Is.EqualTo(8.0f));
             Assert.That(result.Y, Is.EqualTo(15.0f));
         }
 
         [Test]
-        public void GivenTwoVectors_WhenDividing_ThenReturnsCorrectQuotient()
+        public static void GivenTwoVectors_WhenDividing_ThenReturnsCorrectQuotient()
         {
-            Vector2D v1 = new(10.0f, 20.0f);
-            Vector2D v2 = new(2.0f, 4.0f);
+            Vector2D firstVector = new(10.0f, 20.0f);
+            Vector2D secondVector = new(2.0f, 4.0f);
 
-            Vector2D result = v1 / v2;
+            Vector2D result = firstVector / secondVector;
 
             Assert.That(result.X, Is.EqualTo(5.0f));
             Assert.That(result.Y, Is.EqualTo(5.0f));
         }
 
         [Test]
-        public void GivenTwoEqualVectors_WhenUsingEqualityOperator_ThenReturnsTrue()
+        public static void GivenTwoEqualVectors_WhenUsingEqualityOperator_ThenReturnsTrue()
         {
-            Vector2D v1 = new(1.5f, 2.5f);
-            Vector2D v2 = new(1.5f, 2.5f);
+            Vector2D firstVector = new(1.5f, 2.5f);
+            Vector2D secondVector = new(1.5f, 2.5f);
 
-            Assert.That(v1 == v2);
+            Assert.That(firstVector == secondVector);
         }
 
         [Test]
-        public void GivenTwoDifferentVectors_WhenUsingEqualityOperator_ThenReturnsFalse()
+        public static void GivenTwoDifferentVectors_WhenUsingEqualityOperator_ThenReturnsFalse()
         {
-            Vector2D v1 = new(1.5f, 2.5f);
-            Vector2D v2 = new(1.5f, 2.6f);
+            Vector2D firstVector = new(1.5f, 2.5f);
+            Vector2D secondVector = new(1.5f, 2.6f);
 
-            Assert.That(v1 == v2, Is.False);
+            Assert.That(firstVector == secondVector, Is.False);
         }
 
         [Test]
-        public void GivenTwoDifferentVectors_WhenUsingInequalityOperator_ThenReturnsTrue()
+        public static void GivenTwoDifferentVectors_WhenUsingInequalityOperator_ThenReturnsTrue()
         {
-            Vector2D v1 = new(1.5f, 2.5f);
-            Vector2D v2 = new(1.5f, 2.6f);
+            Vector2D firstVector = new(1.5f, 2.5f);
+            Vector2D secondVector = new(1.5f, 2.6f);
 
-            Assert.That(v1 != v2);
+            Assert.That(firstVector != secondVector);
         }
 
         [Test]
-        public void GivenTwoEqualVectors_WhenUsingInequalityOperator_ThenReturnsFalse()
+        public static void GivenTwoEqualVectors_WhenUsingInequalityOperator_ThenReturnsFalse()
         {
-            Vector2D v1 = new(1.5f, 2.5f);
-            Vector2D v2 = new(1.5f, 2.5f);
+            Vector2D firstVector = new(1.5f, 2.5f);
+            Vector2D secondVector = new(1.5f, 2.5f);
 
-            Assert.That(v1 != v2, Is.False);
+            Assert.That(firstVector != secondVector, Is.False);
         }
 
         [Test]
-        public void GivenVector2D_WhenConvertingToXnaVector2_ThenValuesArePreserved()
+        public static void GivenVector2D_WhenConvertingToXnaVector2_ThenValuesArePreserved()
         {
             Vector2D vector2D = new(1.5f, 2.5f);
 
@@ -226,7 +226,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenXnaVector2_WhenConvertingToVector2D_ThenValuesArePreserved()
+        public static void GivenXnaVector2_WhenConvertingToVector2D_ThenValuesArePreserved()
         {
             Vector2 xnaVector = new(1.5f, 2.5f);
 
