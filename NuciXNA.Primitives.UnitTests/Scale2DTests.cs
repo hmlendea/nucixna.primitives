@@ -5,10 +5,10 @@ using NUnit.Framework;
 namespace NuciXNA.Primitives.UnitTests
 {
     [TestFixture]
-    public class Scale2DTests
+    public sealed class Scale2DTests
     {
         [Test]
-        public void GivenHorizontalAndVertical_WhenConstructing_ThenPropertiesAreSet()
+        public static void GivenHorizontalAndVertical_WhenConstructing_ThenPropertiesAreSet()
         {
             Scale2D scale = new(2.0f, 3.0f);
 
@@ -17,7 +17,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSingleValue_WhenConstructing_ThenBothDimensionsAreEqual()
+        public static void GivenSingleValue_WhenConstructing_ThenBothDimensionsAreEqual()
         {
             Scale2D scale = new(2.5f);
 
@@ -26,7 +26,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPoint2D_WhenConstructing_ThenPropertiesMatchPointCoordinates()
+        public static void GivenPoint2D_WhenConstructing_ThenPropertiesMatchPointCoordinates()
         {
             Point2D point = new(3, 7);
             Scale2D scale = new(point);
@@ -36,7 +36,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSize2D_WhenConstructing_ThenPropertiesMatchSizeDimensions()
+        public static void GivenSize2D_WhenConstructing_ThenPropertiesMatchSizeDimensions()
         {
             Size2D size = new(4, 8);
             Scale2D scale = new(size);
@@ -46,7 +46,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenZeroValues_WhenCheckingIsEmpty_ThenReturnsTrue()
+        public static void GivenZeroValues_WhenCheckingIsEmpty_ThenReturnsTrue()
         {
             Scale2D scale = new(0f, 0f);
 
@@ -54,7 +54,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonZeroValues_WhenCheckingIsEmpty_ThenReturnsFalse()
+        public static void GivenNonZeroValues_WhenCheckingIsEmpty_ThenReturnsFalse()
         {
             Scale2D scale = new(1.0f, 0f);
 
@@ -62,7 +62,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenEmptyStatic_WhenCheckingValues_ThenBothAreZero()
+        public static void GivenEmptyStatic_WhenCheckingValues_ThenBothAreZero()
         {
             Scale2D empty = Scale2D.Empty;
 
@@ -71,7 +71,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenZeroStatic_WhenCheckingValues_ThenBothAreZero()
+        public static void GivenZeroStatic_WhenCheckingValues_ThenBothAreZero()
         {
             Scale2D zero = Scale2D.Zero;
 
@@ -80,7 +80,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenOneStatic_WhenCheckingValues_ThenBothAreOne()
+        public static void GivenOneStatic_WhenCheckingValues_ThenBothAreOne()
         {
             Scale2D one = Scale2D.One;
 
@@ -89,7 +89,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoScalesWithSameValues_WhenCheckingEquality_ThenReturnsTrue()
+        public static void GivenTwoScalesWithSameValues_WhenCheckingEquality_ThenReturnsTrue()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 3.0f);
@@ -98,7 +98,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoScalesWithDifferentValues_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenTwoScalesWithDifferentValues_WhenCheckingEquality_ThenReturnsFalse()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 4.0f);
@@ -107,7 +107,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenMatchingFloatValues_WhenCheckingEqualityWithHorizontalVertical_ThenReturnsTrue()
+        public static void GivenMatchingFloatValues_WhenCheckingEqualityWithHorizontalVertical_ThenReturnsTrue()
         {
             Scale2D scale = new(2.0f, 3.0f);
 
@@ -115,7 +115,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonMatchingValues_WhenCallingEqualsWithHorizontalVertical_ThenReturnsFalse()
+        public static void GivenNonMatchingValues_WhenCallingEqualsWithHorizontalVertical_ThenReturnsFalse()
         {
             Scale2D scale = new(2.0f, 3.0f);
 
@@ -123,7 +123,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSameScaleBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        public static void GivenSameScaleBoxedAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
         {
             Scale2D scale = new(2.0f, 3.0f);
 
@@ -131,7 +131,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
+        public static void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             Scale2D scale = new(2.0f, 3.0f);
 
@@ -139,7 +139,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoScalesWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
+        public static void GivenTwoScalesWithSameValues_WhenGettingHashCode_ThenReturnSameHash()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 3.0f);
@@ -148,7 +148,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoScalesWithDifferentValues_WhenGettingHashCode_ThenReturnDifferentHashes()
+        public static void GivenTwoScalesWithDifferentValues_WhenGettingHashCode_ThenReturnDifferentHashes()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 4.0f);
@@ -157,7 +157,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoScales_WhenAdding_ThenReturnsCorrectSum()
+        public static void GivenTwoScales_WhenAdding_ThenReturnsCorrectSum()
         {
             Scale2D scale1 = new(1.0f, 2.0f);
             Scale2D scale2 = new(0.5f, 1.5f);
@@ -169,7 +169,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoScales_WhenSubtracting_ThenReturnsCorrectDifference()
+        public static void GivenTwoScales_WhenSubtracting_ThenReturnsCorrectDifference()
         {
             Scale2D scale1 = new(3.0f, 5.0f);
             Scale2D scale2 = new(1.0f, 2.0f);
@@ -181,7 +181,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoScales_WhenMultiplying_ThenReturnsCorrectProduct()
+        public static void GivenTwoScales_WhenMultiplying_ThenReturnsCorrectProduct()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(4.0f, 5.0f);
@@ -193,7 +193,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoScales_WhenDividing_ThenReturnsCorrectQuotient()
+        public static void GivenTwoScales_WhenDividing_ThenReturnsCorrectQuotient()
         {
             Scale2D scale1 = new(10.0f, 20.0f);
             Scale2D scale2 = new(2.0f, 4.0f);
@@ -205,7 +205,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenScaleAndIntScalar_WhenMultiplying_ThenReturnsCorrectProduct()
+        public static void GivenScaleAndIntScalar_WhenMultiplying_ThenReturnsCorrectProduct()
         {
             Scale2D scale = new(2.0f, 3.0f);
 
@@ -216,7 +216,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenScaleAndIntScalar_WhenDividing_ThenReturnsCorrectQuotient()
+        public static void GivenScaleAndIntScalar_WhenDividing_ThenReturnsCorrectQuotient()
         {
             Scale2D scale = new(6.0f, 9.0f);
 
@@ -227,7 +227,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenScaleAndFloatScalar_WhenMultiplying_ThenReturnsCorrectProduct()
+        public static void GivenScaleAndFloatScalar_WhenMultiplying_ThenReturnsCorrectProduct()
         {
             Scale2D scale = new(2.0f, 4.0f);
 
@@ -238,7 +238,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenScaleAndFloatScalar_WhenDividing_ThenReturnsCorrectQuotient()
+        public static void GivenScaleAndFloatScalar_WhenDividing_ThenReturnsCorrectQuotient()
         {
             Scale2D scale = new(6.0f, 9.0f);
 
@@ -249,7 +249,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoEqualScales_WhenUsingEqualityOperator_ThenReturnsTrue()
+        public static void GivenTwoEqualScales_WhenUsingEqualityOperator_ThenReturnsTrue()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 3.0f);
@@ -258,7 +258,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoDifferentScales_WhenUsingEqualityOperator_ThenReturnsFalse()
+        public static void GivenTwoDifferentScales_WhenUsingEqualityOperator_ThenReturnsFalse()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 4.0f);
@@ -267,7 +267,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoDifferentScales_WhenUsingInequalityOperator_ThenReturnsTrue()
+        public static void GivenTwoDifferentScales_WhenUsingInequalityOperator_ThenReturnsTrue()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 4.0f);
@@ -276,7 +276,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoEqualScales_WhenUsingInequalityOperator_ThenReturnsFalse()
+        public static void GivenTwoEqualScales_WhenUsingInequalityOperator_ThenReturnsFalse()
         {
             Scale2D scale1 = new(2.0f, 3.0f);
             Scale2D scale2 = new(2.0f, 3.0f);

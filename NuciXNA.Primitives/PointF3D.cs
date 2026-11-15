@@ -8,10 +8,13 @@ namespace NuciXNA.Primitives
     /// <remarks>
     /// Initializes a new instance of the <see cref="PointF3D"/> structure.
     /// </remarks>
-    /// <param name="x">The X-axis coordinate.</param>
-    /// <param name="y">The Y-axis coordinate.</param>
-    /// <param name="z">The Z-axis coordinate.</param>
-    public struct PointF3D(float x, float y, float z) : IEquatable<PointF3D>
+    /// <param name="xCoordinate">The X-axis coordinate.</param>
+    /// <param name="yCoordinate">The Y-axis coordinate.</param>
+    /// <param name="zCoordinate">The Z-axis coordinate.</param>
+    public struct PointF3D(
+        float xCoordinate,
+        float yCoordinate,
+        float zCoordinate) : IEquatable<PointF3D>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PointF3D"/> structure.
@@ -23,53 +26,60 @@ namespace NuciXNA.Primitives
         /// Initializes a new instance of the <see cref="PointF3D"/> structure.
         /// </summary>
         /// <param name="point2d">The <see cref="PointF2D"/> to copy the X and Y coordinates from.</param>
-        /// <param name="z">The Z-axis coordinate.</param>
-        public PointF3D(PointF2D point2d, int z) : this(point2d.X, point2d.Y, z) { }
+        /// <param name="zCoordinate">The Z-axis coordinate.</param>
+        public PointF3D(PointF2D point2d, int zCoordinate)
+            : this(point2d.X, point2d.Y, zCoordinate) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PointF3D"/> structure.
         /// </summary>
         /// <param name="point2d">The <see cref="PointF2D"/> to copy the X and Y coordinates from.</param>
-        /// <param name="z">The Z-axis coordinate.</param>
-        public PointF3D(PointF2D point2d, float z) : this(point2d.X, point2d.Y, z) { }
+        /// <param name="zCoordinate">The Z-axis coordinate.</param>
+        public PointF3D(PointF2D point2d, float zCoordinate)
+            : this(point2d.X, point2d.Y, zCoordinate) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PointF3D"/> structure.
         /// </summary>
         /// <param name="point2d">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
-        /// <param name="z">The Z-axis coordinate.</param>
-        public PointF3D(Point2D point2d, int z) : this(point2d.X, point2d.Y, z) { }
+        /// <param name="zCoordinate">The Z-axis coordinate.</param>
+        public PointF3D(Point2D point2d, int zCoordinate)
+            : this(point2d.X, point2d.Y, zCoordinate) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PointF3D"/> structure.
         /// </summary>
         /// <param name="point2d">The <see cref="Point2D"/> to copy the X and Y coordinates from.</param>
-        /// <param name="z">The Z-axis coordinate.</param>
-        public PointF3D(Point2D point2d, float z) : this(point2d.X, point2d.Y, z) { }
+        /// <param name="zCoordinate">The Z-axis coordinate.</param>
+        public PointF3D(Point2D point2d, float zCoordinate)
+            : this(point2d.X, point2d.Y, zCoordinate) { }
 
         /// <summary>
         /// Gets or sets the X-axis coordinate.
         /// </summary>
         /// <value>The X-axis coordinate.</value>
-        public float X { get; set; } = x;
+        public float X { get; set; } = xCoordinate;
 
         /// <summary>
         /// Gets or sets the Y-axis coordinate.
         /// </summary>
         /// <value>The Y-axis coordinate.</value>
-        public float Y { get; set; } = y;
+        public float Y { get; set; } = yCoordinate;
 
         /// <summary>
         /// Gets or sets the Z-axis coordinate.
         /// </summary>
         /// <value>The Z-axis coordinate.</value>
-        public float Z { get; set; } = z;
+        public float Z { get; set; } = zCoordinate;
 
         /// <summary>
         /// Gets a value indicating whether the coordinates of this <see cref="PointF3D"/> are zero.
         /// </summary>
         /// <value><c>true</c> if the coorinates are zero; otherwise, <c>false</c>.</value>
-        public readonly bool IsEmpty => X == 0 && Y == 0 && Z == 0;
+        public readonly bool IsEmpty =>
+            object.Equals(X, 0f) &&
+            object.Equals(Y, 0f) &&
+            object.Equals(Z, 0f);
 
         /// <summary>
         /// Gets a <see cref="PointF3D"/> with the coordinates of zero.
@@ -84,18 +94,18 @@ namespace NuciXNA.Primitives
         /// <returns><c>true</c> if the specified <see cref="PointF3D"/> is equal to the current <see cref="PointF3D"/>;
         /// otherwise, <c>false</c>.</returns>
         public readonly bool Equals(PointF3D other)
-            => X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
+            => Equals(X, other.X) && Equals(Y, other.Y) && Equals(Z, other.Z);
 
         /// <summary>
         /// Determines whether the specified coordinates are equal to the current <see cref="PointF3D"/>.
         /// </summary>
-        /// <param name="x">The X-axis coordinate.</param>
-        /// <param name="y">The Y-axis coordinate.</param>
-        /// <param name="z">The Z-axis coordinate.</param>
+        /// <param name="xCoordinate">The X-axis coordinate.</param>
+        /// <param name="yCoordinate">The Y-axis coordinate.</param>
+        /// <param name="zCoordinate">The Z-axis coordinate.</param>
         /// <returns><c>true</c> if the specified coordinates are equal to the current <see cref="PointF3D"/>;
         /// otherwise, <c>false</c>.</returns>
-        public readonly bool Equals(float x, float y, float z)
-            => X.Equals(x) && Y.Equals(y) && Z.Equals(z);
+        public readonly bool Equals(float xCoordinate, float yCoordinate, float zCoordinate)
+            => Equals(X, xCoordinate) && Equals(Y, yCoordinate) && Equals(Z, zCoordinate);
 
         /// <summary>
         /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="PointF3D"/>.
@@ -110,7 +120,7 @@ namespace NuciXNA.Primitives
                 return false;
             }
 
-            if (obj.GetType() != GetType())
+            if (!Equals(obj.GetType(), GetType()))
             {
                 return false;
             }
@@ -193,7 +203,7 @@ namespace NuciXNA.Primitives
         /// <param name="other">The second <see cref="PointF3D"/> to compare.</param>
         /// <returns><c>true</c> if <c>source</c> and <c>other</c> are equal; otherwise, <c>false</c>.</returns>
         public static bool operator ==(PointF3D source, PointF3D other)
-            => source.Equals(other);
+            => Equals(source, other);
 
         /// <summary>
         /// Determines whether a specified instance of <see cref="PointF3D"/> is not equal to

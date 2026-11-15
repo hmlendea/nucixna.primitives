@@ -10,10 +10,10 @@ using XnaColor = Microsoft.Xna.Framework.Color;
 namespace NuciXNA.Primitives.UnitTests.Mapping
 {
     [TestFixture]
-    public class ColourMappingExtensionsTests
+    public sealed class ColourMappingExtensionsTests
     {
         [Test]
-        public void GivenSystemColor_WhenConvertingToColour_ThenChannelsArePreserved()
+        public static void GivenSystemColor_WhenConvertingToColour_ThenChannelsArePreserved()
         {
             SystemColor source = SystemColor.FromArgb(128, 10, 20, 30);
             Colour result = source.ToColour();
@@ -25,7 +25,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenXnaColor_WhenConvertingToColour_ThenChannelsArePreserved()
+        public static void GivenXnaColor_WhenConvertingToColour_ThenChannelsArePreserved()
         {
             XnaColor source = new(10, 20, 30, 128);
             Colour result = source.ToColour();
@@ -37,7 +37,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenColour_WhenConvertingToSystemColor_ThenChannelsArePreserved()
+        public static void GivenColour_WhenConvertingToSystemColor_ThenChannelsArePreserved()
         {
             Colour source = new(10, 20, 30, 128);
             SystemColor result = source.ToSystemColor();
@@ -49,7 +49,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenXnaColor_WhenConvertingToSystemColor_ThenChannelsArePreserved()
+        public static void GivenXnaColor_WhenConvertingToSystemColor_ThenChannelsArePreserved()
         {
             XnaColor source = new(10, 20, 30, 128);
             SystemColor result = source.ToSystemColor();
@@ -61,7 +61,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenColour_WhenConvertingToXnaColor_ThenChannelsArePreserved()
+        public static void GivenColour_WhenConvertingToXnaColor_ThenChannelsArePreserved()
         {
             Colour source = new(10, 20, 30, 128);
             XnaColor result = source.ToXnaColor();
@@ -73,7 +73,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenSystemColor_WhenConvertingToXnaColor_ThenChannelsArePreserved()
+        public static void GivenSystemColor_WhenConvertingToXnaColor_ThenChannelsArePreserved()
         {
             SystemColor source = SystemColor.FromArgb(128, 10, 20, 30);
             XnaColor result = source.ToXnaColor();
@@ -85,7 +85,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenSystemColorArray_WhenConvertingToColours_ThenAllElementsAreConverted()
+        public static void GivenSystemColorArray_WhenConvertingToColours_ThenAllElementsAreConverted()
         {
             SystemColor[] source =
             [
@@ -103,7 +103,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenXnaColorArray_WhenConvertingToColours_ThenAllElementsAreConverted()
+        public static void GivenXnaColorArray_WhenConvertingToColours_ThenAllElementsAreConverted()
         {
             XnaColor[] source = [new(255, 0, 0, 255), new(0, 255, 0, 255)];
 
@@ -115,7 +115,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenXnaColorArray_WhenConvertingToSystemColors_ThenAllElementsAreConverted()
+        public static void GivenXnaColorArray_WhenConvertingToSystemColors_ThenAllElementsAreConverted()
         {
             XnaColor[] source = [new(10, 20, 30, 128), new(40, 50, 60, 200)];
 
@@ -127,7 +127,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenColourArray_WhenConvertingToSystemColors_ThenAllElementsAreConverted()
+        public static void GivenColourArray_WhenConvertingToSystemColors_ThenAllElementsAreConverted()
         {
             Colour[] source = [new(10, 20, 30, 128), new(40, 50, 60, 200)];
 
@@ -139,7 +139,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenColourArray_WhenConvertingToXnaColors_ThenAllElementsAreConverted()
+        public static void GivenColourArray_WhenConvertingToXnaColors_ThenAllElementsAreConverted()
         {
             Colour[] source = [new(10, 20, 30, 128), new(40, 50, 60, 200)];
 
@@ -151,7 +151,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenSystemColorArray_WhenConvertingToXnaColors_ThenAllElementsAreConverted()
+        public static void GivenSystemColorArray_WhenConvertingToXnaColors_ThenAllElementsAreConverted()
         {
             SystemColor[] source =
             [
@@ -165,20 +165,21 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
             Assert.That(result[0].R, Is.EqualTo(10));
             Assert.That(result[1].R, Is.EqualTo(40));
         }
+
         [Test]
-        public void GivenEmptySystemColorArray_WhenConvertingToColours_ThenResultIsEmpty()
+        public static void GivenEmptySystemColorArray_WhenConvertingToColours_ThenResultIsEmpty()
             => Assert.That(Array.Empty<SystemColor>().ToColours(), Is.Empty);
 
         [Test]
-        public void GivenEmptyXnaColorArray_WhenConvertingToColours_ThenResultIsEmpty()
+        public static void GivenEmptyXnaColorArray_WhenConvertingToColours_ThenResultIsEmpty()
             => Assert.That(Array.Empty<XnaColor>().ToColours(), Is.Empty);
 
         [Test]
-        public void GivenEmptyColourArray_WhenConvertingToXnaColors_ThenResultIsEmpty()
+        public static void GivenEmptyColourArray_WhenConvertingToXnaColors_ThenResultIsEmpty()
             => Assert.That(Array.Empty<Colour>().ToXnaColors(), Is.Empty);
 
         [Test]
-        public void GivenColour_WhenRoundTrippingThroughXnaColor_ThenColourIsPreserved()
+        public static void GivenColour_WhenRoundTrippingThroughXnaColor_ThenColourIsPreserved()
         {
             Colour colour = new(11, 22, 33, 44);
             Colour result = colour.ToXnaColor().ToColour();
@@ -187,7 +188,7 @@ namespace NuciXNA.Primitives.UnitTests.Mapping
         }
 
         [Test]
-        public void GivenColour_WhenRoundTrippingThroughSystemColor_ThenColourIsPreserved()
+        public static void GivenColour_WhenRoundTrippingThroughSystemColor_ThenColourIsPreserved()
         {
             Colour colour = new(11, 22, 33, 44);
             Colour result = colour.ToSystemColor().ToColour();

@@ -6,10 +6,10 @@ using NUnit.Framework;
 namespace NuciXNA.Primitives.UnitTests
 {
     [TestFixture]
-    public class Point2DTests
+    public sealed class Point2DTests
     {
         [Test]
-        public void GivenXAndYCoordinates_WhenConstructing_ThenPropertiesAreSet()
+        public static void GivenXAndYCoordinates_WhenConstructing_ThenPropertiesAreSet()
         {
             Point2D point = new(3, 7);
 
@@ -18,7 +18,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSize2D_WhenConstructing_ThenPropertiesMatchSizeDimensions()
+        public static void GivenSize2D_WhenConstructing_ThenPropertiesMatchSizeDimensions()
         {
             Size2D size = new(5, 9);
             Point2D point = new(size);
@@ -28,7 +28,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenZeroCoordinates_WhenCheckingIsEmpty_ThenReturnsTrue()
+        public static void GivenZeroCoordinates_WhenCheckingIsEmpty_ThenReturnsTrue()
         {
             Point2D point = new(0, 0);
 
@@ -36,7 +36,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonZeroCoordinates_WhenCheckingIsEmpty_ThenReturnsFalse()
+        public static void GivenNonZeroCoordinates_WhenCheckingIsEmpty_ThenReturnsFalse()
         {
             Point2D point = new(1, 0);
 
@@ -44,7 +44,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenEmptyStatic_WhenCheckingCoordinates_ThenBothAreZero()
+        public static void GivenEmptyStatic_WhenCheckingCoordinates_ThenBothAreZero()
         {
             Point2D empty = Point2D.Empty;
 
@@ -53,7 +53,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPointsWithSameCoordinates_WhenCheckingEquality_ThenReturnsTrue()
+        public static void GivenTwoPointsWithSameCoordinates_WhenCheckingEquality_ThenReturnsTrue()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 7);
@@ -62,7 +62,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPointsWithDifferentCoordinates_WhenCheckingEquality_ThenReturnsFalse()
+        public static void GivenTwoPointsWithDifferentCoordinates_WhenCheckingEquality_ThenReturnsFalse()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 8);
@@ -71,7 +71,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenMatchingCoordinates_WhenCheckingEqualityWithXY_ThenReturnsTrue()
+        public static void GivenMatchingCoordinates_WhenCheckingEqualityWithXY_ThenReturnsTrue()
         {
             Point2D point = new(3, 7);
 
@@ -79,7 +79,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenNonMatchingCoordinates_WhenCheckingEqualityWithXY_ThenReturnsFalse()
+        public static void GivenNonMatchingCoordinates_WhenCheckingEqualityWithXY_ThenReturnsFalse()
         {
             Point2D point = new(3, 7);
 
@@ -87,7 +87,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSamePointAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
+        public static void GivenSamePointAsObject_WhenCheckingObjectEquality_ThenReturnsTrue()
         {
             Point2D point1 = new(3, 7);
             object point2 = new Point2D(3, 7);
@@ -96,7 +96,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
+        public static void GivenUnrelatedObject_WhenCheckingObjectEquality_ThenReturnsFalse()
         {
             Point2D point = new(3, 7);
 
@@ -104,7 +104,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPointsWithSameCoordinates_WhenGettingHashCode_ThenReturnSameHash()
+        public static void GivenTwoPointsWithSameCoordinates_WhenGettingHashCode_ThenReturnSameHash()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 7);
@@ -113,7 +113,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPointsWithDifferentCoordinates_WhenGettingHashCode_ThenReturnDifferentHashes()
+        public static void GivenTwoPointsWithDifferentCoordinates_WhenGettingHashCode_ThenReturnDifferentHashes()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 8);
@@ -122,7 +122,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPoints_WhenAdding_ThenReturnsCorrectSum()
+        public static void GivenTwoPoints_WhenAdding_ThenReturnsCorrectSum()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(2, 4);
@@ -134,7 +134,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPoints_WhenSubtracting_ThenReturnsCorrectDifference()
+        public static void GivenTwoPoints_WhenSubtracting_ThenReturnsCorrectDifference()
         {
             Point2D point1 = new(10, 20);
             Point2D point2 = new(3, 7);
@@ -146,7 +146,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPoints_WhenMultiplying_ThenReturnsCorrectProduct()
+        public static void GivenTwoPoints_WhenMultiplying_ThenReturnsCorrectProduct()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(2, 4);
@@ -158,7 +158,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoPoints_WhenDividing_ThenReturnsCorrectQuotient()
+        public static void GivenTwoPoints_WhenDividing_ThenReturnsCorrectQuotient()
         {
             Point2D point1 = new(10, 20);
             Point2D point2 = new(2, 4);
@@ -170,7 +170,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPointAndScalar_WhenMultiplying_ThenReturnsCorrectProduct()
+        public static void GivenPointAndScalar_WhenMultiplying_ThenReturnsCorrectProduct()
         {
             Point2D point = new(3, 7);
 
@@ -181,7 +181,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPointAndScalar_WhenDividing_ThenReturnsCorrectQuotient()
+        public static void GivenPointAndScalar_WhenDividing_ThenReturnsCorrectQuotient()
         {
             Point2D point = new(12, 20);
 
@@ -192,7 +192,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoEqualPoints_WhenUsingEqualityOperator_ThenReturnsTrue()
+        public static void GivenTwoEqualPoints_WhenUsingEqualityOperator_ThenReturnsTrue()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 7);
@@ -201,7 +201,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoDifferentPoints_WhenUsingEqualityOperator_ThenReturnsFalse()
+        public static void GivenTwoDifferentPoints_WhenUsingEqualityOperator_ThenReturnsFalse()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 8);
@@ -210,7 +210,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoDifferentPoints_WhenUsingInequalityOperator_ThenReturnsTrue()
+        public static void GivenTwoDifferentPoints_WhenUsingInequalityOperator_ThenReturnsTrue()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 8);
@@ -219,7 +219,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenTwoEqualPoints_WhenUsingInequalityOperator_ThenReturnsFalse()
+        public static void GivenTwoEqualPoints_WhenUsingInequalityOperator_ThenReturnsFalse()
         {
             Point2D point1 = new(3, 7);
             Point2D point2 = new(3, 7);
@@ -228,7 +228,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPoint2D_WhenConvertingToSystemPoint_ThenCoordinatesArePreserved()
+        public static void GivenPoint2D_WhenConvertingToSystemPoint_ThenCoordinatesArePreserved()
         {
             Point2D point2D = new(3, 7);
 
@@ -239,7 +239,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenSystemPoint_WhenConvertingToPoint2D_ThenCoordinatesArePreserved()
+        public static void GivenSystemPoint_WhenConvertingToPoint2D_ThenCoordinatesArePreserved()
         {
             Point systemPoint = new(3, 7);
 
@@ -250,7 +250,7 @@ namespace NuciXNA.Primitives.UnitTests
         }
 
         [Test]
-        public void GivenPoint2D_WhenConvertingToPointF2D_ThenCoordinatesArePreserved()
+        public static void GivenPoint2D_WhenConvertingToPointF2D_ThenCoordinatesArePreserved()
         {
             Point2D point2D = new(3, 7);
 

@@ -8,7 +8,7 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
-    <Version>2.1.7</Version>
+    <Version>2.1.9</Version>
     <Description>Reusable primitives for MonoGame/XNA.</Description>
     <Authors>Horațiu Mlendea</Authors>
     <Copyright>Copyright 2026 © Horațiu Mlendea</Copyright>
